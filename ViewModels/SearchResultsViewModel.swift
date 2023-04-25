@@ -9,6 +9,7 @@ import Foundation
 
 // ViewModel to contain SearchResults
 #warning("Should maybe be refactored")
+// i.e., should there be a repository-class?
 class SearchResultViewModel: ObservableObject {
 	
 	@Published var searchResultAsPerenualPlants: [PerenualPlant] = []
