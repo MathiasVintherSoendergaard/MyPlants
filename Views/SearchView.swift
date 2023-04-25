@@ -8,12 +8,12 @@
 import SwiftUI
 
 // View that shows search results
-struct SearchResultsView: View {
+struct SearchView: View {
 	
 	// ViewModel for SearchResults
 	@StateObject var searchResultsViewModel: SearchResultViewModel = SearchResultViewModel()
-	// the keyword being used for searching
-	@State var keyword: String = ""
+	
+	@State private var searchText = ""
 	
     var body: some View {
 		// I saw somewhere that because of backwards compatibility
@@ -28,16 +28,20 @@ struct SearchResultsView: View {
 					}
 				}
 			}
-			.onAppear {
-				searchResultsViewModel.search(keyword: keyword)
+
+			.navigationTitle("Search plants")
+			.searchable(text: $searchText, prompt: "Search for a plant")
+			.autocorrectionDisabled(true)
+			.onChange(of: searchText) { newValue in
+				searchResultsViewModel.search(keyword: newValue)
+			}
 		}
-			.navigationTitle("Search Results")
-		}
+		
     }
 }
 
-struct SearchResultsView_Previews: PreviewProvider {
+struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchResultsView()
+        SearchView()
     }
 }

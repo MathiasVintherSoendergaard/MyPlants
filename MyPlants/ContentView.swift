@@ -9,14 +9,11 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    
-	@State private var searchText = ""
-
 		var body: some View {
 			NavigationStack {
 				Spacer()
 				NavigationLink {
-					SearchResultsView(keyword: searchText)
+					SearchView()
 				} label: {
 					Text("Search plants")
 				}
@@ -34,8 +31,6 @@ struct ContentView: View {
 				}
 				Spacer()
 			}
-			.searchable(text: $searchText, prompt: "Search for a plant")
-			.autocorrectionDisabled(true)
 		}
 
     
