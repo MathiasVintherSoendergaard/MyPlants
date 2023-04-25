@@ -40,7 +40,7 @@ final class MyPlantsUITests: XCTestCase {
 		searchButton.tap()
 		
 		// we try to find a static text in the view with the value "Search Results"
-		let searchResults = app.staticTexts["Search Results"]
+		let searchResults = app.staticTexts["Search plants"]
 		
 		// we check if the static text actually existed
 		XCTAssertTrue(searchResults.waitForExistence(timeout: timeout))

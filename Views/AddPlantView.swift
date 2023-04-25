@@ -81,6 +81,8 @@ struct AddPlantView: View {
 							sourceType = .camera
 							showSheet = true
 					}
+					// for some reason, the button under here does not work, unless you push the above button first
+					// what is currently on line 88 simply does not add new value to sourceType
 					Text("Choose a picture of your plant")
 						.onTapGesture {
 							sourceType = .photoLibrary
