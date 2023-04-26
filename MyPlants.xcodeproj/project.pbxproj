@@ -51,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C70F3BAC29F86BE60013ABF8 /* MyPlants.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MyPlants.xctestplan; sourceTree = "<group>"; };
 		C731863529F6A0F8002ED730 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		C738501329ED2A6A0024788D /* MyPlants.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPlants.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C738501629ED2A6A0024788D /* MyPlantsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlantsApp.swift; sourceTree = "<group>"; };
@@ -117,6 +118,7 @@
 		C738500A29ED2A6A0024788D = {
 			isa = PBXGroup;
 			children = (
+				C70F3BAC29F86BE60013ABF8 /* MyPlants.xctestplan */,
 				C731863429F6A0E4002ED730 /* Camera */,
 				C7B2F6D529F0137F0098783F /* Persistence */,
 				C7B2F6D429F013690098783F /* API */,

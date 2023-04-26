@@ -24,10 +24,10 @@ extension Watering: CustomStringConvertible {
 	
 	var description: String {
 		switch self {
+		case .none: return "None"
+		case .minimum: return "Minimum"
 		case .average: return "Average"
 		case .frequent: return "Frequent"
-		case .minimum: return "Minimum"
-		case .none: return "None"
 		case .notDefined: return "Not defined"
 		}
 	}

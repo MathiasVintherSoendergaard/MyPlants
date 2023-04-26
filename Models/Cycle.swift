@@ -12,7 +12,7 @@ import Foundation
 enum Cycle: Int, CaseIterable, Identifiable {
 	
 	// integer values added to store in Core Data
-	case perennial = 0, annual = 1, biennial = 2, biannual = 3, notDefined = 4
+	case perennial = 0, biennial = 1, annual = 2, biannual = 3, notDefined = 4
 	
 	var id: Self { self }
 
@@ -23,10 +23,10 @@ extension Cycle: CustomStringConvertible {
 	// description is also required by CustomStringConvertible
 	var description: String {
 		switch self {
+		case .perennial: return "Perennial"
+		case .biennial: return "Biennial"
 		case .annual: return "Annual"
 		case .biannual: return "Biannual"
-		case .biennial: return "Biennial"
-		case .perennial: return "Perennial"
 		case .notDefined: return "Not defined"
 		}
 	}
@@ -38,10 +38,10 @@ extension Cycle {
 		switch value?.lowercased() {
 		case "perennial":
 			self = .perennial
-		case "annual":
-			self = .annual
 		case "biennial":
 			self = .biennial
+		case "annual":
+			self = .annual
 		case "biannual":
 			self = .biannual
 		default:
@@ -56,8 +56,8 @@ extension Cycle {
 	init?(rawValue: Int) {
 		switch rawValue {
 		case 0: self = .perennial
-		case 1: self = .annual
-		case 2: self = .biennial
+		case 1: self = .biennial
+		case 2: self = .annual
 		case 3: self = .biannual
 		case 4: self = .notDefined
 		default: self = .notDefined
