@@ -30,7 +30,7 @@ final class MyPlantsUITests: XCTestCase {
 		// because we are dealing with a UI test, a little patience is required
 		let timeout: TimeInterval = 2
 		
-		// we try to find the button that navigates to SearchResultsView
+		// we try to find the button that navigates to SearchView
 		let searchButton = app.otherElements.buttons["Search plants"]
 		
 		// we check if we have found a button
@@ -48,6 +48,43 @@ final class MyPlantsUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
+	func testTakePictureOfPlantSheet() throws {
+		
+		// UI tests must launch the application that they test.
+		let app = XCUIApplication()
+		app.launch()
+		
+		// because we are dealing with a UI test, a little patience is required
+		let timeout: TimeInterval = 2
+		
+		// we try to find the button that navigates to AddPlantView
+		let addPlantButton = app.otherElements.buttons["Register new plant"]
+		
+		// we check if we have found a button
+		XCTAssertTrue(addPlantButton.waitForExistence(timeout: timeout))
+		
+		// we click the button
+		addPlantButton.tap()
+		
+		// we try to find the button that show the camera sheet
+		let showSheet = app.staticTexts["Take a picture of your plant"]
+		
+		// we check if we actually found the button
+		XCTAssertTrue(showSheet.waitForExistence(timeout: timeout))
+		
+		// we tap the button
+		showSheet.tap()
+		
+		// we try to find the cancel button on the camera sheet
+		let cancelButton = app.staticTexts["Cancel"]
+		
+		// we check if we succeeded in finding the cancel button
+		XCTAssertTrue(cancelButton.waitForExistence(timeout: timeout))
+		
+		// we tap the cancel button
+		cancelButton.tap()
+	}
+	
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
             // This measures how long it takes to launch your application.

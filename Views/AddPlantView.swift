@@ -25,9 +25,11 @@ struct AddPlantView: View {
 	
 	private var notes: [String]
 	
-	#warning("change comment")
+#warning("change comment")
 	// This is the ManagedObjectContext which does something with Core Data
 	@Environment(\.managedObjectContext) var moc
+	
+	private var notificationsController = NotificationsController()
 	
 	var body: some View {
 		VStack {
@@ -80,14 +82,14 @@ struct AddPlantView: View {
 						.onTapGesture {
 							sourceType = .camera
 							showSheet = true
-					}
+						}
 					// for some reason, the button under here does not work, unless you push the above button first
 					// what is currently on line 88 simply does not add new value to sourceType
 					Text("Choose a picture of your plant")
 						.onTapGesture {
 							sourceType = .photoLibrary
 							showSheet = true
-					}
+						}
 				}
 				
 				
@@ -95,17 +97,8 @@ struct AddPlantView: View {
 				// her skal der tages imod den første note
 				
 				Button(action: {
-					let plant = PlantEntity(context: moc)
 					
-					plant.name = name
-					plant.desc = description
-					plant.species = species
-					plant.image = newImage.jpegData(compressionQuality: 1)
-					plant.sunlight = Int64(maintenance.sunLight.rawValue)
-					plant.watering = Int64(maintenance.sunLight.rawValue)
-				
-					try? moc.save()
-					
+					savePlant()
 					
 				}, label: {
 					HStack {
@@ -116,16 +109,35 @@ struct AddPlantView: View {
 					}
 				})
 			}
-				.sheet(isPresented: $showSheet) {
-					ImagePicker(sourceType: self.sourceType, selectedImage: self.$newImage)
-				}
+			.sheet(isPresented: $showSheet) {
+				ImagePicker(sourceType: self.sourceType, selectedImage: self.$newImage)
+			}
 			
 			
 		}
 		
 	}
 	
-
+	func savePlant() {
+		let plant = PlantEntity(context: moc)
+		
+		plant.name = name
+		plant.desc = description
+		plant.species = species
+		plant.image = newImage.jpegData(compressionQuality: 1)
+		plant.sunlight = Int64(maintenance.sunLight.rawValue)
+		plant.watering = Int64(maintenance.sunLight.rawValue)
+		
+		try? moc.save()
+		
+		setUpNotifications(plantName: name, watering: maintenance.watering)
+	}
+	
+	func setUpNotifications(plantName: String, watering: Watering) {
+		
+		notificationsController.scheduleNotification(plantName: plantName, watering: watering)
+		
+	}
 	
 	// Constructor used for preview (see bottom of this file), and for NavigationLink from SearchResultsView to this View
 	init(plant: Plant) {

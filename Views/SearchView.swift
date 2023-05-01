@@ -36,6 +36,9 @@ struct SearchView: View {
 				searchResultsViewModel.search(keyword: newValue)
 			}
 		}
+		.onAppear {
+			searchResultsViewModel.search(keyword: searchText)
+		}
 		
     }
 }
