@@ -26,7 +26,7 @@ class NotificationsController {
 		}
 	}
 	
-	func scheduleMonthlyNotification(plantName: String) {
+	private func scheduleMonthlyNotification(plantName: String) {
 		let center = UNUserNotificationCenter.current()
 		
 		let addRequest = {
@@ -73,7 +73,7 @@ class NotificationsController {
 		}
 	}
 	
-	func scheduleWeeklyNotification(plantName: String) {
+	private func scheduleWeeklyNotification(plantName: String) {
 		let center = UNUserNotificationCenter.current()
 		
 		let addRequest = {
@@ -116,7 +116,7 @@ class NotificationsController {
 		}
 	}
 	
-	func scheduleTwiceWeeklyNotification(plantName: String) {
+	private func scheduleTwiceWeeklyNotification(plantName: String) {
 		let center = UNUserNotificationCenter.current()
 		
 		let addRequest = {
@@ -135,6 +135,8 @@ class NotificationsController {
 			let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
 			center.add(request)
 			
+			
+			
 		}
 		
 		center.getNotificationSettings { settings in
@@ -144,6 +146,7 @@ class NotificationsController {
 			} else {
 				center.requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
 					if success {
+						self.plants.append(plantName)
 						addRequest()
 					} else {
 						print("Not authorized")
