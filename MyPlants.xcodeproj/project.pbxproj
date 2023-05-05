@@ -31,6 +31,7 @@
 		C7B2F6DB29F017E30098783F /* Cycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B2F6DA29F017E30098783F /* Cycle.swift */; };
 		C7B2F6DD29F018260098783F /* Watering.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B2F6DC29F018260098783F /* Watering.swift */; };
 		C7B2F6DF29F05DF60098783F /* Maintenance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B2F6DE29F05DF60098783F /* Maintenance.swift */; };
+		C7CF29A02A03CDA100BAD1CF /* PlantsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CF299F2A03CDA100BAD1CF /* PlantsViewModel.swift */; };
 		C7E1A12E29F007A0007476BC /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E1A12D29F007A0007476BC /* DataController.swift */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,7 @@
 		C7B2F6DA29F017E30098783F /* Cycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cycle.swift; sourceTree = "<group>"; };
 		C7B2F6DC29F018260098783F /* Watering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Watering.swift; sourceTree = "<group>"; };
 		C7B2F6DE29F05DF60098783F /* Maintenance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maintenance.swift; sourceTree = "<group>"; };
+		C7CF299F2A03CDA100BAD1CF /* PlantsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsViewModel.swift; sourceTree = "<group>"; };
 		C7E1A12D29F007A0007476BC /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -199,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				C782B70C29ED5AE000A23A5C /* SearchResultsViewModel.swift */,
+				C7CF299F2A03CDA100BAD1CF /* PlantsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				C738501929ED2A6A0024788D /* ContentView.swift in Sources */,
 				C782B70A29ED4FD300A23A5C /* SearchView.swift in Sources */,
 				C738501729ED2A6A0024788D /* MyPlantsApp.swift in Sources */,
+				C7CF29A02A03CDA100BAD1CF /* PlantsViewModel.swift in Sources */,
 				C782B70D29ED5AE000A23A5C /* SearchResultsViewModel.swift in Sources */,
 				C7B2F6D729F014860098783F /* DataView.swift in Sources */,
 				C782B6FC29ED3A4A00A23A5C /* AddPlantView.swift in Sources */,

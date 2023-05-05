@@ -20,6 +20,7 @@ struct ContentView: View {
 				Spacer()
 				NavigationLink {
 					AddPlantView()
+						.navigationTitle("Add new plant")
 				} label: {
 					Text("Register new plant")
 				}

@@ -146,7 +146,6 @@ class NotificationsController {
 			} else {
 				center.requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
 					if success {
-						self.plants.append(plantName)
 						addRequest()
 					} else {
 						print("Not authorized")
