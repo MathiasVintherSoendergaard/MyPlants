@@ -14,12 +14,12 @@ import Foundation
 struct SearchResult: Codable {
 	
 	var data: [PerenualPlant]? = []
-	var to: Int?    = nil
-	var perPage: Int?    = nil
-	var currentPage: Int?    = nil
-	var from: Int?    = nil
-	var lastPage: Int?    = nil
-	var total: Int?    = nil
+	var to: Int? = nil
+	var perPage: Int? = nil
+	var currentPage: Int? = nil
+	var from: Int? = nil
+	var lastPage: Int? = nil
+	var total: Int? = nil
 
 	enum CodingKeys: String, CodingKey {
 		
