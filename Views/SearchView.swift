@@ -28,18 +28,17 @@ struct SearchView: View {
 					}
 				}
 			}
-
 			.navigationTitle("Search plants")
 			.searchable(text: $searchText, prompt: "Search for a plant")
-			.autocorrectionDisabled(true)
-			.onChange(of: searchText) { newValue in
-				searchResultsViewModel.search(keyword: newValue)
-			}
 		}
 		.onAppear {
 			searchResultsViewModel.search(keyword: searchText)
 		}
-		
+		.onChange(of: searchText) { newValue in
+			searchResultsViewModel.search(keyword: newValue)
+		}
+		.textInputAutocapitalization(.never)
+		.autocorrectionDisabled(true)
     }
 }
 
