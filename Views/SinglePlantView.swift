@@ -39,6 +39,7 @@ struct SinglePlantView: View {
 				Text("About \(plant.name)")
 					.font(.title2)
 				DataView(name: "Description", value: plant.description)
+				DataView(name: "Species", value: plant.species)
 				HStack {
 					DataView(name: "Cycle", value: plant.cycle.description)
 					DataView(name: "Watering", value: plant.maintenance.watering.description)
