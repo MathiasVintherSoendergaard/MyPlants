@@ -24,90 +24,21 @@ struct AddPlantView: View {
 		VStack {
 			NavigationStack {
 				Form {
-					Section {
-						HStack {
-							Spacer()
-							Image(uiImage: pvm.newPlantProfilePicture)
-								.resizable()
-								.cornerRadius(50)
-								.padding(.all, 4)
-								.frame(width: 200, height: 200, alignment: .center)
-								.background(Color.red.opacity(0.2))
-								.aspectRatio(contentMode: .fill)
-								.clipShape(Circle())
-								.padding()
-							Spacer()
-						}
-					}
+					pictureSection
 					Section {
 						TextField("Write the name of your plant", text: $pvm.newPlantName)
 						TextField("Write the species of your plant", text: $pvm.newPlantSpecies)
 						TextField("Write a short description of your plant", text: $pvm.newPlantDescription)
 					}
-					Section {
-						Picker("Watering frequency", selection: $pvm.newPlantWatering) {
-							ForEach(Watering.allCases) { frequency in
-								Text(frequency.description)
-							}
-						}
-						.pickerStyle(.menu)
-						// accessibilityIdentifier added for testing purposes
-						.accessibilityIdentifier("Watering frequency")
-
-						Picker("Sunlight level", selection: $pvm.newPlantSunlight) {
-							ForEach(Sunlight.allCases) { level in
-								Text(level.description)
-							}
-						}
-						.pickerStyle(.menu)
-						// accessibilityIdentifier added for testing purposes
-						.accessibilityIdentifier("Sunlight level")
-						
-						Picker("Cycle", selection: $pvm.newPlantCycle) {
-							ForEach(Cycle.allCases) { cycle in
-								Text(cycle.description)
-							}
-						}
-						.pickerStyle(.menu)
-						.accessibilityIdentifier("Cycle")
-					}
-					Section {
-						Text("Take a picture of your plant")
-							.onTapGesture {
-								sourceType = .camera
-								showSheet = true
-							}
-						// for some reason, the button under here does not work, unless you push the above button first
-						// what is currently on line 88 simply does not add new value to sourceType
-						Text("Choose a picture of your plant")
-							.onTapGesture {
-								sourceType = .photoLibrary
-								showSheet = true
-							}
-					}
-					
-					// her skal der tages imod den første note
-					
-					Button(action: {
-						savePlant()
-					}, label: {
-						HStack {
-							Spacer()
-							Text("Save plant")
-								.bold()
-							Spacer()
-						}
-					})
-					.accessibilityIdentifier("Save plant")
+					pickerSection
+					addImageSection
+					savePlantButton
 				}
 				.sheet(isPresented: $showSheet) {
 					ImagePicker(sourceType: self.sourceType, selectedImage: $pvm.newPlantProfilePicture)
 			}
 			}
-			
-			
 		}
-		
 	}
 	
 	func savePlant() {
@@ -164,6 +95,87 @@ struct AddPlantView: View {
 
 private extension AddPlantView {
 	
+	var pictureSection: some View {
+		Section {
+			HStack {
+				Spacer()
+				Image(uiImage: pvm.newPlantProfilePicture)
+					.resizable()
+					.cornerRadius(50)
+					.padding(.all, 4)
+					.frame(width: 200, height: 200, alignment: .center)
+					.background(Color.red.opacity(0.2))
+					.aspectRatio(contentMode: .fill)
+					.clipShape(Circle())
+					.padding()
+				Spacer()
+			}
+		}
+	}
+	
+	var pickerSection: some View {
+		
+		Section {
+			Picker("Watering frequency", selection: $pvm.newPlantWatering) {
+				ForEach(Watering.allCases) { frequency in
+					Text(frequency.description)
+				}
+			}
+			.pickerStyle(.menu)
+			// accessibilityIdentifier added for testing purposes
+			.accessibilityIdentifier("Watering frequency")
+
+			Picker("Sunlight level", selection: $pvm.newPlantSunlight) {
+				ForEach(Sunlight.allCases) { level in
+					Text(level.description)
+				}
+			}
+			.pickerStyle(.menu)
+			// accessibilityIdentifier added for testing purposes
+			.accessibilityIdentifier("Sunlight level")
+			
+			Picker("Cycle", selection: $pvm.newPlantCycle) {
+				ForEach(Cycle.allCases) { cycle in
+					Text(cycle.description)
+				}
+			}
+			.pickerStyle(.menu)
+			.accessibilityIdentifier("Cycle")
+		}
+	}
+	
+	var addImageSection: some View {
+		Section {
+			Text("Take a picture of your plant")
+				.onTapGesture {
+					sourceType = .camera
+					showSheet = true
+				}
+				.foregroundColor(.blue)
+			// for some reason, the button under here does not work, unless you push the above button first
+			// what is currently on line 88 simply does not add new value to sourceType
+			Text("Choose a picture of your plant")
+				.onTapGesture {
+					sourceType = .photoLibrary
+					showSheet = true
+				}
+				.foregroundColor(.blue)
+		}
+	}
+	
+	var savePlantButton: some View {
+		Button(action: {
+			savePlant()
+		}, label: {
+			HStack {
+				Spacer()
+				Text("Save plant")
+					.bold()
+				Spacer()
+			}
+		})
+		.accessibilityIdentifier("Save plant")
+	}
 	
 	
 }
