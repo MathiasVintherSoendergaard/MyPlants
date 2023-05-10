@@ -16,6 +16,8 @@ struct AllPlantsView: View {
 	// The variable that stores the fetched data from Core Data
 	@FetchRequest(sortDescriptors: []) var plants: FetchedResults<PlantEntity>
 	
+	#warning("When implementing deletion, look at an empty Core Data project for inspiration")
+	
     var body: some View {
 		NavigationView {
 			List(plants) { plant in
