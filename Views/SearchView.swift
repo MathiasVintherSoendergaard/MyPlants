@@ -15,6 +15,9 @@ struct SearchView: View {
 	
 	@State private var searchText = ""
 	
+	#warning("If a @StateObject needs to be passed around, i.e. into a subview, use @ObservedObject")
+	// above warning comes from https://www.hackingwithswift.com/quick-start/swiftui/how-to-use-observedobject-to-manage-state-from-external-objects
+	
     var body: some View {
 		// I saw somewhere that because of backwards compatibility
 		// it is safest to use NavigationView, but Stack yields a nicer view
