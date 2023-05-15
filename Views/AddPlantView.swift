@@ -10,7 +10,7 @@ import SwiftUI
 // This view lets a user add a Plant to the database
 struct AddPlantView: View {
 	
-	@ObservedObject private var pvm = PlantsViewModel()
+	
 	@State private var showSheet = false
 	@State private var sourceType: UIImagePickerController.SourceType = .camera
 	
@@ -19,6 +19,8 @@ struct AddPlantView: View {
 	@Environment(\.managedObjectContext) var moc
 	
 	private var notificationsController = NotificationsController()
+	
+	@ObservedObject private var pvm = PlantsViewModel()
 	
 	var body: some View {
 		VStack {

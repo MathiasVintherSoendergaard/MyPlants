@@ -12,6 +12,9 @@ final class MyPlantsUITests: XCTestCase {
 	// when dealing with UI tests it is always smart to have a little patience
 	let timeout: TimeInterval = 2
 	
+	let newPlantText: String = "UITestPlant"
+	
+	
 	private var app: XCUIApplication!
 	
     override func setUpWithError() throws {
@@ -80,7 +83,7 @@ final class MyPlantsUITests: XCTestCase {
 		cancelButton.tap()
 	}
 	
-	func testNavigationToAllPlants() throws {
+	func testNavigationToAllPlantsAndSinglePlantView() throws {
 		
 		// we try to find the button that navigates to AllPlantsView
 		let seeAllPlantsButton = app.otherElements.buttons["See your plants"]
@@ -91,23 +94,24 @@ final class MyPlantsUITests: XCTestCase {
 		// we click the button
 		seeAllPlantsButton.tap()
 		
-		// we try to find the row with farmors Monstera
-		let farmorsMonsteraRow = app.otherElements.buttons["Farmors monstera"]
+		// we try to find the row with the name stored in the newPlantText variable
+		// this test runs after testAddPlantView() because of the alphabet
+		let newPlantRow = app.otherElements.buttons[newPlantText].firstMatch
 		
-		// we check if we succeeded in finding the farmors monstera row
-		XCTAssertTrue(farmorsMonsteraRow.waitForExistence(timeout: timeout))
+		// we check if we succeeded in finding the newPlantText row
+		XCTAssertTrue(newPlantRow.waitForExistence(timeout: timeout))
 		
 		// we tap the row
-		farmorsMonsteraRow.tap()
+		newPlantRow.tap()
 		
-		// we look for the about textfield, which tells us that we have indeed navigated to SinglePlantView
-		let aboutTextField = app.staticTexts["About Farmors monstera"]
+		// we look for the "about" textfield, which tells us that we have indeed navigated to SinglePlantView
+		let aboutTextField = app.staticTexts["About \(newPlantText)"]
 		
 		// we check if we succeeded in finding the about textfield
 		XCTAssertTrue(aboutTextField.waitForExistence(timeout: timeout))
 	}
 	
-	func testAddNewPlant() throws {
+	func testAddPlantView() throws {
 		
 		// we try to find the button that navigates to AddPlantView
 		let registerPlantButton = app.otherElements.buttons["Register new plant"]
@@ -124,7 +128,7 @@ final class MyPlantsUITests: XCTestCase {
 		XCTAssertTrue(nameOfPlantTextField.waitForExistence(timeout: timeout))
 		
 		nameOfPlantTextField.tap()
-		nameOfPlantTextField.typeText("UITestPlant")
+		nameOfPlantTextField.typeText(newPlantText)
 		
 		// finding and inputting text to species of plant textfield
 		let speciesOfPlantTextField = app.otherElements.textFields["Write the species of your plant"]
@@ -132,7 +136,7 @@ final class MyPlantsUITests: XCTestCase {
 		XCTAssertTrue(speciesOfPlantTextField.waitForExistence(timeout: timeout))
 		
 		speciesOfPlantTextField.tap()
-		speciesOfPlantTextField.typeText("UITestPlant")
+		speciesOfPlantTextField.typeText(newPlantText)
 		
 		// finding and inputting text to description of plant textfield
 		let descriptionOfPlantTextField = app.otherElements.textFields["Write a short description of your plant"]
@@ -140,7 +144,7 @@ final class MyPlantsUITests: XCTestCase {
 		XCTAssertTrue(descriptionOfPlantTextField.waitForExistence(timeout: timeout))
 		
 		descriptionOfPlantTextField.tap()
-		descriptionOfPlantTextField.typeText("UITestPlant")
+		descriptionOfPlantTextField.typeText(newPlantText)
 
 		// this last line hides the software keyboard
 		descriptionOfPlantTextField.typeText("\n")
@@ -204,8 +208,6 @@ final class MyPlantsUITests: XCTestCase {
 		XCTAssertTrue(savePlantButton.waitForExistence(timeout: timeout))
 		// tapping the save plant button
 		savePlantButton.tap()
-
-		sleep(5)
 		
 	}
 	

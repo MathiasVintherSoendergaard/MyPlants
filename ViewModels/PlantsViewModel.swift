@@ -30,21 +30,22 @@ class PlantsViewModel: ObservableObject {
 	
 	@Environment(\.managedObjectContext) var moc
 	
-	func getNewPlant() -> Plant {
-		let newPlant = Plant(
-			name: newPlantName,
-			species: newPlantSpecies,
-			description: newPlantDescription,
-			picture: Image(uiImage: newPlantProfilePicture),
-			userPictures: newPlantImages,
-			maintenance: Maintenance(
-				watering: newPlantWatering,
-				sunLight: newPlantSunlight),
-			cycle: newPlantCycle,
-			notes: newPlantNotes)
-		
-		return newPlant
-	}
+	#warning("Do not remember what the idea with this was, but it ended up not getting used")
+//	func getNewPlant() -> Plant {
+//		let newPlant = Plant(
+//			name: newPlantName,
+//			species: newPlantSpecies,
+//			description: newPlantDescription,
+//			picture: Image(uiImage: newPlantProfilePicture),
+//			userPictures: newPlantImages,
+//			maintenance: Maintenance(
+//				watering: newPlantWatering,
+//				sunLight: newPlantSunlight),
+//			cycle: newPlantCycle,
+//			notes: newPlantNotes)
+//
+//		return newPlant
+//	}
 	
 	func savePlant(moc: NSManagedObjectContext) {
 		

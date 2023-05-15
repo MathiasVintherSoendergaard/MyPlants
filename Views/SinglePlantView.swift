@@ -52,7 +52,7 @@ struct SinglePlantView: View {
 			}
 			.padding()
 			Spacer()
-			Button("Take new picture") {
+			Button("Edit plant") {
 				
 			}
 			.padding()
