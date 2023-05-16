@@ -11,8 +11,9 @@ import SwiftUI
 struct SearchView: View {
 	
 	// ViewModel for SearchResults
-	@StateObject var searchResultsViewModel: SearchResultViewModel = SearchResultViewModel()
-	
+	@StateObject var srvm: SearchResultViewModel = SearchResultViewModel()
+
+	#warning("put this into viewmodel?")
 	@State private var searchText = ""
 	
 	#warning("If a @StateObject needs to be passed around, i.e. into a subview, use @ObservedObject")
@@ -23,7 +24,7 @@ struct SearchView: View {
 		// it is safest to use NavigationView, but Stack yields a nicer view
 		NavigationStack {
 			List {
-				ForEach(searchResultsViewModel.searchResultAsPerenualPlants) { plant in
+				ForEach(srvm.searchResultAsPerenualPlants) { plant in
 					NavigationLink {
 						AddPlantView(plant: Plant(plant: plant))
 					} label: {
@@ -35,10 +36,10 @@ struct SearchView: View {
 			.searchable(text: $searchText, prompt: "Search for a plant")
 		}
 		.onAppear {
-			searchResultsViewModel.search(keyword: searchText)
+			srvm.search(keyword: searchText)
 		}
 		.onChange(of: searchText) { newValue in
-			searchResultsViewModel.search(keyword: newValue)
+			srvm.search(keyword: newValue)
 		}
 		.textInputAutocapitalization(.never)
 		.autocorrectionDisabled(true)

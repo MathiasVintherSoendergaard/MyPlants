@@ -14,41 +14,37 @@ struct AllPlantsView: View {
 	#warning("When implementing deletion, look at an empty Core Data project for inspiration")
 	
 	// ManagedObjectContext which helps with Core Data
-	//	@Environment(\.managedObjectContext) var moc
+	@Environment(\.managedObjectContext) var moc
 	
 	// The variable that stores the fetched data from Core Data
 	@FetchRequest(sortDescriptors: [SortDescriptor(\.name)]) var plants: FetchedResults<PlantEntity>
 	
     var body: some View {
-		NavigationView {
-//			List(plants) { plant in
-//				NavigationLink {
-//					SinglePlantView(plant: Plant(plant: plant))
-//				} label: {
-//					Text(plant.name ?? "No common name")
-//				}
-			
+		NavigationStack {
 			List {
 				ForEach(plants, id: \.self) { plant in
 					NavigationLink {
-						SinglePlantView(plant: Plant(plant: plant))
+						SinglePlantView(plant: plant)
 					} label: {
 						Text(plant.name ?? "No common name")
 					}
 				}
-				.onDelete { plant in
-					deletePlant()
+				.onDelete { indexSet in
+					deletePlant(indexSet: indexSet)
 				}
 			}
-			.toolbar {
-				EditButton()
-			}
 		}
-		
+		.toolbar {
+			EditButton()
+		}
     }
 	
-	private func deletePlant() {
-		
+	#warning("move this to PlantsViewModel")
+	private func deletePlant(indexSet: IndexSet) {
+		for index in indexSet {
+			moc.delete(plants[index])
+			try? moc.save()
+		}
 	}
 	
 }

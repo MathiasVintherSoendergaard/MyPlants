@@ -28,29 +28,31 @@ class PlantsViewModel: ObservableObject {
 	
 	@Published var newPlantImages: [Image] = []
 	
+	#warning("this is not neccesary")
 	@Environment(\.managedObjectContext) var moc
 	
 	#warning("Do not remember what the idea with this was, but it ended up not getting used")
-//	func getNewPlant() -> Plant {
-//		let newPlant = Plant(
-//			name: newPlantName,
-//			species: newPlantSpecies,
-//			description: newPlantDescription,
-//			picture: Image(uiImage: newPlantProfilePicture),
-//			userPictures: newPlantImages,
-//			maintenance: Maintenance(
-//				watering: newPlantWatering,
-//				sunLight: newPlantSunlight),
-//			cycle: newPlantCycle,
-//			notes: newPlantNotes)
-//
-//		return newPlant
-//	}
+	func getNewPlant() -> Plant {
+		let newPlant = Plant(
+			name: newPlantName,
+			species: newPlantSpecies,
+			description: newPlantDescription,
+			picture: Image(uiImage: newPlantProfilePicture),
+			userPictures: newPlantImages,
+			maintenance: Maintenance(
+				watering: newPlantWatering,
+				sunLight: newPlantSunlight),
+			cycle: newPlantCycle,
+			notes: newPlantNotes)
+
+		return newPlant
+	}
 	
 	func savePlant(moc: NSManagedObjectContext) {
 		
 		let plant = PlantEntity(context: moc)
 		
+		plant.id = UUID()
 		plant.name = newPlantName
 		plant.desc = newPlantDescription
 		plant.species = newPlantSpecies
@@ -60,6 +62,12 @@ class PlantsViewModel: ObservableObject {
 		plant.cycle = Int64(newPlantCycle.rawValue)
 		
 		try? moc.save()
+		
+	}
+	
+	func updatePlant(moc: NSManagedObjectContext) {
+		
+		
 		
 	}
 }

@@ -11,7 +11,7 @@ import SwiftUI
 struct AddPlantView: View {
 	
 	
-	@State private var showSheet = false
+	@State private var showSheet: Bool = false
 	@State private var sourceType: UIImagePickerController.SourceType = .camera
 	
 	#warning("change comment")
@@ -166,7 +166,8 @@ private extension AddPlantView {
 	}
 	
 	var savePlantButton: some View {
-		Button(action: {
+		Button(action:
+				{
 			savePlant()
 		}, label: {
 			HStack {
@@ -181,7 +182,6 @@ private extension AddPlantView {
 	
 	
 }
-
 
 struct AddPlantView_Previews: PreviewProvider {
     static var previews: some View {
