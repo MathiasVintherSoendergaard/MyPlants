@@ -43,14 +43,12 @@ struct AddPlantView: View {
 		
 		pvm.addPlant()
 		
-		setUpNotifications(plantName: pvm.newPlantName, watering: pvm.newPlantWatering)
+		notificationsController.scheduleNotification(plantName: pvm.newPlantName, watering: pvm.newPlantWatering)
+		
+		
 	}
 	
-	func setUpNotifications(plantName: String, watering: Watering) {
-		
-		notificationsController.scheduleNotification(plantName: plantName, watering: watering)
-		
-	}
+	
 	
 	// Constructor used for preview (see bottom of this file), and for NavigationLink from SearchResultsView to this View
 	init(plant: Plant) {
