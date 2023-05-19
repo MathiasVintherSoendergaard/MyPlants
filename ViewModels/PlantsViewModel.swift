@@ -17,21 +17,27 @@ class PlantsViewModel: ObservableObject {
 	@Published var newPlantName: String = ""
 	@Published var newPlantSpecies: String = ""
 	@Published var newPlantDescription: String = ""
-	
 	@Published var newPlantSunlight: Sunlight = .notDefined
 	@Published var newPlantWatering: Watering = .notDefined
 	@Published var newPlantCycle: Cycle = .notDefined
-	
 	@Published var newPlantProfilePicture = UIImage()
-	
 	@Published var newPlantNotes: [String] = []
-	
 	@Published var newPlantImages: [Image] = []
 	
-	#warning("this is not neccesary")
-	@Environment(\.managedObjectContext) var moc
+	@Published var plants: [PlantEntity] = []
+	
+	private let viewContext = DataController.shared.container.viewContext
+	
+	
+	
+	init() {
+		
+		getPlants()
+		
+	}
 	
 	#warning("Do not remember what the idea with this was, but it ended up not getting used")
+	
 	func getNewPlant() -> Plant {
 		let newPlant = Plant(
 			name: newPlantName,
@@ -65,9 +71,54 @@ class PlantsViewModel: ObservableObject {
 		
 	}
 	
-	func updatePlant(moc: NSManagedObjectContext) {
+	func addPlant() {
+		
+		let newPlant = PlantEntity(context: viewContext)
+		
+		newPlant.id = UUID()
+		newPlant.name = newPlantName
+		newPlant.desc = newPlantDescription
+		newPlant.species = newPlantSpecies
+		newPlant.image = newPlantProfilePicture.jpegData(compressionQuality: 1)
+		newPlant.sunlight = Int64(newPlantSunlight.rawValue)
+		newPlant.watering = Int64(newPlantWatering.rawValue)
+		newPlant.cycle = Int64(newPlantCycle.rawValue)
+		
+		save()
+		
+	}
+	
+	func getPlants() {
+		
+		let request = NSFetchRequest<PlantEntity>(entityName: "PlantEntity")
+				
+				do {
+					plants = try viewContext.fetch(request)
+				} catch {
+					print("DEBUG: Some error occured while fetching")
+				}
+		
+	}
+	
+	func updatePlant() {
 		
 		
 		
 	}
+	
+	func deletePlant(indexSet: IndexSet) {
+		for index in indexSet {
+			viewContext.delete(plants[index])
+			save()
+		}
+	}
+	
+	func save() {
+			do {
+				try viewContext.save()
+				getPlants()
+			} catch {
+				print("Error saving")
+			}
+		}
 }

@@ -10,6 +10,8 @@ import Foundation
 
 class DataController: ObservableObject {
 	
+	static let shared = DataController()
+	
 	let container = NSPersistentContainer(name: "MyPlants")
 	
 	init() {

@@ -15,7 +15,20 @@ struct SinglePlantView: View {
 	
 	@State var plant: PlantEntity
 	
+	@State var updatedName: String = ""
+	@State var updatedSpecies: String = ""
+	@State var updatedDescription: String = ""
+	
+	@State var updatedCycle: Cycle = .notDefined
+	@State var updatedWatering: Watering = .notDefined
+	@State var updatedSunlight: Sunlight = .notDefined
+	
+	@State var updatedPlantProfilePicture = UIImage()
+	
 	@ObservedObject var pvm = PlantsViewModel()
+
+	@State private var showSheet: Bool = false
+	@State private var sourceType: UIImagePickerController.SourceType = .camera
 	
     var body: some View {
 		NavigationView {
@@ -53,9 +66,19 @@ struct SinglePlantView: View {
 					}
 					.padding()
 					Divider()
-					
+				
 					editableInfoSection
 						.padding()
+					
+					Text("Take a new picture of your plant")
+						.onTapGesture {
+							sourceType = .camera
+							showSheet = true
+						}
+						.foregroundColor(.blue)
+					
+				
+					
 					Spacer()
 				}
 				
@@ -73,6 +96,7 @@ struct SinglePlantView: View {
 					Text("Done")
 						.onTapGesture {
 							editable.toggle()
+							savePlant()
 						}
 				}
 				
@@ -86,10 +110,38 @@ struct SinglePlantView: View {
 			}
 			
 		}
+		.sheet(isPresented: $showSheet) {
+			ImagePicker(sourceType: self.sourceType, selectedImage: $updatedPlantProfilePicture)
+		}
+		.onAppear {
+			self.updatedName = plant.name!
+			self.updatedSpecies = plant.species!
+			self.updatedDescription = plant.desc!
+			
+			self.updatedCycle = Cycle(rawValue: Int(plant.cycle))!
+			self.updatedWatering = Watering(rawValue: Int(plant.cycle))!
+			self.updatedSunlight = Sunlight(rawValue: Int(plant.cycle))!
+		}
 		DataView(name: "Plant id", value: plant.id?.uuidString ?? "no id yet")
 
 		
     }
+	
+	private func savePlant() {
+		
+		plant.name = updatedName
+		plant.desc = updatedDescription
+		plant.species = updatedSpecies
+		
+		plant.cycle = Int64(updatedCycle.rawValue)
+		plant.watering = Int64(updatedWatering.rawValue)
+		plant.sunlight = Int64(updatedSunlight.rawValue)
+		
+		plant.image = updatedPlantProfilePicture.jpegData(compressionQuality: 1)
+		
+		pvm.save()
+	}
+		
 }
 
 
@@ -171,26 +223,56 @@ private extension SinglePlantView {
 		
 		VStack(alignment: .leading) {
 			
-			TextField(plant.name ?? "No name yet", text: $pvm.newPlantName)
-
-			TextField(plant.desc ?? "No description yet", text: $pvm.newPlantDescription)
+			HStack {
+				
+				
+				Text("Name")
+				
+				Spacer()
+				
+				TextField(plant.name ?? "No name yet", text: $updatedName)
+					.font(.subheadline)
+					.foregroundColor(.secondary)
+			}
 			
-			TextField(plant.species ?? "No species yet", text: $pvm.newPlantDescription)
-
+			HStack {
+				Text("Description")
+				
+				Spacer()
+				TextField(plant.desc ?? "No description yet", text: $updatedDescription)
+					.font(.subheadline)
+					.foregroundColor(.secondary)
+			}
+			
+			HStack {
+				Text("Species")
+				
+				Spacer()
+				TextField(plant.species ?? "No species yet", text: $updatedSpecies)
+					.font(.subheadline)
+					.foregroundColor(.secondary)
+			}
+			
+			
+			
+			
 			editableMaintenanceSection
 			
 			
-//					List(plant.notes, id: \.self) { note in
-//						Text(note)
-//					}
-			Spacer()
+			//					List(plant.notes, id: \.self) { note in
+			//						Text(note)
+			//					}
+						Spacer()
+					}
+			
 		}
-	}
+		
 	
+		
 	var editableMaintenanceSection: some View {
 		
 		Section {
-			Picker("Watering frequency", selection: $pvm.newPlantWatering) {
+			Picker("Watering frequency", selection: $updatedWatering) {
 				ForEach(Watering.allCases) { frequency in
 					Text(frequency.description)
 				}
@@ -198,8 +280,8 @@ private extension SinglePlantView {
 			.pickerStyle(.menu)
 			// accessibilityIdentifier added for testing purposes
 			.accessibilityIdentifier("Watering frequency")
-
-			Picker("Sunlight level", selection: $pvm.newPlantSunlight) {
+			
+			Picker("Sunlight level", selection: $updatedSunlight) {
 				ForEach(Sunlight.allCases) { level in
 					Text(level.description)
 				}
@@ -208,7 +290,7 @@ private extension SinglePlantView {
 			// accessibilityIdentifier added for testing purposes
 			.accessibilityIdentifier("Sunlight level")
 			
-			Picker("Cycle", selection: $pvm.newPlantCycle) {
+			Picker("Cycle", selection: $updatedCycle) {
 				ForEach(Cycle.allCases) { cycle in
 					Text(cycle.description)
 				}
@@ -220,3 +302,4 @@ private extension SinglePlantView {
 	}
 	
 }
+

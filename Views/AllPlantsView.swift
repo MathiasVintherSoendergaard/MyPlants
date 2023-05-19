@@ -13,24 +13,33 @@ struct AllPlantsView: View {
 	
 	#warning("When implementing deletion, look at an empty Core Data project for inspiration")
 	
-	// ManagedObjectContext which helps with Core Data
-	@Environment(\.managedObjectContext) var moc
+//	 ManagedObjectContext which helps with Core Data
+//	@Environment(\.managedObjectContext) var moc
+
+//	 The variable that stores the fetched data from Core Data
+//	@FetchRequest(sortDescriptors: [SortDescriptor(\.name)]) var plants: FetchedResults<PlantEntity>
 	
-	// The variable that stores the fetched data from Core Data
-	@FetchRequest(sortDescriptors: [SortDescriptor(\.name)]) var plants: FetchedResults<PlantEntity>
+	@ObservedObject var pvm = PlantsViewModel()
 	
     var body: some View {
 		NavigationStack {
 			List {
-				ForEach(plants, id: \.self) { plant in
+//				ForEach(plants, id: \.self) { plant in
+//					NavigationLink {
+//						SinglePlantView(plant: plant)
+//					} label: {
+//						Text(plant.name ?? "No common name")
+//					}
+//				}
+				ForEach(pvm.plants, id: \.id) { plant in
 					NavigationLink {
 						SinglePlantView(plant: plant)
 					} label: {
-						Text(plant.name ?? "No common name")
+						Text(plant.name ?? "No name")
 					}
 				}
 				.onDelete { indexSet in
-					deletePlant(indexSet: indexSet)
+					pvm.deletePlant(indexSet: indexSet)
 				}
 			}
 		}
@@ -39,12 +48,8 @@ struct AllPlantsView: View {
 		}
     }
 	
-	#warning("move this to PlantsViewModel")
-	private func deletePlant(indexSet: IndexSet) {
-		for index in indexSet {
-			moc.delete(plants[index])
-			try? moc.save()
-		}
+	init() {
+		pvm.getPlants()
 	}
 	
 }

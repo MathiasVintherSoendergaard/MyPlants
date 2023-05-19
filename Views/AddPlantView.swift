@@ -16,7 +16,7 @@ struct AddPlantView: View {
 	
 	#warning("change comment")
 	// This is the ManagedObjectContext which does something with Core Data
-	@Environment(\.managedObjectContext) var moc
+//	@Environment(\.managedObjectContext) var moc
 	
 	private var notificationsController = NotificationsController()
 	
@@ -45,7 +45,9 @@ struct AddPlantView: View {
 	
 	func savePlant() {
 		
-		pvm.savePlant(moc: moc)
+//		pvm.savePlant(moc: moc)
+		
+		pvm.addPlant()
 		
 		setUpNotifications(plantName: pvm.newPlantName, watering: pvm.newPlantWatering)
 	}
