@@ -31,7 +31,6 @@
 		C7B2F6DB29F017E30098783F /* Cycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B2F6DA29F017E30098783F /* Cycle.swift */; };
 		C7B2F6DD29F018260098783F /* Watering.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B2F6DC29F018260098783F /* Watering.swift */; };
 		C7B2F6DF29F05DF60098783F /* Maintenance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B2F6DE29F05DF60098783F /* Maintenance.swift */; };
-		C7C37C1D2A1275030036BCEB /* EditPlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C37C1C2A1275030036BCEB /* EditPlantView.swift */; };
 		C7CF29A02A03CDA100BAD1CF /* PlantsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CF299F2A03CDA100BAD1CF /* PlantsViewModel.swift */; };
 		C7E1A12E29F007A0007476BC /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E1A12D29F007A0007476BC /* DataController.swift */; };
 /* End PBXBuildFile section */
@@ -83,7 +82,6 @@
 		C7B2F6DA29F017E30098783F /* Cycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cycle.swift; sourceTree = "<group>"; };
 		C7B2F6DC29F018260098783F /* Watering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Watering.swift; sourceTree = "<group>"; };
 		C7B2F6DE29F05DF60098783F /* Maintenance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maintenance.swift; sourceTree = "<group>"; };
-		C7C37C1C2A1275030036BCEB /* EditPlantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPlantView.swift; sourceTree = "<group>"; };
 		C7CF299F2A03CDA100BAD1CF /* PlantsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsViewModel.swift; sourceTree = "<group>"; };
 		C7E1A12D29F007A0007476BC /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -224,7 +222,6 @@
 				C7B2F6D129F009410098783F /* AllPlantsView.swift */,
 				C782B70E29ED6F0F00A23A5C /* SinglePlantView.swift */,
 				C7B2F6D629F014860098783F /* DataView.swift */,
-				C7C37C1C2A1275030036BCEB /* EditPlantView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -387,7 +384,6 @@
 				C782B6FE29ED3C7900A23A5C /* Plant.swift in Sources */,
 				C731863629F6A0F8002ED730 /* ImagePicker.swift in Sources */,
 				C738502329ED2A6B0024788D /* MyPlants.xcdatamodeld in Sources */,
-				C7C37C1D2A1275030036BCEB /* EditPlantView.swift in Sources */,
 				C7B2F6DB29F017E30098783F /* Cycle.swift in Sources */,
 				C7B2F6D229F009410098783F /* AllPlantsView.swift in Sources */,
 				C7B2F6D929F017590098783F /* Sunlight.swift in Sources */,

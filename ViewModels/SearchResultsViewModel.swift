@@ -7,12 +7,16 @@
 
 import Foundation
 
-// ViewModel to contain SearchResults
-#warning("Should maybe be refactored")
+
+#warning("Refactoring to be done")
 // i.e., should there be a repository-class?
+// this will take a whole other approach to making and API call
+// it will require return values, which is not possible to do with the way
+// func search() is built right now
 
 
 
+// ViewModel to contain and publish SearchResults
 
 class SearchResultViewModel: ObservableObject {
 	@Published var searchResultAsPerenualPlants: [PerenualPlant] = []

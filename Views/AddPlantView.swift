@@ -14,10 +14,6 @@ struct AddPlantView: View {
 	@State private var showSheet: Bool = false
 	@State private var sourceType: UIImagePickerController.SourceType = .camera
 	
-	#warning("change comment")
-	// This is the ManagedObjectContext which does something with Core Data
-//	@Environment(\.managedObjectContext) var moc
-	
 	private var notificationsController = NotificationsController()
 	
 	@ObservedObject private var pvm = PlantsViewModel()
@@ -45,8 +41,6 @@ struct AddPlantView: View {
 	
 	func savePlant() {
 		
-//		pvm.savePlant(moc: moc)
-		
 		pvm.addPlant()
 		
 		setUpNotifications(plantName: pvm.newPlantName, watering: pvm.newPlantWatering)
@@ -70,31 +64,7 @@ struct AddPlantView: View {
 		self.pvm.newPlantCycle = plant.cycle
 		self.pvm.newPlantNotes = plant.notes
 	}
-	// Used for creating an empty AddPlantView when a user adds a plant without the help of data from the API
-	init() {
-		
-		self.pvm.newPlantName = ""
-		self.pvm.newPlantSpecies = ""
-		self.pvm.newPlantDescription = ""
-		self.pvm.newPlantProfilePicture = UIImage(systemName: "tree")!
-		self.pvm.newPlantImages = []
-		self.pvm.newPlantSunlight = Sunlight.notDefined
-		self.pvm.newPlantWatering = Watering.notDefined
-		self.pvm.newPlantCycle = Cycle.notDefined
-		self.pvm.newPlantNotes = []
-		
-	}
-#warning("This constructor was not being used, so I commented it out. It may be useful later.")
-//	init(name: String, species: String, description: String, picture: Image, userPictures: [Image], maintenance: Maintenance, cycle: Cycle, notes: [String]) {
-//		self.name = name
-//		self.species = species
-//		self.description = description
-//		self.picture = picture
-//		self.userPictures = userPictures
-//		self.maintenance = maintenance
-//		self.cycle = cycle
-//		self.notes = notes
-//	}
+	
 }
 
 private extension AddPlantView {
@@ -182,8 +152,30 @@ private extension AddPlantView {
 		.accessibilityIdentifier("Save plant")
 	}
 	
+	// Used for creating an empty AddPlantView when a user adds a plant without the help of data from the API
 	
 }
+
+extension AddPlantView {
+	
+	init() {
+		
+		self.pvm.newPlantName = ""
+		self.pvm.newPlantSpecies = ""
+		self.pvm.newPlantDescription = ""
+		self.pvm.newPlantProfilePicture = UIImage(systemName: "tree")!
+		self.pvm.newPlantImages = []
+		self.pvm.newPlantSunlight = Sunlight.notDefined
+		self.pvm.newPlantWatering = Watering.notDefined
+		self.pvm.newPlantCycle = Cycle.notDefined
+		self.pvm.newPlantNotes = []
+		
+	}
+	
+	
+	
+}
+
 
 struct AddPlantView_Previews: PreviewProvider {
     static var previews: some View {

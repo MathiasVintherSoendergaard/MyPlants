@@ -11,8 +11,6 @@ import SwiftUI
 // View for showing all of a user's Plants
 struct AllPlantsView: View {
 	
-	#warning("When implementing deletion, look at an empty Core Data project for inspiration")
-	
 //	 ManagedObjectContext which helps with Core Data
 //	@Environment(\.managedObjectContext) var moc
 

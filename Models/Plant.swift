@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 
+#warning("PerenualPlant and PlantEntity should be enough - phase out Plant")
+
 // this is the struct that models a user's houseplant
 struct Plant {
 	
@@ -69,17 +71,3 @@ struct Plant {
 extension Plant {
 	static let samplePlant = Plant(name: "Your name for the plant", species: "The species of the plant", description: "Your description of the plant", picture: Image(systemName: "tree"), userPictures: [], maintenance: Maintenance(watering: .notDefined, sunLight: .notDefined), cycle: .notDefined, notes: [])
 }
-
-
-struct Note: Identifiable {
-	var id: UUID = UUID()
-	var value: String
-}
-
-
-
-
-
-
-
-

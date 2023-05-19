@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+#warning("preview does not work with PlantEntity - maybe it will work when the PlantEntity comes from pvm")
+
 struct SinglePlantView: View {
 	
 //	@State var plant: Plant
@@ -143,15 +145,6 @@ struct SinglePlantView: View {
 	}
 		
 }
-
-
-#warning("once I changed Plant to PlantEntity, the preview stopped working")
-//struct SwiftUIView_Previews: PreviewProvider {
-//
-//    static var previews: some View {
-//		SinglePlantView(plant: PlantEntity())
-//    }
-//}
 
 private extension SinglePlantView {
 	

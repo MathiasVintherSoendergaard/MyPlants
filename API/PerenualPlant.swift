@@ -34,9 +34,6 @@ struct PerenualPlant: Codable, Identifiable {
 		case sunlight       = "sunlight"
 		case defaultImage   = "default_image"
   }
-
-	#warning("Turned out that initializers under here were not used, so they are commented out")
-
 	
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
