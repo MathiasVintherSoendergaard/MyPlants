@@ -11,9 +11,7 @@ import SwiftUI
 
 struct SinglePlantView: View {
 	
-//	@State var plant: Plant
-	
-	@State var editable: Bool = false
+	@State private var editable: Bool = false
 	
 	@State var plant: PlantEntity
 	

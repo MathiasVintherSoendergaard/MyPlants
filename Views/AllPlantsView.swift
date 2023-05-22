@@ -22,13 +22,6 @@ struct AllPlantsView: View {
     var body: some View {
 		NavigationStack {
 			List {
-//				ForEach(plants, id: \.self) { plant in
-//					NavigationLink {
-//						SinglePlantView(plant: plant)
-//					} label: {
-//						Text(plant.name ?? "No common name")
-//					}
-//				}
 				ForEach(pvm.plants, id: \.id) { plant in
 					NavigationLink {
 						SinglePlantView(plant: plant)

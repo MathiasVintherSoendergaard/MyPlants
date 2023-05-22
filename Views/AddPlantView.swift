@@ -34,21 +34,17 @@ struct AddPlantView: View {
 				}
 				.sheet(isPresented: $showSheet) {
 					ImagePicker(sourceType: self.sourceType, selectedImage: $pvm.newPlantProfilePicture)
-			}
+				}
 			}
 		}
 	}
 	
-	func savePlant() {
+	private func savePlant() {
 		
 		pvm.addPlant()
 		
 		notificationsController.scheduleNotification(plantName: pvm.newPlantName, watering: pvm.newPlantWatering)
-		
-		
 	}
-	
-	
 	
 	// Constructor used for preview (see bottom of this file), and for NavigationLink from SearchResultsView to this View
 	init(plant: Plant) {
@@ -150,11 +146,13 @@ private extension AddPlantView {
 		.accessibilityIdentifier("Save plant")
 	}
 	
-	// Used for creating an empty AddPlantView when a user adds a plant without the help of data from the API
+
 	
 }
 
 extension AddPlantView {
+	
+	// Used for creating an empty AddPlantView when a user adds a plant without the help of data from the API
 	
 	init() {
 		
