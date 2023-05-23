@@ -25,63 +25,73 @@ struct SinglePlantView: View {
 	
 	@State var updatedPlantProfilePicture = UIImage()
 	
+	@State var showImagePickerSheet: Bool = false
+	@State var showCalendarSheet: Bool = false
+	
 	@ObservedObject var pvm = PlantsViewModel()
 
-	@State private var showSheet: Bool = false
+	
 	@State private var sourceType: UIImagePickerController.SourceType = .camera
 	
     var body: some View {
 		NavigationView {
-			if !editable {
-				ScrollView {
-					VStack(alignment: .center) {
-						
-						headline
-						
-						Spacer()
-						
-						pictureSection
+			Group {
+				if !editable {
+					ScrollView {
+						VStack(alignment: .center) {
+							
+							headline
+							
+							Spacer()
+							
+							pictureSection
 
-					}
-					.padding()
-					Divider()
-					
-					infoSection
-						.padding()
-					Spacer()
-				}
-	//			.navigationTitle(plant.name)
-				.navigationBarTitleDisplayMode(.inline)
-			} else {
-				
-				ScrollView {
-					VStack(alignment: .center) {
-						
-						headline
-						
-						Spacer()
-						
-						pictureSection
-
-					}
-					.padding()
-					Divider()
-				
-					editableInfoSection
-						.padding()
-					
-					Text("Take a new picture of your plant")
-						.onTapGesture {
-							sourceType = .camera
-							showSheet = true
 						}
-						.foregroundColor(.blue)
+						.padding()
+						Divider()
+						
+						infoSection
+							.padding()
+						
+						Button("show calendar") {
+							showCalendarSheet.toggle()
+						}
+						
+						Spacer()
+					}
+					.navigationBarTitleDisplayMode(.inline)
+				} else {
+					ScrollView {
+						VStack(alignment: .center) {
+							
+							headline
+							
+							Spacer()
+							
+							pictureSection
+
+						}
+						.padding()
+						Divider()
 					
-				
+						editableInfoSection
+							.padding()
+						
+						Text("Take a new picture of your plant")
+							.onTapGesture {
+								sourceType = .camera
+								showImagePickerSheet = true
+							}
+							.foregroundColor(.blue)
+						
 					
-					Spacer()
+						
+						Spacer()
+					}
 				}
-				
+			}
+			.sheet(isPresented: $showCalendarSheet) {
+				CalendarView()
 			}
 		}
 		.toolbar {
@@ -110,7 +120,7 @@ struct SinglePlantView: View {
 			}
 			
 		}
-		.sheet(isPresented: $showSheet) {
+		.sheet(isPresented: $showImagePickerSheet) {
 			ImagePicker(sourceType: self.sourceType, selectedImage: $updatedPlantProfilePicture)
 		}
 		.onAppear {

@@ -16,6 +16,8 @@
 		C738502E29ED2A6B0024788D /* MyPlantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738502D29ED2A6B0024788D /* MyPlantsTests.swift */; };
 		C738503829ED2A6B0024788D /* MyPlantsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738503729ED2A6B0024788D /* MyPlantsUITests.swift */; };
 		C738503A29ED2A6B0024788D /* MyPlantsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738503929ED2A6B0024788D /* MyPlantsUITestsLaunchTests.swift */; };
+		C77CED212A1CB61100941F7D /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77CED202A1CB61100941F7D /* CalendarView.swift */; };
+		C77CED242A1CB67600941F7D /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = C77CED232A1CB67600941F7D /* FSCalendar */; };
 		C782B6FC29ED3A4A00A23A5C /* AddPlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C782B6FB29ED3A4A00A23A5C /* AddPlantView.swift */; };
 		C782B6FE29ED3C7900A23A5C /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C782B6FD29ED3C7900A23A5C /* Plant.swift */; };
 		C782B70229ED487B00A23A5C /* PerenualPlant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C782B70129ED487B00A23A5C /* PerenualPlant.swift */; };
@@ -67,6 +69,7 @@
 		C738503329ED2A6B0024788D /* MyPlantsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyPlantsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C738503729ED2A6B0024788D /* MyPlantsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlantsUITests.swift; sourceTree = "<group>"; };
 		C738503929ED2A6B0024788D /* MyPlantsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlantsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C77CED202A1CB61100941F7D /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		C782B6FB29ED3A4A00A23A5C /* AddPlantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlantView.swift; sourceTree = "<group>"; };
 		C782B6FD29ED3C7900A23A5C /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		C782B70129ED487B00A23A5C /* PerenualPlant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerenualPlant.swift; sourceTree = "<group>"; };
@@ -91,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C77CED242A1CB67600941F7D /* FSCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +226,7 @@
 				C7B2F6D129F009410098783F /* AllPlantsView.swift */,
 				C782B70E29ED6F0F00A23A5C /* SinglePlantView.swift */,
 				C7B2F6D629F014860098783F /* DataView.swift */,
+				C77CED202A1CB61100941F7D /* CalendarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -260,6 +265,9 @@
 			dependencies = (
 			);
 			name = MyPlants;
+			packageProductDependencies = (
+				C77CED232A1CB67600941F7D /* FSCalendar */,
+			);
 			productName = MyPlants;
 			productReference = C738501329ED2A6A0024788D /* MyPlants.app */;
 			productType = "com.apple.product-type.application";
@@ -332,6 +340,9 @@
 				Base,
 			);
 			mainGroup = C738500A29ED2A6A0024788D;
+			packageReferences = (
+				C77CED222A1CB67600941F7D /* XCRemoteSwiftPackageReference "FSCalendar" */,
+			);
 			productRefGroup = C738501429ED2A6A0024788D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -380,6 +391,7 @@
 				C7B2F6DD29F018260098783F /* Watering.swift in Sources */,
 				C7B2F6DF29F05DF60098783F /* Maintenance.swift in Sources */,
 				C782B70F29ED6F0F00A23A5C /* SinglePlantView.swift in Sources */,
+				C77CED212A1CB61100941F7D /* CalendarView.swift in Sources */,
 				C782B70629ED4BDA00A23A5C /* SearchResult.swift in Sources */,
 				C782B6FE29ED3C7900A23A5C /* Plant.swift in Sources */,
 				C731863629F6A0F8002ED730 /* ImagePicker.swift in Sources */,
@@ -721,6 +733,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C77CED222A1CB67600941F7D /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C77CED232A1CB67600941F7D /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C77CED222A1CB67600941F7D /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		C738502129ED2A6B0024788D /* MyPlants.xcdatamodeld */ = {
