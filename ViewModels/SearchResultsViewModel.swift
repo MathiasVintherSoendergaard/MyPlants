@@ -22,6 +22,7 @@ class SearchResultViewModel: ObservableObject {
 	@Published var searchResultAsPerenualPlants: [PerenualPlant] = []
 	private let baseURL: String = "https://perenual.com/api/species-list?key=sk-rcKX642a8418ba664419&q="
 	
+	
 	func search(keyword: String) {
 		guard let url = URL(string: baseURL + keyword) else { fatalError("Missing URL")}
 		let urlRequest = URLRequest(url: url)
@@ -46,5 +47,4 @@ class SearchResultViewModel: ObservableObject {
 		}
 		dataTask.resume()
 	}
-	
 }

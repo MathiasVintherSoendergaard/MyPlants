@@ -40,7 +40,6 @@ struct Plant {
 		self.name = ""
 		self.species = plant.scientificName?[0] ?? "No scientific name found"
 		self.description = ""
-		#warning("here is where the tree-picture comes in")
 		self.profilePicture = Image(systemName: "tree")
 		self.userPictures = []
 		self.maintenance = Maintenance(watering: plant.watering, sunLight: plant.sunlight)

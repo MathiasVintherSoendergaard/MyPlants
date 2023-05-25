@@ -10,7 +10,6 @@ import SwiftUI
 // This view lets a user add a Plant to the database
 struct AddPlantView: View {
 	
-	
 	@State private var showSheet: Bool = false
 	@State private var sourceType: UIImagePickerController.SourceType = .camera
 	
@@ -48,15 +47,32 @@ struct AddPlantView: View {
 	
 	// Constructor used for preview (see bottom of this file), and for NavigationLink from SearchResultsView to this View
 	init(plant: Plant) {
-		self.pvm.newPlantName = plant.name
-		self.pvm.newPlantSpecies = plant.species
-		self.pvm.newPlantDescription = plant.description
-		self.pvm.newPlantProfilePicture = UIImage()
-		self.pvm.newPlantImages = plant.userPictures
-		self.pvm.newPlantSunlight = plant.maintenance.sunLight
-		self.pvm.newPlantWatering = plant.maintenance.watering
-		self.pvm.newPlantCycle = plant.cycle
-		self.pvm.newPlantNotes = plant.notes
+		
+		pvm.newPlantName = plant.name
+		pvm.newPlantSpecies = plant.species
+		pvm.newPlantDescription = plant.description
+		pvm.newPlantProfilePicture = UIImage()
+		pvm.newPlantImages = plant.userPictures
+		pvm.newPlantSunlight = plant.maintenance.sunLight
+		pvm.newPlantWatering = plant.maintenance.watering
+		pvm.newPlantCycle = plant.cycle
+		pvm.newPlantNotes = plant.notes
+	}
+	
+	// Used for creating an empty AddPlantView when a user adds a plant without the help of data from the API
+	
+	init() {
+		
+		self.pvm.newPlantName = ""
+				self.pvm.newPlantSpecies = ""
+				self.pvm.newPlantDescription = ""
+				self.pvm.newPlantProfilePicture = UIImage(systemName: "tree")!
+				self.pvm.newPlantImages = []
+				self.pvm.newPlantSunlight = Sunlight.notDefined
+				self.pvm.newPlantWatering = Watering.notDefined
+				self.pvm.newPlantCycle = Cycle.notDefined
+				self.pvm.newPlantNotes = []
+		
 	}
 	
 }
@@ -149,29 +165,6 @@ private extension AddPlantView {
 
 	
 }
-
-extension AddPlantView {
-	
-	// Used for creating an empty AddPlantView when a user adds a plant without the help of data from the API
-	
-	init() {
-		
-		self.pvm.newPlantName = ""
-		self.pvm.newPlantSpecies = ""
-		self.pvm.newPlantDescription = ""
-		self.pvm.newPlantProfilePicture = UIImage(systemName: "tree")!
-		self.pvm.newPlantImages = []
-		self.pvm.newPlantSunlight = Sunlight.notDefined
-		self.pvm.newPlantWatering = Watering.notDefined
-		self.pvm.newPlantCycle = Cycle.notDefined
-		self.pvm.newPlantNotes = []
-		
-	}
-	
-	
-	
-}
-
 
 struct AddPlantView_Previews: PreviewProvider {
     static var previews: some View {

@@ -11,13 +11,7 @@ import SwiftUI
 // View for showing all of a user's Plants
 struct AllPlantsView: View {
 	
-//	 ManagedObjectContext which helps with Core Data
-//	@Environment(\.managedObjectContext) var moc
-
-//	 The variable that stores the fetched data from Core Data
-//	@FetchRequest(sortDescriptors: [SortDescriptor(\.name)]) var plants: FetchedResults<PlantEntity>
-	
-	@ObservedObject var pvm = PlantsViewModel()
+	@StateObject var pvm = PlantsViewModel()
 	
     var body: some View {
 		NavigationStack {
@@ -39,9 +33,7 @@ struct AllPlantsView: View {
 		}
     }
 	
-	init() {
-		pvm.getPlants()
-	}
+	init() {}
 	
 }
 
