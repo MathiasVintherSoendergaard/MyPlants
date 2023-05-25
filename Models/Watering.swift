@@ -50,3 +50,17 @@ extension Watering {
 	}
 	
 }
+
+extension Watering {
+	
+	var timeInterval: TimeInterval? {
+		switch self {
+		case .none: return nil
+		case .minimum: return TimeInterval(60 * 60 * 24 * 7 * 4) // monthly
+		case .average: return TimeInterval(60 * 60 * 24 * 7) // weekly
+		case .frequent: return TimeInterval(60 * 60 * 24 * 4) // twice weekly
+		case .notDefined: return nil
+		}
+	}
+	
+}

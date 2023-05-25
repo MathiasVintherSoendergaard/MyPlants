@@ -39,6 +39,8 @@ class PlantsViewModel: ObservableObject {
 		newPlant.watering = Int64(newPlantWatering.rawValue)
 		newPlant.cycle = Int64(newPlantCycle.rawValue)
 		
+		newPlant.timestamp = Date()
+		
 		save()
 		
 	}

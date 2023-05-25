@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C7232A702A1F506600ED5729 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = C7232A6F2A1F506600ED5729 /* FSCalendar */; };
+		C7232A742A1F50F500ED5729 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = C7232A732A1F50F500ED5729 /* FSCalendar */; };
 		C731863629F6A0F8002ED730 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C731863529F6A0F8002ED730 /* ImagePicker.swift */; };
 		C738501729ED2A6A0024788D /* MyPlantsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738501629ED2A6A0024788D /* MyPlantsApp.swift */; };
 		C738501929ED2A6A0024788D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738501829ED2A6A0024788D /* ContentView.swift */; };
@@ -102,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7232A742A1F50F500ED5729 /* FSCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,12 +112,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7232A702A1F506600ED5729 /* FSCalendar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C7232A6E2A1F506600ED5729 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C731863429F6A0E4002ED730 /* Camera */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +149,7 @@
 				C738502C29ED2A6B0024788D /* MyPlantsTests */,
 				C738503629ED2A6B0024788D /* MyPlantsUITests */,
 				C738501429ED2A6A0024788D /* Products */,
+				C7232A6E2A1F506600ED5729 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -283,9 +295,13 @@
 			buildRules = (
 			);
 			dependencies = (
+				C7232A762A1F50FA00ED5729 /* PBXTargetDependency */,
 				C738502B29ED2A6B0024788D /* PBXTargetDependency */,
 			);
 			name = MyPlantsTests;
+			packageProductDependencies = (
+				C7232A732A1F50F500ED5729 /* FSCalendar */,
+			);
 			productName = MyPlantsTests;
 			productReference = C738502929ED2A6B0024788D /* MyPlantsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -301,9 +317,13 @@
 			buildRules = (
 			);
 			dependencies = (
+				C7232A722A1F509200ED5729 /* PBXTargetDependency */,
 				C738503529ED2A6B0024788D /* PBXTargetDependency */,
 			);
 			name = MyPlantsUITests;
+			packageProductDependencies = (
+				C7232A6F2A1F506600ED5729 /* FSCalendar */,
+			);
 			productName = MyPlantsUITests;
 			productReference = C738503329ED2A6B0024788D /* MyPlantsUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -430,6 +450,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		C7232A722A1F509200ED5729 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = C7232A712A1F509200ED5729 /* FSCalendar */;
+		};
+		C7232A762A1F50FA00ED5729 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = C7232A752A1F50FA00ED5729 /* FSCalendar */;
+		};
 		C738502B29ED2A6B0024788D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C738501229ED2A6A0024788D /* MyPlants */;
@@ -746,6 +774,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C7232A6F2A1F506600ED5729 /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C77CED222A1CB67600941F7D /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
+		C7232A712A1F509200ED5729 /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C77CED222A1CB67600941F7D /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
+		C7232A732A1F50F500ED5729 /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C77CED222A1CB67600941F7D /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
+		C7232A752A1F50FA00ED5729 /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C77CED222A1CB67600941F7D /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
 		C77CED232A1CB67600941F7D /* FSCalendar */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C77CED222A1CB67600941F7D /* XCRemoteSwiftPackageReference "FSCalendar" */;

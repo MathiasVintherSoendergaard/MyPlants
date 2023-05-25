@@ -10,19 +10,37 @@ import UIKit
 import FSCalendar
 
 struct CalendarView: View {
+	
+	private var plantCreationDate: Date
+	private var plantWateringInterval: TimeInterval
+	
     var body: some View {
-        CalendarViewRepresentable()
+		CalendarViewRepresentable(plantCreationDate: plantCreationDate, plantWateringInterval: plantWateringInterval)
     }
+	
+	init(plantCreationDate: Date, plantWateringInterval: TimeInterval) {
+		self.plantCreationDate = plantCreationDate
+		self.plantWateringInterval = plantWateringInterval
+	}
+	
 }
 
 // UIViewRepresentable is a wrapper that allows us to integrate a UIKit View
 // into a SwiftUI view hierarchy
 struct CalendarViewRepresentable: UIViewRepresentable {
 	
+	init(plantCreationDate: Date, plantWateringInterval: TimeInterval) {
+		self.plantCreationDate = plantCreationDate
+		self.plantWateringInterval = plantWateringInterval
+	}
+	
 	// typealias give a new name to an existing type
 	// in this instance, UIViewType can be used everywhere as FSCalendar
 	// https://www.programiz.com/swift-programming/typealias
 	typealias UIViewType = FSCalendar
+	
+	private var plantCreationDate: Date
+	private var plantWateringInterval: TimeInterval
 	
 	// creating an object of FSCalendar to track across the view
 	fileprivate var calendar = FSCalendar()
@@ -83,16 +101,12 @@ struct CalendarViewRepresentable: UIViewRepresentable {
 		
 		func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
 			
-			#warning("this is where the logic of creating watering-events will go")
+		
+			var eventDates = [Date]()
 			
-			
-			// this makes events on the current date, and 1, 2 and 3 weeks in the future
-			let eventDates = [
-				Date.now,
-				Date.now.addingTimeInterval(7*86400),
-				Date.now.addingTimeInterval(14*86400),
-				Date.now.addingTimeInterval(21*86400),
-			]
+			for i in 0...99 {
+				eventDates.append(parent.plantCreationDate.addingTimeInterval(parent.plantWateringInterval * Double(i)))
+			}
 			
 			var eventCount = 0
 			
@@ -118,7 +132,10 @@ struct CalendarViewRepresentable: UIViewRepresentable {
 }
 
 struct CalendarView_Previews: PreviewProvider {
+	
+	
+	
     static var previews: some View {
-        CalendarView()
+        CalendarView(plantCreationDate: Date(), plantWateringInterval: TimeInterval())
     }
 }

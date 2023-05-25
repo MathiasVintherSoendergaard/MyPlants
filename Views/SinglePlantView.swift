@@ -91,7 +91,7 @@ struct SinglePlantView: View {
 				}
 			}
 			.sheet(isPresented: $showCalendarSheet) {
-				CalendarView()
+				CalendarView(plantCreationDate: plant.timestamp ?? Date(), plantWateringInterval: Watering(rawValue: Int(plant.watering))?.timeInterval ?? TimeInterval())
 			}
 		}
 		.toolbar {
@@ -132,7 +132,7 @@ struct SinglePlantView: View {
 			self.updatedWatering = Watering(rawValue: Int(plant.cycle))!
 			self.updatedSunlight = Sunlight(rawValue: Int(plant.cycle))!
 		}
-		DataView(name: "Plant id", value: plant.id?.uuidString ?? "no id yet")
+		DataView(name: "Plant timestamp", value: plant.timestamp?.description ?? "no timestamp yet")
 
 		
     }

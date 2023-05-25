@@ -64,6 +64,8 @@ final class MyPlantsUITests: XCTestCase {
 		// we click the button
 		addPlantButton.tap()
 		
+		app.swipeUp()
+		
 		// we try to find the button that show the camera sheet
 		let showSheet = app.staticTexts["Take a picture of your plant"]
 		
@@ -99,7 +101,7 @@ final class MyPlantsUITests: XCTestCase {
 		let newPlantRow = app.otherElements.buttons[newPlantText].firstMatch
 		
 		// we check if we succeeded in finding the newPlantText row
-		XCTAssertTrue(newPlantRow.waitForExistence(timeout: timeout))
+		XCTAssertTrue(newPlantRow.waitForExistence(timeout: timeout + 5))
 		
 		// we tap the row
 		newPlantRow.tap()
@@ -109,6 +111,43 @@ final class MyPlantsUITests: XCTestCase {
 		
 		// we check if we succeeded in finding the about textfield
 		XCTAssertTrue(aboutTextField.waitForExistence(timeout: timeout))
+		
+		app.swipeUp()
+		
+		let showCalendarButton = app.buttons["show calendar"].firstMatch
+		
+		XCTAssertTrue(showCalendarButton.waitForExistence(timeout: timeout))
+		
+		showCalendarButton.tap()
+		
+		print(app.debugDescription)
+		
+		let date = Date()
+		
+		// this uses the custom extensions of Date at the bottom of this file
+		// we get string representations of last, current and next month - these should be on the view
+		// we also get the string reps of two months ago and two months from now - should NOT be on the view
+		let twoMonthsAgo = date.twoMonthsAgo
+		let lastMonth = date.lastMonth
+		let thisMonth = date.thisMonth
+		let nextMonth = date.nextMonth
+		let twoMonthsFromNow = date.twoMonthsFromNow
+		
+		// we try to find labels with the months in them
+		let twoMonthsAgoText = app.staticTexts[twoMonthsAgo].firstMatch
+		let lastMonthText = app.staticTexts[lastMonth].firstMatch
+		let thisMonthText = app.staticTexts[thisMonth].firstMatch
+		let nextMonthText = app.staticTexts[nextMonth].firstMatch
+		let twoMonthsFromNowText = app.staticTexts[twoMonthsFromNow].firstMatch
+		
+		// we check if we were succesful in finding the month labels that should be on the view
+		XCTAssertTrue(lastMonthText.waitForExistence(timeout: timeout))
+		XCTAssertTrue(thisMonthText.waitForExistence(timeout: timeout))
+		XCTAssertTrue(nextMonthText.waitForExistence(timeout: timeout))
+		 
+		// we check that we were unsuccesful in finding the months that should not be there
+		XCTAssertFalse(twoMonthsAgoText.waitForExistence(timeout: timeout))
+		XCTAssertFalse(twoMonthsFromNowText.waitForExistence(timeout: timeout))
 	}
 	
 	func testAddPlantView() throws {
@@ -219,6 +258,7 @@ final class MyPlantsUITests: XCTestCase {
             }
         }
     }
+	
 }
 
 extension XCUIElement{
@@ -231,4 +271,38 @@ extension XCUIElement{
 			pickerWheel.adjust(toPickerWheelValue: value)
 		}
 	}
+}
+
+extension Date {
+	
+	var twoMonthsAgo: String {
+		let names = Calendar.current.monthSymbols
+		let month = Calendar.current.component(.month, from: self)
+		return names[month - 3]
+	}
+	
+	var lastMonth: String {
+		let names = Calendar.current.monthSymbols
+		let month = Calendar.current.component(.month, from: self)
+		return names[month - 2]
+	}
+	
+	var thisMonth: String {
+		let names = Calendar.current.monthSymbols
+		let month = Calendar.current.component(.month, from: self)
+		return names[month - 1]
+	}
+	
+	var nextMonth: String {
+		let names = Calendar.current.monthSymbols
+		let month = Calendar.current.component(.month, from: self)
+		return names[month]
+	}
+	
+	var twoMonthsFromNow: String {
+		let names = Calendar.current.monthSymbols
+		let month = Calendar.current.component(.month, from: self)
+		return names[month + 1]
+	}
+	
 }
