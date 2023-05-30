@@ -126,20 +126,11 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C731863429F6A0E4002ED730 /* Camera */ = {
-			isa = PBXGroup;
-			children = (
-				C731863529F6A0F8002ED730 /* CameraView.swift */,
-			);
-			path = Camera;
-			sourceTree = "<group>";
-		};
 		C738500A29ED2A6A0024788D = {
 			isa = PBXGroup;
 			children = (
 				C79DFBF729F95CB500D0B738 /* Notifications */,
 				C70F3BAC29F86BE60013ABF8 /* MyPlants.xctestplan */,
-				C731863429F6A0E4002ED730 /* Camera */,
 				C7B2F6D529F0137F0098783F /* Persistence */,
 				C7B2F6D429F013690098783F /* API */,
 				C7B2F6D329F0134C0098783F /* Views */,
@@ -206,9 +197,9 @@
 			children = (
 				C782B6FD29ED3C7900A23A5C /* Plant.swift */,
 				C7B2F6D829F017590098783F /* Sunlight.swift */,
+				C7B2F6DE29F05DF60098783F /* Maintenance.swift */,
 				C7B2F6DA29F017E30098783F /* Cycle.swift */,
 				C7B2F6DC29F018260098783F /* Watering.swift */,
-				C7B2F6DE29F05DF60098783F /* Maintenance.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -234,11 +225,12 @@
 			isa = PBXGroup;
 			children = (
 				C782B6FB29ED3A4A00A23A5C /* AddPlantView.swift */,
-				C782B70929ED4FD300A23A5C /* SearchView.swift */,
 				C7B2F6D129F009410098783F /* AllPlantsView.swift */,
-				C782B70E29ED6F0F00A23A5C /* SinglePlantView.swift */,
-				C7B2F6D629F014860098783F /* DataView.swift */,
 				C77CED202A1CB61100941F7D /* CalendarView.swift */,
+				C731863529F6A0F8002ED730 /* CameraView.swift */,
+				C7B2F6D629F014860098783F /* DataView.swift */,
+				C782B70929ED4FD300A23A5C /* SearchView.swift */,
+				C782B70E29ED6F0F00A23A5C /* SinglePlantView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -246,9 +238,9 @@
 		C7B2F6D429F013690098783F /* API */ = {
 			isa = PBXGroup;
 			children = (
+				C782B70729ED4E3900A23A5C /* DefaultImage.swift */,
 				C782B70129ED487B00A23A5C /* PerenualPlant.swift */,
 				C782B70529ED4BDA00A23A5C /* SearchResult.swift */,
-				C782B70729ED4E3900A23A5C /* DefaultImage.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";

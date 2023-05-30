@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import UserNotifications
 @testable import MyPlants
 
 final class MyPlantsTests: XCTestCase {

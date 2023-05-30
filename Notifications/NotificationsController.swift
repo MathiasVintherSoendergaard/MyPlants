@@ -27,8 +27,11 @@ class NotificationsController {
 	}
 	
 	private func scheduleMonthlyNotification(plantName: String) {
+		
 		let center = UNUserNotificationCenter.current()
 		
+		// this is only a definition of a function/closure, not the call of it
+		// that only comes later
 		let addRequest = {
 			
 			let content = UNMutableNotificationContent()
@@ -65,7 +68,7 @@ class NotificationsController {
 					if success {
 						addRequest()
 					} else {
-						print("Not authorized")
+						print("Not authorized, error = \(error!.localizedDescription)")
 					}
 				}
 			}
@@ -74,6 +77,7 @@ class NotificationsController {
 	}
 	
 	private func scheduleWeeklyNotification(plantName: String) {
+		
 		let center = UNUserNotificationCenter.current()
 		
 		let addRequest = {
@@ -108,7 +112,7 @@ class NotificationsController {
 					if success {
 						addRequest()
 					} else {
-						print("Not authorized")
+						print("Not authorized. Error: \(error!.localizedDescription)")
 					}
 				}
 			}
@@ -117,6 +121,7 @@ class NotificationsController {
 	}
 	
 	private func scheduleTwiceWeeklyNotification(plantName: String) {
+		
 		let center = UNUserNotificationCenter.current()
 		
 		let addRequest = {
@@ -148,7 +153,7 @@ class NotificationsController {
 					if success {
 						addRequest()
 					} else {
-						print("Not authorized")
+						print("Not authorized. Error: \(error!.localizedDescription)")
 					}
 				}
 			}
