@@ -32,7 +32,7 @@ struct AddPlantView: View {
 					savePlantButton
 				}
 				.sheet(isPresented: $showSheet) {
-					ImagePicker(sourceType: self.sourceType, selectedImage: $pvm.newPlantProfilePicture)
+					CameraView(sourceType: self.sourceType, selectedImage: $pvm.newPlantProfilePicture)
 				}
 			}
 		}

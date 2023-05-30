@@ -121,7 +121,7 @@ struct SinglePlantView: View {
 			
 		}
 		.sheet(isPresented: $showImagePickerSheet) {
-			ImagePicker(sourceType: self.sourceType, selectedImage: $updatedPlantProfilePicture)
+			CameraView(sourceType: self.sourceType, selectedImage: $updatedPlantProfilePicture)
 		}
 		.onAppear {
 			self.updatedName = plant.name!

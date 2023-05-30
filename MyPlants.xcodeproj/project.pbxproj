@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		C7232A702A1F506600ED5729 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = C7232A6F2A1F506600ED5729 /* FSCalendar */; };
 		C7232A742A1F50F500ED5729 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = C7232A732A1F50F500ED5729 /* FSCalendar */; };
-		C731863629F6A0F8002ED730 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C731863529F6A0F8002ED730 /* ImagePicker.swift */; };
+		C731863629F6A0F8002ED730 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C731863529F6A0F8002ED730 /* CameraView.swift */; };
 		C738501729ED2A6A0024788D /* MyPlantsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738501629ED2A6A0024788D /* MyPlantsApp.swift */; };
 		C738501929ED2A6A0024788D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738501829ED2A6A0024788D /* ContentView.swift */; };
 		C738501B29ED2A6A0024788D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C738501A29ED2A6A0024788D /* Assets.xcassets */; };
@@ -58,7 +58,7 @@
 
 /* Begin PBXFileReference section */
 		C70F3BAC29F86BE60013ABF8 /* MyPlants.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MyPlants.xctestplan; sourceTree = "<group>"; };
-		C731863529F6A0F8002ED730 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		C731863529F6A0F8002ED730 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		C738501329ED2A6A0024788D /* MyPlants.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPlants.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C738501629ED2A6A0024788D /* MyPlantsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlantsApp.swift; sourceTree = "<group>"; };
 		C738501829ED2A6A0024788D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -129,7 +129,7 @@
 		C731863429F6A0E4002ED730 /* Camera */ = {
 			isa = PBXGroup;
 			children = (
-				C731863529F6A0F8002ED730 /* ImagePicker.swift */,
+				C731863529F6A0F8002ED730 /* CameraView.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -414,7 +414,7 @@
 				C77CED212A1CB61100941F7D /* CalendarView.swift in Sources */,
 				C782B70629ED4BDA00A23A5C /* SearchResult.swift in Sources */,
 				C782B6FE29ED3C7900A23A5C /* Plant.swift in Sources */,
-				C731863629F6A0F8002ED730 /* ImagePicker.swift in Sources */,
+				C731863629F6A0F8002ED730 /* CameraView.swift in Sources */,
 				C738502329ED2A6B0024788D /* MyPlants.xcdatamodeld in Sources */,
 				C7B2F6DB29F017E30098783F /* Cycle.swift in Sources */,
 				C7B2F6D229F009410098783F /* AllPlantsView.swift in Sources */,

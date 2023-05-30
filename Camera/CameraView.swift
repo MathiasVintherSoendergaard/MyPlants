@@ -13,12 +13,12 @@ import SwiftUI
  sourceType. The selectedImage var lets us preview the selected image in the view
  */
 
-struct ImagePicker: UIViewControllerRepresentable {
+struct CameraView: UIViewControllerRepresentable {
 	@Environment(\.presentationMode) private var presentationMode
 	var sourceType: UIImagePickerController.SourceType = .photoLibrary
 	@Binding var selectedImage: UIImage
 
-	func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
+	func makeUIViewController(context: UIViewControllerRepresentableContext<CameraView>) -> UIImagePickerController {
 
 		let imagePicker = UIImagePickerController()
 		imagePicker.allowsEditing = false
@@ -28,7 +28,7 @@ struct ImagePicker: UIViewControllerRepresentable {
 		return imagePicker
 	}
 
-	func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {
+	func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<CameraView>) {
 
 	}
 
@@ -38,9 +38,9 @@ struct ImagePicker: UIViewControllerRepresentable {
 
 	final class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-		var parent: ImagePicker
+		var parent: CameraView
 
-		init(_ parent: ImagePicker) {
+		init(_ parent: CameraView) {
 			self.parent = parent
 		}
 
