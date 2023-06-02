@@ -13,7 +13,7 @@ struct AllPlantsView: View {
 	
 	@StateObject var pvm = PlantsViewModel()
 	
-    var body: some View {
+	var body: some View {
 		NavigationStack {
 			List {
 				ForEach(pvm.plants, id: \.id) { plant in
@@ -27,9 +27,14 @@ struct AllPlantsView: View {
 					pvm.deletePlant(indexSet: indexSet)
 				}
 			}
+			.navigationTitle("My Plants")
 		}
 		.toolbar {
 			EditButton()
+				.foregroundColor(.red)
+		}
+		.onAppear {
+			pvm.getPlants()
 		}
     }
 	

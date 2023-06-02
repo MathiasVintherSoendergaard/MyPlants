@@ -22,6 +22,14 @@ class PlantsViewModel: ObservableObject {
 	@Published var newPlantNotes: [String] = []
 	@Published var newPlantImages: [Image] = []
 	
+	@Published var updatedPlantName: String = ""
+	@Published var updatedPlantDescription: String = ""
+	@Published var updatedPlantSpecies: String = ""
+	@Published var updatedPlantSunlight: Sunlight = .notDefined
+	@Published var updatedPlantWatering: Watering = .notDefined
+	@Published var updatedPlantCycle: Cycle = .notDefined
+	@Published var updatedPlantProfilePicture: UIImage = UIImage()
+	
 	@Published var plants: [PlantEntity] = []
 	
 	private let viewContext = DataController.shared.container.viewContext

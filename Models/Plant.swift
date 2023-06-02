@@ -68,5 +68,5 @@ struct Plant {
 
 // extension which houses a static instance of a Plant, used for Previews
 extension Plant {
-	static let samplePlant = Plant(name: "Your name for the plant", species: "The species of the plant", description: "Your description of the plant", picture: Image(systemName: "tree"), userPictures: [], maintenance: Maintenance(watering: .notDefined, sunLight: .notDefined), cycle: .notDefined, notes: [])
+	static let samplePlant = Plant(name: "Your name for the plant", species: "The species of the plant", description: "Your description of the plant", picture: Image(systemName: ""), userPictures: [], maintenance: Maintenance(watering: .notDefined, sunLight: .notDefined), cycle: .notDefined, notes: [])
 }

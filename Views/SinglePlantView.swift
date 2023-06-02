@@ -12,80 +12,52 @@ import SwiftUI
 struct SinglePlantView: View {
 	
 	@State private var editable: Bool = false
-	
 	@State var plant: PlantEntity
 	
-	@State var updatedName: String = ""
-	@State var updatedSpecies: String = ""
-	@State var updatedDescription: String = ""
+	@State private var showImageViewSheet: Bool = false
+	@State private var sourceType: UIImagePickerController.SourceType = .camera
 	
-	@State var updatedCycle: Cycle = .notDefined
-	@State var updatedWatering: Watering = .notDefined
-	@State var updatedSunlight: Sunlight = .notDefined
-	
-	@State var updatedPlantProfilePicture = UIImage()
-	
-	@State var showImagePickerSheet: Bool = false
-	@State var showCalendarSheet: Bool = false
+	@State private var showCalendarSheet: Bool = false
 	
 	@ObservedObject var pvm = PlantsViewModel()
 
-	
-	@State private var sourceType: UIImagePickerController.SourceType = .camera
-	
     var body: some View {
 		NavigationView {
 			Group {
 				if !editable {
 					ScrollView {
 						VStack(alignment: .center) {
-							
 							headline
-							
 							Spacer()
-							
 							pictureSection
-
 						}
 						.padding()
 						Divider()
-						
 						infoSection
 							.padding()
-						
 						Button("show calendar") {
 							showCalendarSheet.toggle()
 						}
-						
 						Spacer()
 					}
 					.navigationBarTitleDisplayMode(.inline)
 				} else {
 					ScrollView {
 						VStack(alignment: .center) {
-							
 							headline
-							
 							Spacer()
-							
 							pictureSection
-
 						}
 						.padding()
 						Divider()
-					
 						editableInfoSection
 							.padding()
-						
 						Text("Take a new picture of your plant")
 							.onTapGesture {
 								sourceType = .camera
-								showImagePickerSheet = true
+								showImageViewSheet = true
 							}
 							.foregroundColor(.blue)
-						
-					
-						
 						Spacer()
 					}
 				}
@@ -96,59 +68,33 @@ struct SinglePlantView: View {
 		}
 		.toolbar {
 			ToolbarItem() {
-				
-				if !editable {
-					Text("Edit")
-						.onTapGesture {
-							editable.toggle()
-						}
-				} else {
-					Text("Done")
-						.onTapGesture {
-							editable.toggle()
-							savePlant()
-						}
-				}
-				
-
-				
-//					NavigationLink {
-//						EditPlantView(plant: plant)
-//					} label: {
-//						Text("Edit")
-//					}
+				editAndDoneButtons
 			}
-			
 		}
-		.sheet(isPresented: $showImagePickerSheet) {
-			CameraView(sourceType: self.sourceType, selectedImage: $updatedPlantProfilePicture)
+		.sheet(isPresented: $showImageViewSheet) {
+			CameraView(sourceType: self.sourceType, selectedImage: $pvm.updatedPlantProfilePicture)
 		}
 		.onAppear {
-			self.updatedName = plant.name!
-			self.updatedSpecies = plant.species!
-			self.updatedDescription = plant.desc!
-			
-			self.updatedCycle = Cycle(rawValue: Int(plant.cycle))!
-			self.updatedWatering = Watering(rawValue: Int(plant.cycle))!
-			self.updatedSunlight = Sunlight(rawValue: Int(plant.cycle))!
+			pvm.updatedPlantName = plant.name!
+			pvm.updatedPlantDescription = plant.desc!
+			pvm.updatedPlantSpecies = plant.species!
+			pvm.updatedPlantCycle = Cycle(rawValue: Int(plant.cycle))!
+			pvm.updatedPlantWatering = Watering(rawValue: Int(plant.cycle))!
+			pvm.updatedPlantSunlight = Sunlight(rawValue: Int(plant.cycle))!
+			pvm.updatedPlantProfilePicture = UIImage(data: plant.image ?? Data()) ?? UIImage()
 		}
 		DataView(name: "Plant timestamp", value: plant.timestamp?.description ?? "no timestamp yet")
-
-		
     }
 	
 	private func savePlant() {
-		
-		plant.name = updatedName
-		plant.desc = updatedDescription
-		plant.species = updatedSpecies
-		
-		plant.cycle = Int64(updatedCycle.rawValue)
-		plant.watering = Int64(updatedWatering.rawValue)
-		plant.sunlight = Int64(updatedSunlight.rawValue)
-		
-		plant.image = updatedPlantProfilePicture.jpegData(compressionQuality: 1)
-		
+		plant.name = pvm.updatedPlantName
+		plant.desc = pvm.updatedPlantDescription
+		plant.species = pvm.updatedPlantSpecies
+		plant.cycle = Int64(pvm.updatedPlantCycle.rawValue)
+		plant.watering = Int64(pvm.updatedPlantWatering.rawValue)
+		plant.sunlight = Int64(pvm.updatedPlantSunlight.rawValue)
+		plant.image = pvm.updatedPlantProfilePicture.jpegData(compressionQuality: 1)
+
 		pvm.save()
 	}
 		
@@ -156,18 +102,33 @@ struct SinglePlantView: View {
 
 private extension SinglePlantView {
 	
+	var editAndDoneButtons: some View {
+		Group {
+			if !editable {
+				Text("Edit")
+					.onTapGesture {
+						editable.toggle()
+					}
+					.foregroundColor(.red)
+			} else {
+				Text("Done")
+					.onTapGesture {
+						editable.toggle()
+						savePlant()
+					}
+			}
+		}
+	}
+	
 	var headline: some View {
-		
 		Text(plant.name ?? "No name yet")
 			.font(.title)
-		
 	}
 	
 	var pictureSection: some View {
 		HStack {
 			Spacer()
-
-			Image(uiImage: UIImage(data: plant.image ?? Data()) ?? UIImage())
+			Image(uiImage: pvm.updatedPlantProfilePicture)
 					.resizable()
 					.cornerRadius(50)
 					.padding(.all, 4)
@@ -208,10 +169,6 @@ private extension SinglePlantView {
 
 			maintenanceSection
 			
-			
-//					List(plant.notes, id: \.self) { note in
-//						Text(note)
-//					}
 			Spacer()
 		}
 		
@@ -225,79 +182,70 @@ private extension SinglePlantView {
 		VStack(alignment: .leading) {
 			
 			HStack {
-				
-				
 				Text("Name")
-				
 				Spacer()
-				
-				TextField(plant.name ?? "No name yet", text: $updatedName)
+				TextField(plant.name ?? "No name yet", text: $pvm.updatedPlantName)
 					.font(.subheadline)
 					.foregroundColor(.secondary)
 			}
-			
 			HStack {
 				Text("Description")
-				
 				Spacer()
-				TextField(plant.desc ?? "No description yet", text: $updatedDescription)
+				TextField(plant.desc ?? "No description yet", text:  $pvm.updatedPlantDescription)
 					.font(.subheadline)
 					.foregroundColor(.secondary)
 			}
-			
 			HStack {
 				Text("Species")
-				
 				Spacer()
-				TextField(plant.species ?? "No species yet", text: $updatedSpecies)
+				TextField(plant.species ?? "No species yet", text: $pvm.updatedPlantSpecies)
 					.font(.subheadline)
 					.foregroundColor(.secondary)
 			}
-			
-			
-			
-			
 			editableMaintenanceSection
-			
-			
-			//					List(plant.notes, id: \.self) { note in
-			//						Text(note)
-			//					}
-						Spacer()
-					}
-			
+			Spacer()
 		}
-		
-	
+	}
 		
 	var editableMaintenanceSection: some View {
-		
 		Section {
-			Picker("Watering frequency", selection: $updatedWatering) {
-				ForEach(Watering.allCases) { frequency in
-					Text(frequency.description)
+			HStack {
+				Text("Cycle")
+				Spacer()
+				Picker("Cycle", selection: $pvm.updatedPlantCycle) {
+					ForEach(Cycle.allCases) { cycle in
+						Text(cycle.description)
+					}
 				}
-			}
-			.pickerStyle(.menu)
-			// accessibilityIdentifier added for testing purposes
-			.accessibilityIdentifier("Watering frequency")
-			
-			Picker("Sunlight level", selection: $updatedSunlight) {
-				ForEach(Sunlight.allCases) { level in
-					Text(level.description)
-				}
-			}
-			.pickerStyle(.menu)
-			// accessibilityIdentifier added for testing purposes
-			.accessibilityIdentifier("Sunlight level")
-			
-			Picker("Cycle", selection: $updatedCycle) {
-				ForEach(Cycle.allCases) { cycle in
-					Text(cycle.description)
-				}
-			}
-			.pickerStyle(.menu)
+				.pickerStyle(.menu)
 			.accessibilityIdentifier("Cycle")
+			}
+			HStack {
+				Text("Watering")
+				Spacer()
+				Picker("Watering frequency", selection: $pvm.updatedPlantWatering) {
+					ForEach(Watering.allCases) { frequency in
+						Text(frequency.description)
+					}
+				}
+				.pickerStyle(.menu)
+				// accessibilityIdentifier added for testing purposes
+			.accessibilityIdentifier("Watering frequency")
+			}
+			HStack {
+				Text("Sunlight")
+				Spacer()
+				Picker("Sunlight level", selection: $pvm.updatedPlantSunlight) {
+					ForEach(Sunlight.allCases) { level in
+						Text(level.description)
+					}
+				}
+				.pickerStyle(.menu)
+				// accessibilityIdentifier added for testing purposes
+			.accessibilityIdentifier("Sunlight level")
+			}
+			
+
 		}
 		
 	}

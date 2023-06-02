@@ -10,6 +10,7 @@ import SwiftUI
 // This view lets a user add a Plant to the database
 struct AddPlantView: View {
 	
+	
 	@State private var showSheet: Bool = false
 	@State private var sourceType: UIImagePickerController.SourceType = .camera
 	
@@ -43,6 +44,9 @@ struct AddPlantView: View {
 		pvm.addPlant()
 		
 		notificationsController.scheduleNotification(plantName: pvm.newPlantName, watering: pvm.newPlantWatering)
+		
+		wipeView()
+		
 	}
 	
 	// Constructor used for preview (see bottom of this file), and for NavigationLink from SearchResultsView to this View
@@ -61,19 +65,7 @@ struct AddPlantView: View {
 	
 	// Used for creating an empty AddPlantView when a user adds a plant without the help of data from the API
 	
-	init() {
-		
-		self.pvm.newPlantName = ""
-				self.pvm.newPlantSpecies = ""
-				self.pvm.newPlantDescription = ""
-				self.pvm.newPlantProfilePicture = UIImage(systemName: "tree")!
-				self.pvm.newPlantImages = []
-				self.pvm.newPlantSunlight = Sunlight.notDefined
-				self.pvm.newPlantWatering = Watering.notDefined
-				self.pvm.newPlantCycle = Cycle.notDefined
-				self.pvm.newPlantNotes = []
-		
-	}
+	init() {}
 	
 }
 
@@ -162,7 +154,17 @@ private extension AddPlantView {
 		.accessibilityIdentifier("Save plant")
 	}
 	
-
+	private func wipeView() {
+		self.pvm.newPlantName = ""
+		self.pvm.newPlantSpecies = ""
+		self.pvm.newPlantDescription = ""
+		self.pvm.newPlantProfilePicture = UIImage()
+		self.pvm.newPlantImages = []
+		self.pvm.newPlantSunlight = Sunlight.notDefined
+		self.pvm.newPlantWatering = Watering.notDefined
+		self.pvm.newPlantCycle = Cycle.notDefined
+		self.pvm.newPlantNotes = []
+	}
 	
 }
 
