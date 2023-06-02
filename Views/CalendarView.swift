@@ -101,7 +101,6 @@ struct CalendarViewRepresentable: UIViewRepresentable {
 		
 		func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
 			
-		
 			var eventDates = [Date]()
 			
 			for i in 0...99 {
@@ -120,11 +119,11 @@ struct CalendarViewRepresentable: UIViewRepresentable {
 		}
 		
 		func maximumDate(for calendar: FSCalendar) -> Date {
-			Date.now.addingTimeInterval(86400*30)
+			Date.now.addingTimeInterval(86400*365)
 		}
 		
 		func minimumDate(for calendar: FSCalendar) -> Date {
-			Date.now.addingTimeInterval(-86400*30)
+			Date.now.addingTimeInterval(-86400*365)
 		}
 		
 	}
@@ -133,9 +132,7 @@ struct CalendarViewRepresentable: UIViewRepresentable {
 
 struct CalendarView_Previews: PreviewProvider {
 	
-	
-	
     static var previews: some View {
-        CalendarView(plantCreationDate: Date(), plantWateringInterval: TimeInterval())
+        CalendarView(plantCreationDate: Date(), plantWateringInterval: TimeInterval(60 * 60 * 24 * 7))
     }
 }

@@ -48,7 +48,6 @@ extension Watering {
 		default: self = .notDefined
 		}
 	}
-	
 }
 
 extension Watering {
@@ -58,7 +57,7 @@ extension Watering {
 		case .none: return nil
 		case .minimum: return TimeInterval(60 * 60 * 24 * 7 * 4) // monthly
 		case .average: return TimeInterval(60 * 60 * 24 * 7) // weekly
-		case .frequent: return TimeInterval(60 * 60 * 24 * 4) // twice weekly
+		case .frequent: return TimeInterval(60 * 60 * 24 * 4) // twice weekly/every four days
 		case .notDefined: return nil
 		}
 	}

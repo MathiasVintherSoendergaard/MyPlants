@@ -13,7 +13,7 @@ import SwiftUI
 // this is the struct that models a user's houseplant
 struct Plant {
 	
-	var id: UUID
+	
 	var name: String
 	var species: String
 	var description: String
@@ -24,7 +24,7 @@ struct Plant {
 	var notes: [String]
 	
 	init(name: String, species: String, description: String, picture: Image, userPictures: [Image], maintenance: Maintenance, cycle: Cycle, notes: [String]) {
-		self.id = UUID()
+		
 		self.name = name
 		self.species = species
 		self.description = description
@@ -36,7 +36,7 @@ struct Plant {
 	}
 	// Constructor that constructs a Plant from a PerenualPlant
 	init(plant: PerenualPlant) {
-		self.id = UUID()
+		
 		self.name = ""
 		self.species = plant.scientificName?[0] ?? "No scientific name found"
 		self.description = ""
@@ -49,7 +49,6 @@ struct Plant {
 	#warning("This initializer is not done, but is being updated as Core Data is being updated")
 	// this initializer constructs a Plant from PlantEntity, i.e., the database construct of a plant
 	init(plant: PlantEntity) {
-		self.id = plant.id ?? UUID()
 		self.name = plant.name ?? "Something went wrong"
 		self.species = plant.species ?? "Something went wrong"
 		self.description = plant.desc ?? "Something went wrong"

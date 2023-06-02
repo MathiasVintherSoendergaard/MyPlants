@@ -35,7 +35,7 @@ struct SinglePlantView: View {
 						Divider()
 						infoSection
 							.padding()
-						Button("show calendar") {
+						Button("Show calendar") {
 							showCalendarSheet.toggle()
 						}
 						Spacer()

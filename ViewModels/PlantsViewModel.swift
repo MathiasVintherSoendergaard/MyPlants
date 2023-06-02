@@ -38,7 +38,7 @@ class PlantsViewModel: ObservableObject {
 		
 		let newPlant = PlantEntity(context: viewContext)
 		
-		newPlant.id = UUID()
+		
 		newPlant.name = newPlantName
 		newPlant.desc = newPlantDescription
 		newPlant.species = newPlantSpecies
