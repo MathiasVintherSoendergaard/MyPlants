@@ -10,33 +10,29 @@ import CoreData
 
 struct ContentView: View {
 		var body: some View {
-			NavigationStack {
-				Spacer()
-				NavigationLink {
-					SearchView()
-				} label: {
-					Text("Search plants")
-				}
-				Spacer()
-				NavigationLink {
-					AddPlantView()
-						.navigationTitle("Add new plant")
-				} label: {
-					Text("Register new plant")
-				}
-				Spacer()
-				NavigationLink {
-					AllPlantsView()
-				} label: {
-					Text("See your plants")
-				}
-				Spacer()
+			TabView {
+				WelcomeView()
+					.tabItem {
+						Label("Home", systemImage: "house")
+					}
+				CalendarView()
+					.tabItem {
+						Label("Calendar", systemImage: "calendar")
+					}
+				AddPlantView()
+					.tabItem {
+						Label("Add plant", systemImage: "plus.app")
+					}
+				SearchView()
+					.tabItem {
+						Label("Search", systemImage: "magnifyingglass")
+					}
+				AllPlantsView()
+					.tabItem {
+						Label("My Plants", systemImage: "camera.macro")
+					}
 			}
 		}
-
-    
-
-    
 }
 
 struct ContentView_Previews: PreviewProvider {

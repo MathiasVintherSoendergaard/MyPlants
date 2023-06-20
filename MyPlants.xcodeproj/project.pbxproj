@@ -18,10 +18,12 @@
 		C738502E29ED2A6B0024788D /* MyPlantsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738502D29ED2A6B0024788D /* MyPlantsTests.swift */; };
 		C738503829ED2A6B0024788D /* MyPlantsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738503729ED2A6B0024788D /* MyPlantsUITests.swift */; };
 		C738503A29ED2A6B0024788D /* MyPlantsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738503929ED2A6B0024788D /* MyPlantsUITestsLaunchTests.swift */; };
-		C77CED212A1CB61100941F7D /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77CED202A1CB61100941F7D /* CalendarView.swift */; };
+		C77CED212A1CB61100941F7D /* SinglePlantCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77CED202A1CB61100941F7D /* SinglePlantCalendarView.swift */; };
 		C77CED242A1CB67600941F7D /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = C77CED232A1CB67600941F7D /* FSCalendar */; };
 		C77EA5DD2A41983D0051A7C0 /* SinglePlantEntityRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77EA5DC2A41983D0051A7C0 /* SinglePlantEntityRow.swift */; };
 		C77EA5DF2A41A4D00051A7C0 /* SinglePerenualPlantRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77EA5DE2A41A4D00051A7C0 /* SinglePerenualPlantRow.swift */; };
+		C77EA5E12A41AB170051A7C0 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77EA5E02A41AB170051A7C0 /* WelcomeView.swift */; };
+		C77EA5E32A41ACA70051A7C0 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77EA5E22A41ACA70051A7C0 /* CalendarView.swift */; };
 		C782B6FC29ED3A4A00A23A5C /* AddPlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C782B6FB29ED3A4A00A23A5C /* AddPlantView.swift */; };
 		C782B6FE29ED3C7900A23A5C /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C782B6FD29ED3C7900A23A5C /* Plant.swift */; };
 		C782B70229ED487B00A23A5C /* PerenualPlant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C782B70129ED487B00A23A5C /* PerenualPlant.swift */; };
@@ -73,9 +75,11 @@
 		C738503329ED2A6B0024788D /* MyPlantsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyPlantsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C738503729ED2A6B0024788D /* MyPlantsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlantsUITests.swift; sourceTree = "<group>"; };
 		C738503929ED2A6B0024788D /* MyPlantsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlantsUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		C77CED202A1CB61100941F7D /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		C77CED202A1CB61100941F7D /* SinglePlantCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePlantCalendarView.swift; sourceTree = "<group>"; };
 		C77EA5DC2A41983D0051A7C0 /* SinglePlantEntityRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePlantEntityRow.swift; sourceTree = "<group>"; };
 		C77EA5DE2A41A4D00051A7C0 /* SinglePerenualPlantRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePerenualPlantRow.swift; sourceTree = "<group>"; };
+		C77EA5E02A41AB170051A7C0 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		C77EA5E22A41ACA70051A7C0 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		C782B6FB29ED3A4A00A23A5C /* AddPlantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlantView.swift; sourceTree = "<group>"; };
 		C782B6FD29ED3C7900A23A5C /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		C782B70129ED487B00A23A5C /* PerenualPlant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerenualPlant.swift; sourceTree = "<group>"; };
@@ -230,13 +234,15 @@
 			children = (
 				C782B6FB29ED3A4A00A23A5C /* AddPlantView.swift */,
 				C7B2F6D129F009410098783F /* AllPlantsView.swift */,
-				C77CED202A1CB61100941F7D /* CalendarView.swift */,
+				C77CED202A1CB61100941F7D /* SinglePlantCalendarView.swift */,
 				C731863529F6A0F8002ED730 /* CameraView.swift */,
 				C7B2F6D629F014860098783F /* DataView.swift */,
 				C782B70929ED4FD300A23A5C /* SearchView.swift */,
 				C782B70E29ED6F0F00A23A5C /* SinglePlantView.swift */,
 				C77EA5DC2A41983D0051A7C0 /* SinglePlantEntityRow.swift */,
 				C77EA5DE2A41A4D00051A7C0 /* SinglePerenualPlantRow.swift */,
+				C77EA5E02A41AB170051A7C0 /* WelcomeView.swift */,
+				C77EA5E22A41ACA70051A7C0 /* CalendarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -409,8 +415,9 @@
 				C79DFBF929F95CCB00D0B738 /* NotificationsController.swift in Sources */,
 				C7B2F6DD29F018260098783F /* Watering.swift in Sources */,
 				C7B2F6DF29F05DF60098783F /* Maintenance.swift in Sources */,
+				C77EA5E32A41ACA70051A7C0 /* CalendarView.swift in Sources */,
 				C782B70F29ED6F0F00A23A5C /* SinglePlantView.swift in Sources */,
-				C77CED212A1CB61100941F7D /* CalendarView.swift in Sources */,
+				C77CED212A1CB61100941F7D /* SinglePlantCalendarView.swift in Sources */,
 				C782B70629ED4BDA00A23A5C /* SearchResult.swift in Sources */,
 				C782B6FE29ED3C7900A23A5C /* Plant.swift in Sources */,
 				C731863629F6A0F8002ED730 /* CameraView.swift in Sources */,
@@ -423,6 +430,7 @@
 				C738501929ED2A6A0024788D /* ContentView.swift in Sources */,
 				C782B70A29ED4FD300A23A5C /* SearchView.swift in Sources */,
 				C738501729ED2A6A0024788D /* MyPlantsApp.swift in Sources */,
+				C77EA5E12A41AB170051A7C0 /* WelcomeView.swift in Sources */,
 				C7CF29A02A03CDA100BAD1CF /* PlantsViewModel.swift in Sources */,
 				C782B70D29ED5AE000A23A5C /* SearchResultsViewModel.swift in Sources */,
 				C7B2F6D729F014860098783F /* DataView.swift in Sources */,

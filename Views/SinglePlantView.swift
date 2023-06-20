@@ -63,7 +63,7 @@ struct SinglePlantView: View {
 				}
 			}
 			.sheet(isPresented: $showCalendarSheet) {
-				CalendarView(plantCreationDate: plant.timestamp ?? Date(), plantWateringInterval: Watering(rawValue: Int(plant.watering))?.timeInterval ?? TimeInterval())
+				SinglePlantCalendarView(plantCreationDate: plant.timestamp ?? Date(), plantWateringInterval: Watering(rawValue: Int(plant.watering))?.timeInterval ?? TimeInterval())
 			}
 		}
 		.toolbar {
