@@ -29,6 +29,7 @@ class NotificationsController {
 	private func scheduleMonthlyNotification(plantName: String) {
 		
 		let center = UNUserNotificationCenter.current()
+	
 		
 		// this is only a definition of a function/closure, not the call of it
 		// that only comes later
@@ -72,8 +73,8 @@ class NotificationsController {
 					}
 				}
 			}
-			
 		}
+
 	}
 	
 	private func scheduleWeeklyNotification(plantName: String) {

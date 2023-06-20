@@ -10,13 +10,14 @@ import SwiftUI
 // This view lets a user add a Plant to the database
 struct AddPlantView: View {
 	
-	
 	@State private var showSheet: Bool = false
 	@State private var sourceType: UIImagePickerController.SourceType = .camera
 	
 	private var notificationsController = NotificationsController()
 	
 	@ObservedObject private var pvm = PlantsViewModel()
+	
+	
 	
 	var body: some View {
 		VStack {

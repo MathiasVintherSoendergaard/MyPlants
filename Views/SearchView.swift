@@ -11,7 +11,7 @@ import SwiftUI
 struct SearchView: View {
 	
 	// ViewModel for SearchResults
-	@StateObject var srvm: SearchResultViewModel = SearchResultViewModel()
+	@StateObject var srvm: SearchResultsViewModel = SearchResultsViewModel()
 
 	#warning("put this into viewmodel?")
 	@State private var searchText = ""

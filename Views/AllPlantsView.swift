@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-	
 
 // View for showing all of a user's Plants
 struct AllPlantsView: View {

@@ -114,7 +114,7 @@ final class MyPlantsUITests: XCTestCase {
 		
 		app.swipeUp()
 		
-		let showCalendarButton = app.buttons["show calendar"].firstMatch
+		let showCalendarButton = app.buttons["Show calendar"].firstMatch
 		
 		XCTAssertTrue(showCalendarButton.waitForExistence(timeout: timeout))
 		
