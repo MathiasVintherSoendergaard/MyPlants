@@ -20,10 +20,7 @@ struct AllPlantsView: View {
 						SinglePlantView(plant: plant)
 					} label: {
 						HStack {
-							SinglePlantRow(plant: plant)
-//							Image(uiImage: UIImage(data: plant.image!)!)
-//								.resizable()
-//							Text(plant.name ?? "No name")
+							SinglePlantEntityRow(plant: plant)
 						}
 					}
 				}

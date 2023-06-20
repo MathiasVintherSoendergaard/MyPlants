@@ -20,7 +20,8 @@
 		C738503A29ED2A6B0024788D /* MyPlantsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C738503929ED2A6B0024788D /* MyPlantsUITestsLaunchTests.swift */; };
 		C77CED212A1CB61100941F7D /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77CED202A1CB61100941F7D /* CalendarView.swift */; };
 		C77CED242A1CB67600941F7D /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = C77CED232A1CB67600941F7D /* FSCalendar */; };
-		C77EA5DD2A41983D0051A7C0 /* SinglePlantRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77EA5DC2A41983D0051A7C0 /* SinglePlantRow.swift */; };
+		C77EA5DD2A41983D0051A7C0 /* SinglePlantEntityRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77EA5DC2A41983D0051A7C0 /* SinglePlantEntityRow.swift */; };
+		C77EA5DF2A41A4D00051A7C0 /* SinglePerenualPlantRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77EA5DE2A41A4D00051A7C0 /* SinglePerenualPlantRow.swift */; };
 		C782B6FC29ED3A4A00A23A5C /* AddPlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C782B6FB29ED3A4A00A23A5C /* AddPlantView.swift */; };
 		C782B6FE29ED3C7900A23A5C /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C782B6FD29ED3C7900A23A5C /* Plant.swift */; };
 		C782B70229ED487B00A23A5C /* PerenualPlant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C782B70129ED487B00A23A5C /* PerenualPlant.swift */; };
@@ -73,7 +74,8 @@
 		C738503729ED2A6B0024788D /* MyPlantsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlantsUITests.swift; sourceTree = "<group>"; };
 		C738503929ED2A6B0024788D /* MyPlantsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlantsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C77CED202A1CB61100941F7D /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
-		C77EA5DC2A41983D0051A7C0 /* SinglePlantRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePlantRow.swift; sourceTree = "<group>"; };
+		C77EA5DC2A41983D0051A7C0 /* SinglePlantEntityRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePlantEntityRow.swift; sourceTree = "<group>"; };
+		C77EA5DE2A41A4D00051A7C0 /* SinglePerenualPlantRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePerenualPlantRow.swift; sourceTree = "<group>"; };
 		C782B6FB29ED3A4A00A23A5C /* AddPlantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlantView.swift; sourceTree = "<group>"; };
 		C782B6FD29ED3C7900A23A5C /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		C782B70129ED487B00A23A5C /* PerenualPlant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerenualPlant.swift; sourceTree = "<group>"; };
@@ -233,7 +235,8 @@
 				C7B2F6D629F014860098783F /* DataView.swift */,
 				C782B70929ED4FD300A23A5C /* SearchView.swift */,
 				C782B70E29ED6F0F00A23A5C /* SinglePlantView.swift */,
-				C77EA5DC2A41983D0051A7C0 /* SinglePlantRow.swift */,
+				C77EA5DC2A41983D0051A7C0 /* SinglePlantEntityRow.swift */,
+				C77EA5DE2A41A4D00051A7C0 /* SinglePerenualPlantRow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -401,7 +404,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C782B70229ED487B00A23A5C /* PerenualPlant.swift in Sources */,
-				C77EA5DD2A41983D0051A7C0 /* SinglePlantRow.swift in Sources */,
+				C77EA5DD2A41983D0051A7C0 /* SinglePlantEntityRow.swift in Sources */,
 				C7E1A12E29F007A0007476BC /* DataController.swift in Sources */,
 				C79DFBF929F95CCB00D0B738 /* NotificationsController.swift in Sources */,
 				C7B2F6DD29F018260098783F /* Watering.swift in Sources */,
@@ -412,6 +415,7 @@
 				C782B6FE29ED3C7900A23A5C /* Plant.swift in Sources */,
 				C731863629F6A0F8002ED730 /* CameraView.swift in Sources */,
 				C738502329ED2A6B0024788D /* MyPlants.xcdatamodeld in Sources */,
+				C77EA5DF2A41A4D00051A7C0 /* SinglePerenualPlantRow.swift in Sources */,
 				C7B2F6DB29F017E30098783F /* Cycle.swift in Sources */,
 				C7B2F6D229F009410098783F /* AllPlantsView.swift in Sources */,
 				C7B2F6D929F017590098783F /* Sunlight.swift in Sources */,

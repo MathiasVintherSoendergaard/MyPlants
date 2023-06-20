@@ -28,7 +28,9 @@ struct SearchView: View {
 					NavigationLink {
 						AddPlantView(plant: Plant(plant: plant))
 					} label: {
-						Text(plant.commonName ?? "No common name")
+//						Text(plant.commonName ?? "No common name")
+						
+						SinglePerenualPlantRow(plant: plant)
 					}
 				}
 			}

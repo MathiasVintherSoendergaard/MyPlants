@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SinglePlantRow: View {
+struct SinglePlantEntityRow: View {
 	
 	let plant: PlantEntity
 	
