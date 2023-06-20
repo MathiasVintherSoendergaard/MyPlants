@@ -13,7 +13,7 @@ struct SinglePlantEntityRow: View {
 	
     var body: some View {
 		HStack {
-			Image(uiImage: UIImage(data: plant.image!) ?? UIImage())
+			Image(uiImage: UIImage(data: plant.image ?? Data()) ?? UIImage())
 				.resizable()
 				.aspectRatio(contentMode: .fit)
 				.frame(maxWidth: 40, maxHeight: 60, alignment: .leading)

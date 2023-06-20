@@ -13,23 +13,23 @@ struct ContentView: View {
 			TabView {
 				WelcomeView()
 					.tabItem {
-						Label("Home", systemImage: "house")
+						Label(LocalizedStringKey("home"), systemImage: "house")
 					}
 				CalendarView()
 					.tabItem {
-						Label("Calendar", systemImage: "calendar")
+						Label(LocalizedStringKey("calendar"), systemImage: "calendar")
 					}
 				AddPlantView()
 					.tabItem {
-						Label("Add plant", systemImage: "plus.app")
+						Label(LocalizedStringKey("addPlant"), systemImage: "plus.app")
 					}
 				SearchView()
 					.tabItem {
-						Label("Search", systemImage: "magnifyingglass")
+						Label(LocalizedStringKey("search"), systemImage: "magnifyingglass")
 					}
 				AllPlantsView()
 					.tabItem {
-						Label("My Plants", systemImage: "camera.macro")
+						Label(LocalizedStringKey("myPlants"), systemImage: "camera.macro")
 					}
 			}
 		}

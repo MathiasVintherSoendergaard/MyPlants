@@ -24,6 +24,7 @@
 		C77EA5DF2A41A4D00051A7C0 /* SinglePerenualPlantRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77EA5DE2A41A4D00051A7C0 /* SinglePerenualPlantRow.swift */; };
 		C77EA5E12A41AB170051A7C0 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77EA5E02A41AB170051A7C0 /* WelcomeView.swift */; };
 		C77EA5E32A41ACA70051A7C0 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77EA5E22A41ACA70051A7C0 /* CalendarView.swift */; };
+		C77EA5E82A41CBF20051A7C0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C77EA5EA2A41CBF20051A7C0 /* Localizable.strings */; };
 		C782B6FC29ED3A4A00A23A5C /* AddPlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C782B6FB29ED3A4A00A23A5C /* AddPlantView.swift */; };
 		C782B6FE29ED3C7900A23A5C /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C782B6FD29ED3C7900A23A5C /* Plant.swift */; };
 		C782B70229ED487B00A23A5C /* PerenualPlant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C782B70129ED487B00A23A5C /* PerenualPlant.swift */; };
@@ -80,6 +81,8 @@
 		C77EA5DE2A41A4D00051A7C0 /* SinglePerenualPlantRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePerenualPlantRow.swift; sourceTree = "<group>"; };
 		C77EA5E02A41AB170051A7C0 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		C77EA5E22A41ACA70051A7C0 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		C77EA5E92A41CBF20051A7C0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C77EA5EB2A41CBF40051A7C0 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C782B6FB29ED3A4A00A23A5C /* AddPlantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlantView.swift; sourceTree = "<group>"; };
 		C782B6FD29ED3C7900A23A5C /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
 		C782B70129ED487B00A23A5C /* PerenualPlant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerenualPlant.swift; sourceTree = "<group>"; };
@@ -167,6 +170,7 @@
 			children = (
 				C738501629ED2A6A0024788D /* MyPlantsApp.swift */,
 				C738501829ED2A6A0024788D /* ContentView.swift */,
+				C77EA5EA2A41CBF20051A7C0 /* Localizable.strings */,
 				C738501A29ED2A6A0024788D /* Assets.xcassets */,
 				C738502429ED2A6B0024788D /* Info.plist */,
 				C738502129ED2A6B0024788D /* MyPlants.xcdatamodeld */,
@@ -234,15 +238,15 @@
 			children = (
 				C782B6FB29ED3A4A00A23A5C /* AddPlantView.swift */,
 				C7B2F6D129F009410098783F /* AllPlantsView.swift */,
-				C77CED202A1CB61100941F7D /* SinglePlantCalendarView.swift */,
+				C77EA5E22A41ACA70051A7C0 /* CalendarView.swift */,
 				C731863529F6A0F8002ED730 /* CameraView.swift */,
 				C7B2F6D629F014860098783F /* DataView.swift */,
 				C782B70929ED4FD300A23A5C /* SearchView.swift */,
-				C782B70E29ED6F0F00A23A5C /* SinglePlantView.swift */,
-				C77EA5DC2A41983D0051A7C0 /* SinglePlantEntityRow.swift */,
 				C77EA5DE2A41A4D00051A7C0 /* SinglePerenualPlantRow.swift */,
+				C77CED202A1CB61100941F7D /* SinglePlantCalendarView.swift */,
+				C77EA5DC2A41983D0051A7C0 /* SinglePlantEntityRow.swift */,
+				C782B70E29ED6F0F00A23A5C /* SinglePlantView.swift */,
 				C77EA5E02A41AB170051A7C0 /* WelcomeView.swift */,
-				C77EA5E22A41ACA70051A7C0 /* CalendarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -362,6 +366,7 @@
 			knownRegions = (
 				en,
 				Base,
+				da,
 			);
 			mainGroup = C738500A29ED2A6A0024788D;
 			packageReferences = (
@@ -384,6 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C738501E29ED2A6A0024788D /* Preview Assets.xcassets in Resources */,
+				C77EA5E82A41CBF20051A7C0 /* Localizable.strings in Resources */,
 				C738501B29ED2A6A0024788D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -478,6 +484,18 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		C77EA5EA2A41CBF20051A7C0 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C77EA5E92A41CBF20051A7C0 /* en */,
+				C77EA5EB2A41CBF40051A7C0 /* da */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		C738503B29ED2A6B0024788D /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -535,6 +553,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -588,6 +607,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};

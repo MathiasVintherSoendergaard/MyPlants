@@ -23,11 +23,11 @@ extension Cycle: CustomStringConvertible {
 	// description is also required by CustomStringConvertible
 	var description: String {
 		switch self {
-		case .perennial: return "Perennial"
-		case .biennial: return "Biennial"
-		case .annual: return "Annual"
-		case .biannual: return "Biannual"
-		case .notDefined: return "Not defined"
+		case .perennial: return String(localized: "perennial")
+		case .biennial: return String(localized: "biennial")
+		case .annual: return String(localized: "annual")
+		case .biannual: return String(localized: "biannual")
+		case .notDefined: return String(localized: "notDefined")
 		}
 	}
 }

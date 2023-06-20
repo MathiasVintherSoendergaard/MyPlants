@@ -28,7 +28,7 @@ struct AllPlantsView: View {
 					pvm.deletePlant(indexSet: indexSet)
 				}
 			}
-			.navigationTitle("My Plants")
+			.navigationTitle(LocalizedStringKey("allPlantsViewNavigationTitle"))
 		}
 		.toolbar {
 			EditButton()

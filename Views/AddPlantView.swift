@@ -25,9 +25,9 @@ struct AddPlantView: View {
 				Form {
 					pictureSection
 					Section {
-						TextField("Write the name of your plant", text: $pvm.newPlantName)
-						TextField("Write the species of your plant", text: $pvm.newPlantSpecies)
-						TextField("Write a short description of your plant", text: $pvm.newPlantDescription)
+						TextField(LocalizedStringKey("plantName"), text: $pvm.newPlantName)
+						TextField(LocalizedStringKey("plantSpecies"), text: $pvm.newPlantSpecies)
+						TextField(LocalizedStringKey("plantDescription"), text: $pvm.newPlantDescription)
 					}
 					pickerSection
 					addImageSection
@@ -93,7 +93,7 @@ private extension AddPlantView {
 	var pickerSection: some View {
 		
 		Section {
-			Picker("Watering frequency", selection: $pvm.newPlantWatering) {
+			Picker(LocalizedStringKey("watering"), selection: $pvm.newPlantWatering) {
 				ForEach(Watering.allCases) { frequency in
 					Text(frequency.description)
 				}
@@ -102,7 +102,7 @@ private extension AddPlantView {
 			// accessibilityIdentifier added for testing purposes
 			.accessibilityIdentifier("Watering frequency")
 
-			Picker("Sunlight level", selection: $pvm.newPlantSunlight) {
+			Picker(LocalizedStringKey("sunlight"), selection: $pvm.newPlantSunlight) {
 				ForEach(Sunlight.allCases) { level in
 					Text(level.description)
 				}
@@ -111,7 +111,7 @@ private extension AddPlantView {
 			// accessibilityIdentifier added for testing purposes
 			.accessibilityIdentifier("Sunlight level")
 			
-			Picker("Cycle", selection: $pvm.newPlantCycle) {
+			Picker(LocalizedStringKey("cycle"), selection: $pvm.newPlantCycle) {
 				ForEach(Cycle.allCases) { cycle in
 					Text(cycle.description)
 				}
@@ -123,7 +123,7 @@ private extension AddPlantView {
 	
 	var addImageSection: some View {
 		Section {
-			Text("Take a picture of your plant")
+			Text(LocalizedStringKey("takePictureButton"))
 				.onTapGesture {
 					sourceType = .camera
 					showSheet = true
@@ -131,7 +131,7 @@ private extension AddPlantView {
 				.foregroundColor(.blue)
 			// for some reason, the button under here does not work, unless you push the above button first
 			// what is currently on line 88 simply does not add new value to sourceType
-			Text("Choose a picture of your plant")
+			Text(LocalizedStringKey("choosePictureButton"))
 				.onTapGesture {
 					sourceType = .photoLibrary
 					showSheet = true
@@ -147,7 +147,7 @@ private extension AddPlantView {
 		}, label: {
 			HStack {
 				Spacer()
-				Text("Save plant")
+				Text(LocalizedStringKey("savePlantButton"))
 					.bold()
 				Spacer()
 			}

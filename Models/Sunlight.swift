@@ -24,11 +24,11 @@ extension Sunlight: CustomStringConvertible {
 	// CustomStringConvertibale needs a var description
 	var description: String {
 		switch self {
-		case .fullShade: return "Full shade"
-		case .partShade: return "Part shade"
-		case .sunPartShade: return "Sun/part shade"
-		case .fullSun: return "Full sun"
-		case .notDefined: return "Not defined"
+		case .fullShade: return String(localized: "fullShade")
+		case .partShade: return String(localized: "partShade")
+		case .sunPartShade: return String(localized: "sunPartShade")
+		case .fullSun: return String(localized: "fullSun")
+		case .notDefined: return String(localized: "notDefined")
 		}
 	}
 }

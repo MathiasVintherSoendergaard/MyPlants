@@ -28,14 +28,12 @@ struct SearchView: View {
 					NavigationLink {
 						AddPlantView(plant: Plant(plant: plant))
 					} label: {
-//						Text(plant.commonName ?? "No common name")
-						
 						SinglePerenualPlantRow(plant: plant)
 					}
 				}
 			}
-			.navigationTitle("Search plants")
-			.searchable(text: $searchText, prompt: "Search for a plant")
+			.navigationTitle(LocalizedStringKey("searchViewNavigationTitle"))
+			.searchable(text: $searchText, prompt: LocalizedStringKey("searchPrompt"))
 		}
 		.onAppear {
 			srvm.search(keyword: searchText)

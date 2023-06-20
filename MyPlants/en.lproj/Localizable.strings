@@ -1,0 +1,76 @@
+/* 
+  Localizable.strings
+  MyPlants
+
+  Created by Mathias Vinther Søndergaard on 20/06/2023.
+  
+*/
+
+// WelcomeView
+"welcomeViewNotDoneYet" = "This is WelcomeView, which is not done yet";
+
+// ContentView
+"home" = "Home";
+"calendar" = "Calendar";
+"addPlant" = "Add Plant";
+"search" = "Search";
+"myPlants" = "My Plants";
+
+// CalendarView
+"calendarViewNotDoneYet" = "This is CalendarView, which is not done yet";
+
+// AddPlantView
+"plantName" = "Write the name of your plant";
+"plantSpecies" = "Write the species of your plant";
+"plantDescription" = "Write a short description of your plant";
+"takePictureButton" = "Take a picture of your plant";
+"choosePictureButton" = "Choose a picture of your plant";
+"savePlantButton" = "Save plant";
+
+// SearchView
+"searchViewNavigationTitle" = "Search species";
+"searchPrompt" = "Search species";
+
+// AllPlantsView
+"allPlantsViewNavigationTitle" = "My Plants";
+
+// SinglePlantView
+"noNameYet" = "No name yet";
+"about" = "About ";
+"description" = "Description";
+"noDescriptionYet" = "No description yet";
+"species" = "Species";
+"noSpeciesYet" = "No species yet";
+"noCycleYet" = "No cycle yet";
+"noWateringYet" = "No watering yet";
+"noSunlightYet" = "No sunlight yet";
+"plantCreationDate" = "Plant creation date";
+"noplantCreationDateYet" = "No plant creation date";
+"name" = "Name";
+"showCalendarButton" = "Show calendar";
+"takeNewPictureOfPlantButton" = "Take a new picture of your plant";
+
+// All enumerators
+"notDefined" = "Not defined";
+
+// Watering
+"watering" = "Watering";
+"none" = "None";
+"minimum" = "Minimum";
+"average" = "Average";
+"frequent" = "Frequent";
+
+// Sunlight
+"sunlight" = "Sunlight";
+"fullShade" = "Full shade";
+"partShade" = "Part shade";
+"sunPartShade" = "Sun/part shade";
+"fullSun" = "Full sun";
+
+// Cycle
+"cycle" = "Cycle";
+"perennial" = "Perennial";
+"biennial" = "Biennial";
+"annual" = "Annual";
+"biannual" = "Biannual";
+

@@ -35,7 +35,7 @@ struct SinglePlantView: View {
 						Divider()
 						infoSection
 							.padding()
-						Button("Show calendar") {
+						Button(LocalizedStringKey("showCalendarButton")) {
 							showCalendarSheet.toggle()
 						}
 						Spacer()
@@ -52,7 +52,7 @@ struct SinglePlantView: View {
 						Divider()
 						editableInfoSection
 							.padding()
-						Text("Take a new picture of your plant")
+						Text(LocalizedStringKey("takeNewPictureOfPlantButton"))
 							.onTapGesture {
 								sourceType = .camera
 								showImageViewSheet = true
@@ -83,7 +83,6 @@ struct SinglePlantView: View {
 			pvm.updatedPlantSunlight = Sunlight(rawValue: Int(plant.cycle))!
 			pvm.updatedPlantProfilePicture = UIImage(data: plant.image ?? Data()) ?? UIImage()
 		}
-		DataView(name: "Plant timestamp", value: plant.timestamp?.description ?? "no timestamp yet")
     }
 	
 	private func savePlant() {
@@ -121,7 +120,7 @@ private extension SinglePlantView {
 	}
 	
 	var headline: some View {
-		Text(plant.name ?? "No name yet")
+		Text(plant.name ?? String(localized: "noNameYet"))
 			.font(.title)
 	}
 	
@@ -143,17 +142,16 @@ private extension SinglePlantView {
 	
 	var aboutPlant: some View {
 		
-		Text("About \(plant.name ?? "")")
+		Text(String(localized: "about") + (plant.name ?? ""))
 			.font(.title2)
-		
 	}
 	
 	var maintenanceSection: some View {
 		
 		HStack {
-			DataView(name: "Cycle", value: Cycle(rawValue: Int(plant.watering))?.description ?? "No cycle yet")
-			DataView(name: "Watering", value: Watering(rawValue: Int(plant.watering))?.description ?? "No watering yet")
-			DataView(name: "Sunlight", value: Sunlight(rawValue: Int(plant.sunlight))?.description ?? "No sunlight yet")
+			DataView(name: String(localized: "cycle"), value: Cycle(rawValue: Int(plant.watering))?.description ?? String(localized: "noCycleYet"))
+			DataView(name: String(localized: "watering"), value: Watering(rawValue: Int(plant.watering))?.description ?? String(localized: "noWateringYet"))
+			DataView(name: String(localized: "sunlight"), value: Sunlight(rawValue: Int(plant.sunlight))?.description ?? String(localized: "noSunlightYet"))
 			}
 		
 	}
@@ -164,10 +162,12 @@ private extension SinglePlantView {
 			
 			aboutPlant
 
-			DataView(name: "Description", value: plant.desc ?? "No description yet")
-			DataView(name: "Species", value: plant.species ?? "No species yet")
+			DataView(name: String(localized: "description"), value: plant.desc ?? String(localized: "noDescriptionYet"))
+			DataView(name: String(localized: "species"), value: plant.species ?? String(localized: "noSpeciesYet"))
 
 			maintenanceSection
+
+			DataView(name: String(localized: "plantCreationDate"), value: plant.timestamp?.formatted(date: .numeric, time: .omitted) ?? String(localized: "noplantCreationDateYet"))
 			
 			Spacer()
 		}
@@ -182,23 +182,23 @@ private extension SinglePlantView {
 		VStack(alignment: .leading) {
 			
 			HStack {
-				Text("Name")
+				Text(LocalizedStringKey("name"))
 				Spacer()
-				TextField(plant.name ?? "No name yet", text: $pvm.updatedPlantName)
+				TextField(plant.name ?? String(localized: "noNameYet"), text: $pvm.updatedPlantName)
 					.font(.subheadline)
 					.foregroundColor(.secondary)
 			}
 			HStack {
-				Text("Description")
+				Text(LocalizedStringKey("description"))
 				Spacer()
-				TextField(plant.desc ?? "No description yet", text:  $pvm.updatedPlantDescription)
+				TextField(plant.desc ?? String(localized: "noDescriptionYet"), text:  $pvm.updatedPlantDescription)
 					.font(.subheadline)
 					.foregroundColor(.secondary)
 			}
 			HStack {
-				Text("Species")
+				Text(LocalizedStringKey("species"))
 				Spacer()
-				TextField(plant.species ?? "No species yet", text: $pvm.updatedPlantSpecies)
+				TextField(plant.species ?? String(localized: "noSpeciesYet"), text: $pvm.updatedPlantSpecies)
 					.font(.subheadline)
 					.foregroundColor(.secondary)
 			}
@@ -210,7 +210,7 @@ private extension SinglePlantView {
 	var editableMaintenanceSection: some View {
 		Section {
 			HStack {
-				Text("Cycle")
+				Text(LocalizedStringKey("cycle"))
 				Spacer()
 				Picker("Cycle", selection: $pvm.updatedPlantCycle) {
 					ForEach(Cycle.allCases) { cycle in
@@ -221,7 +221,7 @@ private extension SinglePlantView {
 			.accessibilityIdentifier("Cycle")
 			}
 			HStack {
-				Text("Watering")
+				Text(LocalizedStringKey("watering"))
 				Spacer()
 				Picker("Watering frequency", selection: $pvm.updatedPlantWatering) {
 					ForEach(Watering.allCases) { frequency in
@@ -233,7 +233,7 @@ private extension SinglePlantView {
 			.accessibilityIdentifier("Watering frequency")
 			}
 			HStack {
-				Text("Sunlight")
+				Text(LocalizedStringKey("sunlight"))
 				Spacer()
 				Picker("Sunlight level", selection: $pvm.updatedPlantSunlight) {
 					ForEach(Sunlight.allCases) { level in

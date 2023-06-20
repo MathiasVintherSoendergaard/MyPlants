@@ -9,7 +9,9 @@ import SwiftUI
 
 struct WelcomeView: View {
     var body: some View {
-        Text("This is the welcome view, which is not done yet")
+		VStack {
+			Text(LocalizedStringKey("welcomeViewNotDoneYet"))
+		}
     }
 }
 

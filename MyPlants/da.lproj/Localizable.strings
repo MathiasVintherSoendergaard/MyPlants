@@ -1,0 +1,75 @@
+/* 
+  Localizable.strings
+  MyPlants
+
+  Created by Mathias Vinther Søndergaard on 20/06/2023.
+  
+*/
+
+// WelcomeView
+"welcomeViewNotDoneYet" = "Dette er WelcomeView, som ikke er færdigt endnu";
+
+// ContentView
+"home" = "Hjem";
+"calendar" = "Kalender";
+"addPlant" = "Tilføj plante";
+"search" = "Søg";
+"myPlants" = "Mine planter";
+
+// CalendarView
+"calendarViewNotDoneYet" = "Dette er CalendarView, som ikke er færdigt endnu";
+
+// AddPlantView
+"plantName" = "Skriv navnet på din plante";
+"plantSpecies" = "Skriv din plantes art";
+"plantDescription" = "Skriv en kort beskrivelse af din plante";
+"takePictureButton" = "Tag et billede af din plante";
+"choosePictureButton" = "Vælg et billede af din plante";
+"savePlantButton" = "Gem plante";
+
+// SearchView
+"searchViewNavigationTitle" = "Søg i plantearter";
+"searchPrompt" = "Søg i plantearter";
+
+// AllPlantsView
+"allPlantsViewNavigationTitle" = "Mine planter";
+
+// SinglePlantView
+"noNameYet" = "Endnu intet navn";
+"about" = "Om ";
+"description" = "Beskrivelse";
+"noDescriptionYet" = "Endnu ingen beskrivelse";
+"species" = "Art";
+"noSpeciesYet" = "Endnu ingen art";
+"noCycleYet" = "Endnu ingen cyklus";
+"noWateringYet" = "Endnu ingen vandingsfrekvens";
+"noSunlightYet" = "Endnu intet sollys";
+"plantCreationDate" = "Plantens oprettelsesdato";
+"noplantCreationDateYet" = "Ingen oprettelsesdato";
+"name" = "Navn";
+"showCalendarButton" = "Vis kalender";
+"takeNewPictureOfPlantButton" = "Tag et nyt billede af din plante";
+
+// All enumerators
+"notDefined" = "Ikke defineret";
+
+// Watering
+"watering" = "Vandingsfrekvens";
+"none" = "Ingen";
+"minimum" = "Minimal";
+"average" = "Gennemsnitlig";
+"frequent" = "Ofte";
+
+// Sunlight
+"sunlight" = "Sollys";
+"fullShade" = "Fuld skygge";
+"partShade" = "Delvis skygge";
+"sunPartShade" = "Sol/delvis skygge";
+"fullSun" = "Fuld sol";
+
+// Cycle
+"cycle" = "Cyklus";
+"perennial" = "Flerårig";
+"biennial" = "Toårig";
+"annual" = "Årlig";
+"biannual" = "Halvårlig";
