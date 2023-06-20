@@ -19,7 +19,12 @@ struct AllPlantsView: View {
 					NavigationLink {
 						SinglePlantView(plant: plant)
 					} label: {
-						Text(plant.name ?? "No name")
+						HStack {
+							SinglePlantRow(plant: plant)
+//							Image(uiImage: UIImage(data: plant.image!)!)
+//								.resizable()
+//							Text(plant.name ?? "No name")
+						}
 					}
 				}
 				.onDelete { indexSet in
