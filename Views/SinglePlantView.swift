@@ -79,8 +79,8 @@ struct SinglePlantView: View {
 			pvm.updatedPlantDescription = plant.desc!
 			pvm.updatedPlantSpecies = plant.species!
 			pvm.updatedPlantCycle = Cycle(rawValue: Int(plant.cycle))!
-			pvm.updatedPlantWatering = Watering(rawValue: Int(plant.cycle))!
-			pvm.updatedPlantSunlight = Sunlight(rawValue: Int(plant.cycle))!
+			pvm.updatedPlantWatering = Watering(rawValue: Int(plant.watering))!
+			pvm.updatedPlantSunlight = Sunlight(rawValue: Int(plant.sunlight))!
 			pvm.updatedPlantProfilePicture = UIImage(data: plant.image ?? Data()) ?? UIImage()
 		}
     }
