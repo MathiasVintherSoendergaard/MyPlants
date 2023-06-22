@@ -23,6 +23,7 @@ struct ContentView: View {
 					.tabItem {
 						Label(LocalizedStringKey("addPlant"), systemImage: "plus.app")
 					}
+					.accessibilityIdentifier("Register new plant")
 				SearchView()
 					.tabItem {
 						Label(LocalizedStringKey("search"), systemImage: "magnifyingglass")

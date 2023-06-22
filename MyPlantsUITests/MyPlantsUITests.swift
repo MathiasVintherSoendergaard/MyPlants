@@ -35,8 +35,11 @@ final class MyPlantsUITests: XCTestCase {
     }
 
     func testNavigationToSearchResults() throws {
+		
+		XCUIDevice.shared.orientation = .portrait
+		
 		// we try to find the button that navigates to SearchView
-		let searchButton = app.otherElements.buttons["Search plants"]
+		let searchButton = app.tabBars.buttons["Search"]
 		
 		// we check if we have found a button
 		XCTAssertTrue(searchButton.waitForExistence(timeout: timeout))
@@ -45,7 +48,7 @@ final class MyPlantsUITests: XCTestCase {
 		searchButton.tap()
 		
 		// we try to find a static text in the view with the value "Search Results"
-		let searchResults = app.staticTexts["Search plants"]
+		let searchResults = app.staticTexts["Search species"]
 		
 		// we check if the static text actually existed
 		XCTAssertTrue(searchResults.waitForExistence(timeout: timeout))
@@ -55,8 +58,10 @@ final class MyPlantsUITests: XCTestCase {
 
 	func testTakePictureOfPlantSheet() throws {
 		
+		XCUIDevice.shared.orientation = .portrait
+		
 		// we try to find the button that navigates to AddPlantView
-		let addPlantButton = app.otherElements.buttons["Register new plant"]
+		let addPlantButton = app.tabBars.buttons["Add Plant"]
 		
 		// we check if we have found a button
 		XCTAssertTrue(addPlantButton.waitForExistence(timeout: timeout))
@@ -87,8 +92,10 @@ final class MyPlantsUITests: XCTestCase {
 	
 	func testNavigationToAllPlantsAndSinglePlantView() throws {
 		
+		XCUIDevice.shared.orientation = .portrait
+		
 		// we try to find the button that navigates to AllPlantsView
-		let seeAllPlantsButton = app.otherElements.buttons["See your plants"]
+		let seeAllPlantsButton = app.tabBars.buttons["My Plants"]
 		
 		// we check if we have found a button
 		XCTAssertTrue(seeAllPlantsButton.waitForExistence(timeout: timeout))
@@ -152,8 +159,10 @@ final class MyPlantsUITests: XCTestCase {
 	
 	func testAddPlantView() throws {
 		
+		XCUIDevice.shared.orientation = .portrait
+		
 		// we try to find the button that navigates to AddPlantView
-		let registerPlantButton = app.otherElements.buttons["Register new plant"]
+		let registerPlantButton = app.tabBars.buttons["Add Plant"]
 		
 		// we check if we have found a button
 		XCTAssertTrue(registerPlantButton.waitForExistence(timeout: timeout))
@@ -161,6 +170,8 @@ final class MyPlantsUITests: XCTestCase {
 		// we click the button
 		registerPlantButton.tap()
 
+		
+		print(app.debugDescription)
 		// finding and inputting text to name of plant textfield
 		let nameOfPlantTextField = app.otherElements.textFields["Write the name of your plant"]
 		
