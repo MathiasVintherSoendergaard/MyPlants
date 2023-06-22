@@ -104,19 +104,20 @@ private extension SinglePlantView {
 	var editAndDoneButtons: some View {
 		Group {
 			if !editable {
-				Text("Edit")
+				Text(LocalizedStringKey("edit"))
 					.onTapGesture {
 						editable.toggle()
 					}
 					.foregroundColor(.red)
 			} else {
-				Text("Done")
+				Text(LocalizedStringKey("done"))
 					.onTapGesture {
 						editable.toggle()
 						savePlant()
 					}
 			}
 		}
+		.foregroundColor(.red)
 	}
 	
 	var headline: some View {

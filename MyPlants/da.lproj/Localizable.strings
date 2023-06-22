@@ -49,6 +49,8 @@
 "name" = "Navn";
 "showCalendarButton" = "Vis kalender";
 "takeNewPictureOfPlantButton" = "Tag et nyt billede af din plante";
+"edit" = "Rediger";
+"done" = "OK";
 
 // All enumerators
 "notDefined" = "Ikke defineret";

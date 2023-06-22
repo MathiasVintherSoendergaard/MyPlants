@@ -29,11 +29,12 @@ struct AllPlantsView: View {
 				}
 			}
 			.navigationTitle(LocalizedStringKey("allPlantsViewNavigationTitle"))
+			.toolbar {
+				EditButton()
+					.foregroundColor(.red)
+			}
 		}
-		.toolbar {
-			EditButton()
-				.foregroundColor(.red)
-		}
+		
 		.onAppear {
 			pvm.getPlants()
 		}

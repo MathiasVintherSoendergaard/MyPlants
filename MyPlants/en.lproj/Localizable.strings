@@ -49,6 +49,8 @@
 "name" = "Name";
 "showCalendarButton" = "Show calendar";
 "takeNewPictureOfPlantButton" = "Take a new picture of your plant";
+"edit" = "Edit";
+"done" = "Done";
 
 // All enumerators
 "notDefined" = "Not defined";
