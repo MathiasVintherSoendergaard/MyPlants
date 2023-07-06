@@ -15,7 +15,7 @@ struct SinglePerenualPlantRow: View {
 		HStack {
 			
 			AsyncImage(
-				url: URL(string: plant.defaultImage?.originalUrl ?? ""),
+				url: URL(string: plant.defaultImage?.thumbnail ?? ""),
 				content: { image in
 					image.resizable()
 						.aspectRatio(contentMode: .fit)
