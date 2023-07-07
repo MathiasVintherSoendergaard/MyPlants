@@ -1,0 +1,144 @@
+@startuml
+hide empty members
+
+class ContentView {}
+
+together {
+  class AllPlantsView {}
+  class AddPlantView {
+  - showSheet: Boolean
+  - sourceType: UIImagePickerController.SourceType
+
+  - savePlant(): void
+}
+  class SearchView {
+  - searchText: String
+}
+}
+
+class PerenualPlant {
+  
+  + id: Int?
+  + commonName: String?
+  + scientificName: String[]?
+  + otherName: String[]?
+  + cycle: String? 
+  + watering: String? 
+  + sunlight: String[]? 
+  + defaultImage: DefaultImage?
+
+}
+
+class CameraView {
+
+  - presentationMode: PresentationMode
+  + sourceType: UIImagePickerController.SourceType
+  + selectedImage: UIImage
+
+  + makeUIViewController(UIViewControllerRepresentableContext<ImagePicker>): UIImagePickerController
+  + updateUIViewController(UIImagePickerController, UIViewControllerRepresentableContext<ImagePicker>): void
+  + makeCoordinator(): Coordinator
+
+}
+
+
+class SinglePlantView {
+
+  + plant: PlantEntity
+  + pvm: PlantsViewModel
+  - editable: Bool
+
+  -showImageSheet: Bool
+  -sourceType: UIImagePickerController.SourceType
+}
+
+class DataView {
+
+  + name: String
+  + value: String
+
+}
+
+
+
+class SearchResultViewModel {
+  + searchResultAsPerenualPlant: PerenualPlant[]
+  - baseURL: String
+  search(String): void
+}
+
+class PlantsViewModel {
+  + newPlantName: String
+  + newPlantSpecies: String
+  + newPlantDescription: String
+  + newPlantSunlight: Sunlight
+  + newPlantWatering: Watering
+  + newPlantCycle: Cycle
+  + newPlantProfilePicture: UIImage
+  + newPlantNotes: String[]
+  + newPlantImages: Image[]
+
+  + plants: PlantsEntity[]
+
+  + updatedPlantName: String
+  + updatedPlantDescription: String
+  + updatedPlantSpecies: String
+  + updatedPlantSunlight: Sunlight
+  + updatedPlantWatering: Watering
+  + updatedPlantCycle: Cycle
+  + updatedPlantProfilePicture: UIImage
+
+  - viewContext: ViewContext
+
+  addPlant(): void
+  getPlants(): void
+  save(): void
+}
+
+class DataController {
+
+  {static} shared: DataController
+  + container: NSPersistentContainer
+
+}
+
+class Coordinator {
+
+  + parent: CameraView
+  imagePickerController(): void
+}
+
+class NotificationsController {
+
+  + scheduleNotification(String, Watering): void
+  - scheduleMonthlyNotification(String): void
+  - scheduleWeeklyNotification(String): void
+  - scheduleTwiceWeeklyNotification(String): void
+}
+
+AddPlantView --> CameraView
+AddPlantView ..> NotificationsController
+
+CameraView --+ Coordinator
+
+ContentView --> AllPlantsView
+ContentView --> AddPlantView
+ContentView --> SearchView
+AllPlantsView --> SinglePlantView
+
+SearchView -r-> AddPlantView
+SearchView ..> SearchResultViewModel
+
+SinglePlantView --> DataView
+SinglePlantView --> CameraView
+
+SinglePlantView ..> PlantsViewModel
+
+AllPlantsView ..> PlantsViewModel
+AddPlantView ..> PlantsViewModel
+
+SearchResultViewModel "1" *-- "0..*" PerenualPlant
+note left of PerenualPlant: Can be initialized from JSON
+
+PlantsViewModel ..> DataController
+@enduml

@@ -1,0 +1,64 @@
+@startuml
+!include <C4/C4_Component>
+
+Container_Boundary(App, "Mobile App"){
+
+    Component(AddPlantView, "AddPlantView", "View", "Enables the user the add a plant and its data")
+    Component(AllPlantView, "AllPlantView", "View", "Shows all the users' plants")
+    Component(CalendarView, "CalendarView", "View", "Shows all watering dates of all the users' plants")
+    Component(CameraView, "CameraView", "View", "Allows user to take picture of a plant")
+    Component(DataView, "DataView", "View", "Generic view for showing text data")
+    Component(SearchView, "SearchView", "View", "Allows user to search for plant species in API")
+    Component(SinglePlantView, "SinglePlantView", "View", "Shows one of user's plants")
+    Component(ContentView, "ContentView", "View", "Contains tabview which lets user navigate")
+    Component(SinglePlantCalendarView, "SinglePlantCalendarView", "View", "Shows a single plant's watering dates")
+    Component(WelcomeView, "WelcomeView", "Welcomes the user to the app, shows data about user's and their friends' plants")
+
+    Component(PlantsViewModel, "PlantsViewModel", "ViewModel", "Publishes user plant data to Views")
+    Component(SearchResultsViewModel, "SearchResultsVireModel", "ViewModel", "Makes API calls and publishes fetched data to views")
+
+    Component(Cycle, "Cycle", "Model", "Models a plant's cycle, i.e. how often it blossoms")
+    Component(Plant, "Plant", "Model", "Models a user's plant")
+    Component(Maintenance, "Maintenance", "Model", "Contains a user plant's maintenance needs, i.e. sunlight and watering")
+    Component(Sunlight, "Sunlight", "Model", "Models levels of sunlight. Full shade, part shade, sun/part shade, full sun or not defined")
+    Component(Watering, "Watering", "Model", "Models watering frequency. None, minimum (monthly), average (weekly), frequent (every four days) or not defined")
+    Component(PerenualPlant, "PerenualPlant", "Model", "Models a plant species as they are stored in the Perenual API")
+
+    Component(NotificationsController, "NotificationsController", "Controller", "Adds notifications to user's device, asks for permission to do so")
+
+    'ComponetDb(PlantEntity, "PlantEntity", "Entity", "Models a user's plant")
+    ComponentDb(DataController, "DataController", "Controller", "Contains Core Data stack, makes database operations")
+
+    Rel(ContentView, SearchView, "Arranges")
+    Rel(ContentView, AddPlantView, "Arranges")
+    Rel(ContentView, AllPlantView, "Arranges")
+    Rel(ContentView, CalendarView, "Arranges")
+    Rel(ContentView, WelcomeView, "Arranges")
+
+    Rel(SearchView, SearchResultsViewModel, "1")
+    Rel_R(SearchView, AddPlantView, "1")
+    Rel(AddPlantView, CameraView, "1")
+    Rel(AddPlantView, PlantsViewModel, "1")
+    Rel(AddPlantView, NotificationsController, "1")
+    Rel_R(AllPlantView, SinglePlantView, "1")
+    Rel(SinglePlantView, PlantsViewModel, "1")
+    Rel(SinglePlantView, DataView, "1")
+    Rel(SinglePlantView, CameraView, "1")
+    Rel_R(PlantsViewModel, DataController, "Retrive data information")
+    Rel(SinglePlantView, SinglePlantCalendarView, "Displays")
+
+    Rel(Plant, Cycle, "1")
+    Rel(PerenualPlant, Cycle, "1")
+    Rel(PerenualPlant, Sunlight, "1")
+    Rel(Plant, Maintenance, "1")
+    Rel(PerenualPlant, Watering, "1")
+
+    Lay_D(DataView, PlantsViewModel)
+    Lay_D(DataView, SearchResultsViewModel)
+
+    Rel(SearchResultsViewModel, PerenualPlant, "1")
+}
+
+
+
+@enduml
