@@ -49,12 +49,12 @@ struct Plant {
 	#warning("This initializer is not done, but is being updated as Core Data is being updated")
 	// this initializer constructs a Plant from PlantEntity, i.e., the database construct of a plant
 	init(plant: PlantEntity) {
-		self.name = plant.name ?? "Something went wrong"
-		self.species = plant.species ?? "Something went wrong"
-		self.description = plant.desc ?? "Something went wrong"
+		self.name = plant.nameUnwrapped
+		self.species = plant.speciesUnwrapped
+		self.description = plant.descUnwrapped
 		self.profilePicture = Image(uiImage: UIImage(data: plant.image ?? Data()) ?? UIImage())
 		self.maintenance = Maintenance(watering: Watering(rawValue: Int(plant.watering))!, sunLight: Sunlight(rawValue: Int(plant.sunlight))!)
-		self.cycle = Cycle(rawValue: Int(plant.cycle))!
+		self.cycle = Cycle(rawValue: plant.cycleUnwrappedToInt)!
 		
 		
 		// properties below this comment are not yet accounted for in the database, and are thus initalized as empty

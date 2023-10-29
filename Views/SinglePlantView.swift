@@ -63,7 +63,7 @@ struct SinglePlantView: View {
 				}
 			}
 			.sheet(isPresented: $showCalendarSheet) {
-				SinglePlantCalendarView(plantCreationDate: plant.timestamp ?? Date(), plantWateringInterval: Watering(rawValue: Int(plant.watering))?.timeInterval ?? TimeInterval())
+				SinglePlantCalendarView(plantCreationDate: plant.timestampUnwrappedToDate, plantWateringInterval: Watering(rawValue: Int(plant.watering))?.timeInterval ?? TimeInterval())
 			}
 		}
 		.toolbar {
@@ -75,9 +75,9 @@ struct SinglePlantView: View {
 			CameraView(sourceType: self.sourceType, selectedImage: $pvm.updatedPlantProfilePicture)
 		}
 		.onAppear {
-			pvm.updatedPlantName = plant.name!
-			pvm.updatedPlantDescription = plant.desc!
-			pvm.updatedPlantSpecies = plant.species!
+			pvm.updatedPlantName = plant.nameUnwrapped
+			pvm.updatedPlantDescription = plant.descUnwrapped
+			pvm.updatedPlantSpecies = plant.speciesUnwrapped
 			pvm.updatedPlantCycle = Cycle(rawValue: Int(plant.cycle))!
 			pvm.updatedPlantWatering = Watering(rawValue: Int(plant.watering))!
 			pvm.updatedPlantSunlight = Sunlight(rawValue: Int(plant.sunlight))!
@@ -150,9 +150,9 @@ private extension SinglePlantView {
 	var maintenanceSection: some View {
 		
 		HStack {
-			DataView(name: String(localized: "cycle"), value: Cycle(rawValue: Int(plant.cycle))?.description ?? String(localized: "noCycleYet"))
-			DataView(name: String(localized: "watering"), value: Watering(rawValue: Int(plant.watering))?.description ?? String(localized: "noWateringYet"))
-			DataView(name: String(localized: "sunlight"), value: Sunlight(rawValue: Int(plant.sunlight))?.description ?? String(localized: "noSunlightYet"))
+			DataView(name: String(localized: "cycle"), value: plant.cycleUnwrappedToString)
+			DataView(name: String(localized: "watering"), value: plant.wateringUnwrappedToString)
+			DataView(name: String(localized: "sunlight"), value: plant.sunlightUnwrappedToString)
 			}
 		
 	}
@@ -168,7 +168,7 @@ private extension SinglePlantView {
 
 			maintenanceSection
 
-			DataView(name: String(localized: "plantCreationDate"), value: plant.timestamp?.formatted(date: .numeric, time: .omitted) ?? String(localized: "noplantCreationDateYet"))
+			DataView(name: String(localized: "plantCreationDate"), value: plant.timestampUnwrappedToString)
 			
 			Spacer()
 		}

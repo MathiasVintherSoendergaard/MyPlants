@@ -6,11 +6,12 @@
 //
 
 import Foundation
-import UIKit
 import SwiftUI
 import CoreData
 
 class PlantsViewModel: ObservableObject {
+	
+	#warning("Viewmodel should contain CoreData entity's data types?")
 	
 	@Published var newPlantName: String = ""
 	@Published var newPlantSpecies: String = ""

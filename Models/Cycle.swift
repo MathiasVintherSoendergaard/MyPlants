@@ -48,4 +48,15 @@ extension Cycle {
 			self = .notDefined
 		}
 	}
+	
+	init?(rawValue: Int) {
+		switch rawValue {
+		case 0: self = .perennial
+		case 1: self = .biennial
+		case 2: self = .annual
+		case 3: self = .biannual
+		case 4: self = .notDefined
+		default: self = .notDefined
+		}
+	}
 }
