@@ -121,7 +121,7 @@ private extension SinglePlantView {
 	}
 	
 	var headline: some View {
-		Text(plant.name ?? String(localized: "noNameYet"))
+		Text(plant.nameUnwrapped)
 			.font(.title)
 	}
 	
@@ -143,14 +143,14 @@ private extension SinglePlantView {
 	
 	var aboutPlant: some View {
 		
-		Text(String(localized: "about") + (plant.name ?? ""))
+		Text(String(localized: "about") + (plant.nameUnwrapped))
 			.font(.title2)
 	}
 	
 	var maintenanceSection: some View {
 		
 		HStack {
-			DataView(name: String(localized: "cycle"), value: Cycle(rawValue: Int(plant.watering))?.description ?? String(localized: "noCycleYet"))
+			DataView(name: String(localized: "cycle"), value: Cycle(rawValue: Int(plant.cycle))?.description ?? String(localized: "noCycleYet"))
 			DataView(name: String(localized: "watering"), value: Watering(rawValue: Int(plant.watering))?.description ?? String(localized: "noWateringYet"))
 			DataView(name: String(localized: "sunlight"), value: Sunlight(rawValue: Int(plant.sunlight))?.description ?? String(localized: "noSunlightYet"))
 			}
@@ -163,8 +163,8 @@ private extension SinglePlantView {
 			
 			aboutPlant
 
-			DataView(name: String(localized: "description"), value: plant.desc ?? String(localized: "noDescriptionYet"))
-			DataView(name: String(localized: "species"), value: plant.species ?? String(localized: "noSpeciesYet"))
+			DataView(name: String(localized: "description"), value: plant.descUnwrapped)
+			DataView(name: String(localized: "species"), value: plant.speciesUnwrapped)
 
 			maintenanceSection
 
@@ -185,21 +185,21 @@ private extension SinglePlantView {
 			HStack {
 				Text(LocalizedStringKey("name"))
 				Spacer()
-				TextField(plant.name ?? String(localized: "noNameYet"), text: $pvm.updatedPlantName)
+				TextField(plant.nameUnwrapped, text: $pvm.updatedPlantName)
 					.font(.subheadline)
 					.foregroundColor(.secondary)
 			}
 			HStack {
 				Text(LocalizedStringKey("description"))
 				Spacer()
-				TextField(plant.desc ?? String(localized: "noDescriptionYet"), text:  $pvm.updatedPlantDescription)
+				TextField(plant.descUnwrapped, text:  $pvm.updatedPlantDescription)
 					.font(.subheadline)
 					.foregroundColor(.secondary)
 			}
 			HStack {
 				Text(LocalizedStringKey("species"))
 				Spacer()
-				TextField(plant.species ?? String(localized: "noSpeciesYet"), text: $pvm.updatedPlantSpecies)
+				TextField(plant.speciesUnwrapped, text: $pvm.updatedPlantSpecies)
 					.font(.subheadline)
 					.foregroundColor(.secondary)
 			}

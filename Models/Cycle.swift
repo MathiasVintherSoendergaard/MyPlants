@@ -49,18 +49,3 @@ extension Cycle {
 		}
 	}
 }
-
-extension Cycle {
-	
-	// init? = failable initializer - it returns an optional, which either contains a Sunlight instance or nil
-	init?(rawValue: Int) {
-		switch rawValue {
-		case 0: self = .perennial
-		case 1: self = .biennial
-		case 2: self = .annual
-		case 3: self = .biannual
-		case 4: self = .notDefined
-		default: self = .notDefined
-		}
-	}
-}
