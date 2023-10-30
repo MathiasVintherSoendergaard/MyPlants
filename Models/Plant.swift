@@ -19,18 +19,20 @@ struct Plant {
 	var description: String
 	var profilePicture: Image
 	var userPictures: [Image]
-	var maintenance: Maintenance
+	var sunLight: Sunlight
+	var watering: Watering
 	var cycle: Cycle
 	var notes: [String]
 	
-	init(name: String, species: String, description: String, picture: Image, userPictures: [Image], maintenance: Maintenance, cycle: Cycle, notes: [String]) {
+	init(name: String, species: String, description: String, picture: Image, userPictures: [Image], sunLight: Sunlight, watering: Watering, cycle: Cycle, notes: [String]) {
 		
 		self.name = name
 		self.species = species
 		self.description = description
 		self.profilePicture = picture
 		self.userPictures = userPictures
-		self.maintenance = maintenance
+		self.sunLight = sunLight
+		self.watering = watering
 		self.cycle = cycle
 		self.notes = notes
 	}
@@ -42,7 +44,8 @@ struct Plant {
 		self.description = ""
 		self.profilePicture = Image(systemName: "tree")
 		self.userPictures = []
-		self.maintenance = Maintenance(watering: plant.watering, sunLight: plant.sunlight)
+		self.sunLight = Sunlight(sunLight: plant.sunlight)
+		self.watering = Watering(watering: plant.watering)
 		self.cycle = Cycle(value: plant.cycle)
 		self.notes = []
 	}
@@ -53,7 +56,8 @@ struct Plant {
 		self.species = plant.speciesUnwrapped
 		self.description = plant.descUnwrapped
 		self.profilePicture = Image(uiImage: UIImage(data: plant.image ?? Data()) ?? UIImage())
-		self.maintenance = Maintenance(watering: Watering(rawValue: Int(plant.watering))!, sunLight: Sunlight(rawValue: Int(plant.sunlight))!)
+		self.sunLight = Sunlight(rawValue: plant.sunlightUnwrappedToInt) ?? .notDefined
+		self.watering = Watering(rawValue: plant.wateringUnwrappedToInt) ?? .notDefined
 		self.cycle = Cycle(rawValue: plant.cycleUnwrappedToInt)!
 		
 		
@@ -67,5 +71,5 @@ struct Plant {
 
 // extension which houses a static instance of a Plant, used for Previews
 extension Plant {
-	static let samplePlant = Plant(name: "Your name for the plant", species: "The species of the plant", description: "Your description of the plant", picture: Image(systemName: ""), userPictures: [], maintenance: Maintenance(watering: .notDefined, sunLight: .notDefined), cycle: .notDefined, notes: [])
+	static let samplePlant = Plant(name: "Your name for the plant", species: "The species of the plant", description: "Your description of the plant", picture: Image(systemName: ""), userPictures: [], sunLight: .notDefined, watering: .notDefined, cycle: .notDefined, notes: [])
 }
