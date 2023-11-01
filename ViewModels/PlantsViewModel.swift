@@ -33,6 +33,8 @@ class PlantsViewModel: ObservableObject {
 	
 	@Published var plants: [PlantEntity] = []
 	
+	@Published var singlePlant: PlantEntity?
+	
 	private let viewContext = DataController.shared.container.viewContext
 	
 	func addPlant() {
@@ -74,6 +76,19 @@ class PlantsViewModel: ObservableObject {
 			
 			save()
 		}
+	}
+	
+	func update() {
+		
+		singlePlant?.name = updatedPlantName
+		singlePlant?.desc = updatedPlantDescription
+		singlePlant?.species = updatedPlantSpecies
+		singlePlant?.cycle = Int64(updatedPlantCycle.rawValue)
+		singlePlant?.watering = Int64(updatedPlantWatering.rawValue)
+		singlePlant?.sunlight = Int64(updatedPlantSunlight.rawValue)
+		singlePlant?.image = updatedPlantProfilePicture.jpegData(compressionQuality: 1)
+		
+		save()
 	}
 	
 	func save() {
