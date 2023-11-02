@@ -12,11 +12,8 @@ struct AllPlantsView: View {
 	
 	@StateObject var pvm = PlantsViewModel()
 	
-	#warning("there is an issue here, read the comment below")
-	/*
-	 when changing a plant from SinglePlantView, those changes do get saved
-	 to Core Data, but they do not get shown when returning to this view
-	 */
+	//TODO: when changing a plant from SinglePlantView, those changes do get saved to Core Data, but they do not get shown when returning to this view
+	 
 	
 	var body: some View {
 		NavigationStack {

@@ -7,9 +7,9 @@
 
 import Foundation
 
-#warning("Refactoring to be done")
+// TODO: refactoring
 // i.e., should there be a repository-class?
-// this will take a whole other approach to making and API call
+// this will take a whole other approach to making an API call
 // it will require return values, which is not possible to do with the way
 // func search() is built right now
 

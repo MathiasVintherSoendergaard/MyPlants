@@ -7,9 +7,13 @@
 
 import SwiftUI
 
-#warning("preview does not work with PlantEntity - maybe it will work when the PlantEntity comes from pvm")
+// TODO: see if we can get preview working again
+// old warning: preview does not work with PlantEntity - maybe it will work when the PlantEntity comes from pvm
 
-#warning("this view contains a lot of nil coalescing: 1. this solves the MVVM architecture, but more importantly, 2. I cannot currently think of a reason not to do forced unwrapping...")
+// TODO: this view contains a lot of nil coalescing. It is not great, but:
+// 1. it gets me closer to the MVVM architecture, and
+// 2. I cannot currently think of a reason not to do forced unwrapping...
+// 3. point 2 may not be correct, I have at some point tried force unwrapping, and we crashed
 
 struct SinglePlantView: View {
 	
@@ -65,7 +69,7 @@ struct SinglePlantView: View {
 				}
 			}
 			.sheet(isPresented: $showCalendarSheet) {
-				#warning("there must be a more readable solution than this")
+				// TODO: there must be a more readable solution than this
 				SinglePlantCalendarView(plantCreationDate: pvm.singlePlant?.timestampUnwrappedToDate ?? Date(), plantWateringInterval: Watering(rawValue: pvm.singlePlant?.wateringUnwrappedToInt ?? Int())?.timeInterval ?? TimeInterval())
 			}
 		}

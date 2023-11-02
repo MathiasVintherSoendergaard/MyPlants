@@ -13,10 +13,11 @@ struct SearchView: View {
 	// ViewModel for SearchResults
 	@StateObject var srvm: SearchResultsViewModel = SearchResultsViewModel()
 
-	#warning("put this into viewmodel?")
+	// TODO: put this into viewmodel?
 	@State private var searchText = ""
 	
-	#warning("If a @StateObject needs to be passed around, i.e. into a subview, use @ObservedObject")
+	// TODO: find out what this was about
+	// If a @StateObject needs to be passed around, i.e. into a subview, use @ObservedObject
 	// above warning comes from https://www.hackingwithswift.com/quick-start/swiftui/how-to-use-observedobject-to-manage-state-from-external-objects
 	
     var body: some View {

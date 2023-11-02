@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-#warning("PerenualPlant and PlantEntity should be enough - phase out Plant")
+// TODO: PerenualPlant and PlantEntity should be enough - phase out Plant
 
 // this is the struct that models a user's houseplant
 struct Plant {
@@ -49,7 +49,7 @@ struct Plant {
 		self.cycle = Cycle(value: plant.cycle)
 		self.notes = []
 	}
-	#warning("This initializer is not done, but is being updated as Core Data is being updated")
+	// TODO: This initializer is not done, but is being updated as Core Data is being updated
 	// this initializer constructs a Plant from PlantEntity, i.e., the database construct of a plant
 	init(plant: PlantEntity) {
 		self.name = plant.nameUnwrapped

@@ -11,8 +11,6 @@ import CoreData
 
 class PlantsViewModel: ObservableObject {
 	
-	#warning("Viewmodel should contain CoreData entity's data types?")
-	
 	@Published var newPlantName: String = ""
 	@Published var newPlantSpecies: String = ""
 	@Published var newPlantDescription: String = ""
@@ -35,6 +33,7 @@ class PlantsViewModel: ObservableObject {
 	
 	@Published var singlePlant: PlantEntity?
 	
+	// TODO: change relationship between viewmodel and datacontroller, and injection of the latter
 	private let viewContext = DataController.shared.container.viewContext
 	
 	func addPlant() {
