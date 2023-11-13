@@ -51,11 +51,11 @@ class PlantsViewModel: ObservableObject {
 		
 		newPlant.timestamp = Date()
 		
-		save()
+		saveContext()
 		
 	}
 	
-	func getPlants() {
+	func getAllPlants() {
 		
 		let request = NSFetchRequest<PlantEntity>(entityName: "PlantEntity")
 		
@@ -73,11 +73,11 @@ class PlantsViewModel: ObservableObject {
 			
 			viewContext.delete(plants[index])
 			
-			save()
+			saveContext()
 		}
 	}
 	
-	func update() {
+	func updatePlant() {
 		
 		singlePlant?.name = updatedPlantName
 		singlePlant?.desc = updatedPlantDescription
@@ -87,19 +87,19 @@ class PlantsViewModel: ObservableObject {
 		singlePlant?.sunlight = Int64(updatedPlantSunlight.rawValue)
 		singlePlant?.image = updatedPlantProfilePicture.jpegData(compressionQuality: 1)
 		
-		save()
+		saveContext()
 	}
 	
-	func save() {
+	func saveContext() {
 		
 		do {
 			try viewContext.save()
-			getPlants()
+			getAllPlants()
 		} catch {
 			print("Error saving")
 		}
 	}
 	init() {
-		getPlants()
+		getAllPlants()
 	}
 }

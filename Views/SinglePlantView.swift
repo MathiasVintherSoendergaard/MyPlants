@@ -115,7 +115,7 @@ private extension SinglePlantView {
 				Text(LocalizedStringKey("done"))
 					.onTapGesture {
 						editable.toggle()
-						pvm.update()
+						pvm.updatePlant()
 					}
 			}
 		}

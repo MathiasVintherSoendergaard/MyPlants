@@ -42,7 +42,7 @@ struct AllPlantsView: View {
 			}
 		}
 		.onAppear {
-			pvm.getPlants()
+			pvm.getAllPlants()
 		}
     }
 	
