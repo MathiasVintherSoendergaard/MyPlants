@@ -27,7 +27,7 @@ struct SearchView: View {
 			List {
 				ForEach(srvm.searchResultAsPerenualPlants) { plant in
 					NavigationLink {
-						AddPlantView(plant: Plant(plant: plant))
+						AddPlantView(plant: Plant(plantAPIData: plant))
 					} label: {
 						SinglePerenualPlantRow(plant: plant)
 					}

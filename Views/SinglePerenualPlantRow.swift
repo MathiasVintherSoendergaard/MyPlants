@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SinglePerenualPlantRow: View {
 	
-	let plant: PerenualPlant
+	let plant: PlantAPIData
 	
 	var body: some View {
 		HStack {

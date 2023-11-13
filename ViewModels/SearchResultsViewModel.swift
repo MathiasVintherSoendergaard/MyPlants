@@ -15,7 +15,7 @@ import Foundation
 
 // ViewModel to contain and publish SearchResults
 class SearchResultsViewModel: ObservableObject {
-	@Published var searchResultAsPerenualPlants: [PerenualPlant] = []
+	@Published var searchResultAsPerenualPlants: [PlantAPIData] = []
 	private let baseURL: String = "https://perenual.com/api/species-list?key=sk-rcKX642a8418ba664419&q="
 	func search(keyword: String) {
 		guard let url = URL(string: baseURL + keyword) else { fatalError("Missing URL")}

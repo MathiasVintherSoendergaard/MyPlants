@@ -37,16 +37,16 @@ struct Plant {
 		self.notes = notes
 	}
 	// Constructor that constructs a Plant from a PerenualPlant
-	init(plant: PerenualPlant) {
+	init(plantAPIData: PlantAPIData) {
 		
 		self.name = ""
-		self.species = plant.scientificName?[0] ?? "No scientific name found"
+		self.species = plantAPIData.scientificName?[0] ?? "No scientific name found"
 		self.description = ""
 		self.profilePicture = Image(systemName: "tree")
 		self.userPictures = []
-		self.sunLight = Sunlight(sunLight: plant.sunlight)
-		self.watering = Watering(watering: plant.watering)
-		self.cycle = Cycle(value: plant.cycle)
+		self.sunLight = Sunlight(sunLight: plantAPIData.sunlight)
+		self.watering = Watering(watering: plantAPIData.watering)
+		self.cycle = Cycle(value: plantAPIData.cycle)
 		self.notes = []
 	}
 	// TODO: This initializer is not done, but is being updated as Core Data is being updated
