@@ -48,25 +48,25 @@ extension Sunlight {
 //	}
 	
 	init(sunLight: [String]?) {
-		if sunLight != nil {
-			if sunLight!.count > 0 {
-				switch sunLight![0].lowercased() {
-				case "full shade":
-					self = .fullShade
-				case "part shade":
-					self = .partShade
-				case "sun-part_shade":
-					self = .sunPartShade
-				case "full sun":
-					self = .fullSun
-				default:
-					self = .partShade
-				}
-			} else {
-				self = .notDefined
-			}
-		} else {
+		
+		guard let sunLight = sunLight, !sunLight.isEmpty else {
+			self = .notDefined
+			return
+		}
+		
+		switch sunLight[0].lowercased() {
+		case "full shade":
+			self = .fullShade
+		case "part shade":
+			self = .partShade
+		case "sun-part_shade":
+			self = .sunPartShade
+		case "full sun":
+			self = .fullSun
+		default:
 			self = .notDefined
 		}
+		
+
 	}
 }
