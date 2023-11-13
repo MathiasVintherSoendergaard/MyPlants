@@ -12,17 +12,24 @@ struct AllPlantsView: View {
 	
 	@StateObject var pvm = PlantsViewModel()
 	
+	//TODO: when changing a plant from SinglePlantView, those changes do get saved to Core Data, but they do not get shown when returning to this view
+	 
+	
 	var body: some View {
 		NavigationStack {
 			List {
 				ForEach(pvm.plants, id: \.id) { plant in
 					NavigationLink {
-						SinglePlantView(plant: plant)
+						SinglePlantView(plant: plant, pvm: pvm)
+							.onAppear(perform: {
+							pvm.singlePlant = plant
+						})
 					} label: {
 						HStack {
 							SinglePlantEntityRow(plant: plant)
 						}
 					}
+					
 				}
 				.onDelete { indexSet in
 					pvm.deletePlant(indexSet: indexSet)
@@ -34,9 +41,8 @@ struct AllPlantsView: View {
 					.foregroundColor(.red)
 			}
 		}
-		
 		.onAppear {
-			pvm.getPlants()
+			pvm.getAllPlants()
 		}
     }
 	

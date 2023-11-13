@@ -7,15 +7,15 @@
 
 import Foundation
 
-#warning("Refactoring to be done")
+// TODO: refactoring
 // i.e., should there be a repository-class?
-// this will take a whole other approach to making and API call
+// this will take a whole other approach to making an API call
 // it will require return values, which is not possible to do with the way
 // func search() is built right now
 
 // ViewModel to contain and publish SearchResults
 class SearchResultsViewModel: ObservableObject {
-	@Published var searchResultAsPerenualPlants: [PerenualPlant] = []
+	@Published var searchResultAsPerenualPlants: [PlantAPIData] = []
 	private let baseURL: String = "https://perenual.com/api/species-list?key=sk-rcKX642a8418ba664419&q="
 	func search(keyword: String) {
 		guard let url = URL(string: baseURL + keyword) else { fatalError("Missing URL")}

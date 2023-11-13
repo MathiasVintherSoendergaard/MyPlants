@@ -38,16 +38,32 @@ extension Watering {
 	
 	// init? = failable initializer - it returns an optional, which either contains a Sunlight instance or nil
 	
-	init?(rawValue: Int) {
-		switch rawValue {
-		case 0: self = .none
-		case 1: self = .minimum
-		case 2: self = .average
-		case 3: self = .frequent
-		case 4: self = .notDefined
-		default: self = .notDefined
+//	init?(rawValue: Int) {
+//		switch rawValue {
+//		case 0: self = .none
+//		case 1: self = .minimum
+//		case 2: self = .average
+//		case 3: self = .frequent
+//		case 4: self = .notDefined
+//		default: self = .notDefined
+//		}
+//	}
+	
+	init(watering: String?) {
+		switch watering?.lowercased() {
+		case "frequent":
+			self = .frequent
+		case "average":
+			self = .average
+		case "minimum":
+			self = .minimum
+		case "none":
+			self = .none
+		default:
+			self = .notDefined
 		}
 	}
+	
 }
 
 extension Watering {

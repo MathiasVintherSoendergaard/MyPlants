@@ -13,7 +13,7 @@ import Foundation
 // This struct models search results from Perenual API
 struct SearchResult: Codable {
 	
-	var data: [PerenualPlant]? = []
+	var data: [PlantAPIData]? = []
 	var to: Int? = nil
 	var perPage: Int? = nil
 	var currentPage: Int? = nil
@@ -34,7 +34,7 @@ struct SearchResult: Codable {
 	init(from decoder: Decoder) throws {
 		
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		data = try values.decodeIfPresent([PerenualPlant].self, forKey: .data)
+		data = try values.decodeIfPresent([PlantAPIData].self, forKey: .data)
 		to = try values.decodeIfPresent(Int.self, forKey: .to)
 		perPage = try values.decodeIfPresent(Int.self, forKey: .perPage)
 		currentPage = try values.decodeIfPresent(Int.self, forKey: .currentPage)

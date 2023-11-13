@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-#warning("PerenualPlant and PlantEntity should be enough - phase out Plant")
+// TODO: PerenualPlant and PlantEntity should be enough - phase out Plant
 
 // this is the struct that models a user's houseplant
 struct Plant {
@@ -19,42 +19,46 @@ struct Plant {
 	var description: String
 	var profilePicture: Image
 	var userPictures: [Image]
-	var maintenance: Maintenance
+	var sunLight: Sunlight
+	var watering: Watering
 	var cycle: Cycle
 	var notes: [String]
 	
-	init(name: String, species: String, description: String, picture: Image, userPictures: [Image], maintenance: Maintenance, cycle: Cycle, notes: [String]) {
+	init(name: String, species: String, description: String, picture: Image, userPictures: [Image], sunLight: Sunlight, watering: Watering, cycle: Cycle, notes: [String]) {
 		
 		self.name = name
 		self.species = species
 		self.description = description
 		self.profilePicture = picture
 		self.userPictures = userPictures
-		self.maintenance = maintenance
+		self.sunLight = sunLight
+		self.watering = watering
 		self.cycle = cycle
 		self.notes = notes
 	}
 	// Constructor that constructs a Plant from a PerenualPlant
-	init(plant: PerenualPlant) {
+	init(plantAPIData: PlantAPIData) {
 		
 		self.name = ""
-		self.species = plant.scientificName?[0] ?? "No scientific name found"
+		self.species = plantAPIData.scientificName?[0] ?? "No scientific name found"
 		self.description = ""
 		self.profilePicture = Image(systemName: "tree")
 		self.userPictures = []
-		self.maintenance = Maintenance(watering: plant.watering, sunLight: plant.sunlight)
-		self.cycle = Cycle(value: plant.cycle)
+		self.sunLight = Sunlight(sunLight: plantAPIData.sunlight)
+		self.watering = Watering(watering: plantAPIData.watering)
+		self.cycle = Cycle(value: plantAPIData.cycle)
 		self.notes = []
 	}
-	#warning("This initializer is not done, but is being updated as Core Data is being updated")
+	// TODO: This initializer is not done, but is being updated as Core Data is being updated
 	// this initializer constructs a Plant from PlantEntity, i.e., the database construct of a plant
 	init(plant: PlantEntity) {
-		self.name = plant.name ?? "Something went wrong"
-		self.species = plant.species ?? "Something went wrong"
-		self.description = plant.desc ?? "Something went wrong"
+		self.name = plant.nameUnwrapped
+		self.species = plant.speciesUnwrapped
+		self.description = plant.descUnwrapped
 		self.profilePicture = Image(uiImage: UIImage(data: plant.image ?? Data()) ?? UIImage())
-		self.maintenance = Maintenance(watering: Watering(rawValue: Int(plant.watering))!, sunLight: Sunlight(rawValue: Int(plant.sunlight))!)
-		self.cycle = Cycle(rawValue: Int(plant.cycle))!
+		self.sunLight = Sunlight(rawValue: plant.sunlightUnwrappedToInt) ?? .notDefined
+		self.watering = Watering(rawValue: plant.wateringUnwrappedToInt) ?? .notDefined
+		self.cycle = Cycle(rawValue: plant.cycleUnwrappedToInt)!
 		
 		
 		// properties below this comment are not yet accounted for in the database, and are thus initalized as empty
@@ -67,5 +71,5 @@ struct Plant {
 
 // extension which houses a static instance of a Plant, used for Previews
 extension Plant {
-	static let samplePlant = Plant(name: "Your name for the plant", species: "The species of the plant", description: "Your description of the plant", picture: Image(systemName: ""), userPictures: [], maintenance: Maintenance(watering: .notDefined, sunLight: .notDefined), cycle: .notDefined, notes: [])
+	static let samplePlant = Plant(name: "Your name for the plant", species: "The species of the plant", description: "Your description of the plant", picture: Image(systemName: ""), userPictures: [], sunLight: .notDefined, watering: .notDefined, cycle: .notDefined, notes: [])
 }

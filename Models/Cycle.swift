@@ -48,11 +48,7 @@ extension Cycle {
 			self = .notDefined
 		}
 	}
-}
-
-extension Cycle {
 	
-	// init? = failable initializer - it returns an optional, which either contains a Sunlight instance or nil
 	init?(rawValue: Int) {
 		switch rawValue {
 		case 0: self = .perennial

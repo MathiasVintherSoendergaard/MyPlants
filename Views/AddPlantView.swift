@@ -58,8 +58,8 @@ struct AddPlantView: View {
 		pvm.newPlantDescription = plant.description
 		pvm.newPlantProfilePicture = UIImage()
 		pvm.newPlantImages = plant.userPictures
-		pvm.newPlantSunlight = plant.maintenance.sunLight
-		pvm.newPlantWatering = plant.maintenance.watering
+		pvm.newPlantSunlight = plant.sunLight
+		pvm.newPlantWatering = plant.watering
 		pvm.newPlantCycle = plant.cycle
 		pvm.newPlantNotes = plant.notes
 	}

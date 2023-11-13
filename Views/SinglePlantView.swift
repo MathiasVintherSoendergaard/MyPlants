@@ -7,7 +7,13 @@
 
 import SwiftUI
 
-#warning("preview does not work with PlantEntity - maybe it will work when the PlantEntity comes from pvm")
+// TODO: see if we can get preview working again
+// old warning: preview does not work with PlantEntity - maybe it will work when the PlantEntity comes from pvm
+
+// TODO: this view contains a lot of nil coalescing. It is not great, but:
+// 1. it gets me closer to the MVVM architecture, and
+// 2. I cannot currently think of a reason not to do forced unwrapping...
+// 3. point 2 may not be correct, I have at some point tried force unwrapping, and we crashed
 
 struct SinglePlantView: View {
 	
@@ -19,7 +25,7 @@ struct SinglePlantView: View {
 	
 	@State private var showCalendarSheet: Bool = false
 	
-	@ObservedObject var pvm = PlantsViewModel()
+	@ObservedObject var pvm: PlantsViewModel
 
     var body: some View {
 		NavigationView {
@@ -63,7 +69,8 @@ struct SinglePlantView: View {
 				}
 			}
 			.sheet(isPresented: $showCalendarSheet) {
-				SinglePlantCalendarView(plantCreationDate: plant.timestamp ?? Date(), plantWateringInterval: Watering(rawValue: Int(plant.watering))?.timeInterval ?? TimeInterval())
+				// TODO: there must be a more readable solution than this
+				SinglePlantCalendarView(plantCreationDate: pvm.singlePlant?.timestampUnwrappedToDate ?? Date(), plantWateringInterval: Watering(rawValue: pvm.singlePlant?.wateringUnwrappedToInt ?? Int())?.timeInterval ?? TimeInterval())
 			}
 		}
 		.toolbar {
@@ -75,28 +82,23 @@ struct SinglePlantView: View {
 			CameraView(sourceType: self.sourceType, selectedImage: $pvm.updatedPlantProfilePicture)
 		}
 		.onAppear {
-			pvm.updatedPlantName = plant.name!
-			pvm.updatedPlantDescription = plant.desc!
-			pvm.updatedPlantSpecies = plant.species!
+			pvm.updatedPlantName = plant.nameUnwrapped
+			pvm.updatedPlantDescription = plant.descUnwrapped
+			pvm.updatedPlantSpecies = plant.speciesUnwrapped
 			pvm.updatedPlantCycle = Cycle(rawValue: Int(plant.cycle))!
 			pvm.updatedPlantWatering = Watering(rawValue: Int(plant.watering))!
 			pvm.updatedPlantSunlight = Sunlight(rawValue: Int(plant.sunlight))!
 			pvm.updatedPlantProfilePicture = UIImage(data: plant.image ?? Data()) ?? UIImage()
+			
+//			pvm.updatedPlantName = pvm.singlePlant?.nameUnwrapped ?? ""
+//			pvm.updatedPlantDescription = pvm.singlePlant?.descUnwrapped ?? ""
+//			pvm.updatedPlantSpecies = pvm.singlePlant?.speciesUnwrapped ?? ""
+//			pvm.updatedPlantCycle = Cycle(rawValue: pvm.singlePlant?.cycleUnwrappedToInt ?? Int()) ?? .notDefined
+//			pvm.updatedPlantWatering = Watering(rawValue: pvm.singlePlant?.wateringUnwrappedToInt ?? Int()) ?? .notDefined
+//			pvm.updatedPlantSunlight = Sunlight(rawValue: pvm.singlePlant?.sunlightUnwrappedToInt ?? Int()) ?? .notDefined
+//			pvm.updatedPlantProfilePicture = UIImage(data: pvm.singlePlant?.image ?? Data()) ?? UIImage()
 		}
     }
-	
-	private func savePlant() {
-		plant.name = pvm.updatedPlantName
-		plant.desc = pvm.updatedPlantDescription
-		plant.species = pvm.updatedPlantSpecies
-		plant.cycle = Int64(pvm.updatedPlantCycle.rawValue)
-		plant.watering = Int64(pvm.updatedPlantWatering.rawValue)
-		plant.sunlight = Int64(pvm.updatedPlantSunlight.rawValue)
-		plant.image = pvm.updatedPlantProfilePicture.jpegData(compressionQuality: 1)
-
-		pvm.save()
-	}
-		
 }
 
 private extension SinglePlantView {
@@ -113,7 +115,7 @@ private extension SinglePlantView {
 				Text(LocalizedStringKey("done"))
 					.onTapGesture {
 						editable.toggle()
-						savePlant()
+						pvm.updatePlant()
 					}
 			}
 		}
@@ -121,7 +123,7 @@ private extension SinglePlantView {
 	}
 	
 	var headline: some View {
-		Text(plant.name ?? String(localized: "noNameYet"))
+		Text(pvm.singlePlant?.nameUnwrapped ?? "")
 			.font(.title)
 	}
 	
@@ -142,17 +144,16 @@ private extension SinglePlantView {
 	}
 	
 	var aboutPlant: some View {
-		
-		Text(String(localized: "about") + (plant.name ?? ""))
+		Text(String(localized: "about") + (pvm.singlePlant?.nameUnwrapped ?? ""))
 			.font(.title2)
 	}
 	
 	var maintenanceSection: some View {
 		
 		HStack {
-			DataView(name: String(localized: "cycle"), value: Cycle(rawValue: Int(plant.watering))?.description ?? String(localized: "noCycleYet"))
-			DataView(name: String(localized: "watering"), value: Watering(rawValue: Int(plant.watering))?.description ?? String(localized: "noWateringYet"))
-			DataView(name: String(localized: "sunlight"), value: Sunlight(rawValue: Int(plant.sunlight))?.description ?? String(localized: "noSunlightYet"))
+			DataView(name: String(localized: "cycle"), value: pvm.singlePlant?.cycleUnwrappedToString ?? "")
+			DataView(name: String(localized: "watering"), value: pvm.singlePlant?.wateringUnwrappedToString ?? "")
+			DataView(name: String(localized: "sunlight"), value: pvm.singlePlant?.sunlightUnwrappedToString ?? "")
 			}
 		
 	}
@@ -163,12 +164,12 @@ private extension SinglePlantView {
 			
 			aboutPlant
 
-			DataView(name: String(localized: "description"), value: plant.desc ?? String(localized: "noDescriptionYet"))
-			DataView(name: String(localized: "species"), value: plant.species ?? String(localized: "noSpeciesYet"))
+			DataView(name: String(localized: "description"), value: pvm.singlePlant?.descUnwrapped ?? "")
+			DataView(name: String(localized: "species"), value: pvm.singlePlant?.speciesUnwrapped ?? "")
 
 			maintenanceSection
 
-			DataView(name: String(localized: "plantCreationDate"), value: plant.timestamp?.formatted(date: .numeric, time: .omitted) ?? String(localized: "noplantCreationDateYet"))
+			DataView(name: String(localized: "plantCreationDate"), value: pvm.singlePlant?.timestampUnwrappedToString ?? "")
 			
 			Spacer()
 		}
@@ -185,21 +186,21 @@ private extension SinglePlantView {
 			HStack {
 				Text(LocalizedStringKey("name"))
 				Spacer()
-				TextField(plant.name ?? String(localized: "noNameYet"), text: $pvm.updatedPlantName)
+				TextField(pvm.singlePlant?.nameUnwrapped ?? "", text: $pvm.updatedPlantName)
 					.font(.subheadline)
 					.foregroundColor(.secondary)
 			}
 			HStack {
 				Text(LocalizedStringKey("description"))
 				Spacer()
-				TextField(plant.desc ?? String(localized: "noDescriptionYet"), text:  $pvm.updatedPlantDescription)
+				TextField(pvm.singlePlant?.descUnwrapped ?? "", text:  $pvm.updatedPlantDescription)
 					.font(.subheadline)
 					.foregroundColor(.secondary)
 			}
 			HStack {
 				Text(LocalizedStringKey("species"))
 				Spacer()
-				TextField(plant.species ?? String(localized: "noSpeciesYet"), text: $pvm.updatedPlantSpecies)
+				TextField(pvm.singlePlant?.speciesUnwrapped ?? "", text: $pvm.updatedPlantSpecies)
 					.font(.subheadline)
 					.foregroundColor(.secondary)
 			}

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 import SwiftUI
 import CoreData
 
@@ -32,6 +31,9 @@ class PlantsViewModel: ObservableObject {
 	
 	@Published var plants: [PlantEntity] = []
 	
+	@Published var singlePlant: PlantEntity?
+	
+	// TODO: change relationship between viewmodel and datacontroller, and injection of the latter
 	private let viewContext = DataController.shared.container.viewContext
 	
 	func addPlant() {
@@ -49,11 +51,11 @@ class PlantsViewModel: ObservableObject {
 		
 		newPlant.timestamp = Date()
 		
-		save()
+		saveContext()
 		
 	}
 	
-	func getPlants() {
+	func getAllPlants() {
 		
 		let request = NSFetchRequest<PlantEntity>(entityName: "PlantEntity")
 		
@@ -71,20 +73,33 @@ class PlantsViewModel: ObservableObject {
 			
 			viewContext.delete(plants[index])
 			
-			save()
+			saveContext()
 		}
 	}
 	
-	func save() {
+	func updatePlant() {
+		
+		singlePlant?.name = updatedPlantName
+		singlePlant?.desc = updatedPlantDescription
+		singlePlant?.species = updatedPlantSpecies
+		singlePlant?.cycle = Int64(updatedPlantCycle.rawValue)
+		singlePlant?.watering = Int64(updatedPlantWatering.rawValue)
+		singlePlant?.sunlight = Int64(updatedPlantSunlight.rawValue)
+		singlePlant?.image = updatedPlantProfilePicture.jpegData(compressionQuality: 1)
+		
+		saveContext()
+	}
+	
+	func saveContext() {
 		
 		do {
 			try viewContext.save()
-			getPlants()
+			getAllPlants()
 		} catch {
 			print("Error saving")
 		}
 	}
 	init() {
-		getPlants()
+		getAllPlants()
 	}
 }

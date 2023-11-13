@@ -27,7 +27,7 @@
 		C77EA5E82A41CBF20051A7C0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C77EA5EA2A41CBF20051A7C0 /* Localizable.strings */; };
 		C782B6FC29ED3A4A00A23A5C /* AddPlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C782B6FB29ED3A4A00A23A5C /* AddPlantView.swift */; };
 		C782B6FE29ED3C7900A23A5C /* Plant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C782B6FD29ED3C7900A23A5C /* Plant.swift */; };
-		C782B70229ED487B00A23A5C /* PerenualPlant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C782B70129ED487B00A23A5C /* PerenualPlant.swift */; };
+		C782B70229ED487B00A23A5C /* PlantAPIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C782B70129ED487B00A23A5C /* PlantAPIData.swift */; };
 		C782B70629ED4BDA00A23A5C /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C782B70529ED4BDA00A23A5C /* SearchResult.swift */; };
 		C782B70829ED4E3900A23A5C /* DefaultImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C782B70729ED4E3900A23A5C /* DefaultImage.swift */; };
 		C782B70A29ED4FD300A23A5C /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C782B70929ED4FD300A23A5C /* SearchView.swift */; };
@@ -39,7 +39,7 @@
 		C7B2F6D929F017590098783F /* Sunlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B2F6D829F017590098783F /* Sunlight.swift */; };
 		C7B2F6DB29F017E30098783F /* Cycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B2F6DA29F017E30098783F /* Cycle.swift */; };
 		C7B2F6DD29F018260098783F /* Watering.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B2F6DC29F018260098783F /* Watering.swift */; };
-		C7B2F6DF29F05DF60098783F /* Maintenance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B2F6DE29F05DF60098783F /* Maintenance.swift */; };
+		C7BCC9402AEE610E0093C861 /* PlantEntityExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7BCC93F2AEE610E0093C861 /* PlantEntityExtensions.swift */; };
 		C7CF29A02A03CDA100BAD1CF /* PlantsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CF299F2A03CDA100BAD1CF /* PlantsViewModel.swift */; };
 		C7E1A12E29F007A0007476BC /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E1A12D29F007A0007476BC /* DataController.swift */; };
 /* End PBXBuildFile section */
@@ -85,7 +85,7 @@
 		C77EA5EB2A41CBF40051A7C0 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C782B6FB29ED3A4A00A23A5C /* AddPlantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlantView.swift; sourceTree = "<group>"; };
 		C782B6FD29ED3C7900A23A5C /* Plant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plant.swift; sourceTree = "<group>"; };
-		C782B70129ED487B00A23A5C /* PerenualPlant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerenualPlant.swift; sourceTree = "<group>"; };
+		C782B70129ED487B00A23A5C /* PlantAPIData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantAPIData.swift; sourceTree = "<group>"; };
 		C782B70529ED4BDA00A23A5C /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		C782B70729ED4E3900A23A5C /* DefaultImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImage.swift; sourceTree = "<group>"; };
 		C782B70929ED4FD300A23A5C /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 		C7B2F6D829F017590098783F /* Sunlight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sunlight.swift; sourceTree = "<group>"; };
 		C7B2F6DA29F017E30098783F /* Cycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cycle.swift; sourceTree = "<group>"; };
 		C7B2F6DC29F018260098783F /* Watering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Watering.swift; sourceTree = "<group>"; };
-		C7B2F6DE29F05DF60098783F /* Maintenance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maintenance.swift; sourceTree = "<group>"; };
+		C7BCC93F2AEE610E0093C861 /* PlantEntityExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantEntityExtensions.swift; sourceTree = "<group>"; };
 		C7CF299F2A03CDA100BAD1CF /* PlantsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsViewModel.swift; sourceTree = "<group>"; };
 		C7E1A12D29F007A0007476BC /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -209,9 +209,9 @@
 			children = (
 				C782B6FD29ED3C7900A23A5C /* Plant.swift */,
 				C7B2F6D829F017590098783F /* Sunlight.swift */,
-				C7B2F6DE29F05DF60098783F /* Maintenance.swift */,
 				C7B2F6DA29F017E30098783F /* Cycle.swift */,
 				C7B2F6DC29F018260098783F /* Watering.swift */,
+				C7BCC93F2AEE610E0093C861 /* PlantEntityExtensions.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -255,7 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				C782B70729ED4E3900A23A5C /* DefaultImage.swift */,
-				C782B70129ED487B00A23A5C /* PerenualPlant.swift */,
+				C782B70129ED487B00A23A5C /* PlantAPIData.swift */,
 				C782B70529ED4BDA00A23A5C /* SearchResult.swift */,
 			);
 			path = API;
@@ -415,12 +415,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C782B70229ED487B00A23A5C /* PerenualPlant.swift in Sources */,
+				C782B70229ED487B00A23A5C /* PlantAPIData.swift in Sources */,
 				C77EA5DD2A41983D0051A7C0 /* SinglePlantEntityRow.swift in Sources */,
+				C7BCC9402AEE610E0093C861 /* PlantEntityExtensions.swift in Sources */,
 				C7E1A12E29F007A0007476BC /* DataController.swift in Sources */,
 				C79DFBF929F95CCB00D0B738 /* NotificationsController.swift in Sources */,
 				C7B2F6DD29F018260098783F /* Watering.swift in Sources */,
-				C7B2F6DF29F05DF60098783F /* Maintenance.swift in Sources */,
 				C77EA5E32A41ACA70051A7C0 /* CalendarView.swift in Sources */,
 				C782B70F29ED6F0F00A23A5C /* SinglePlantView.swift in Sources */,
 				C77CED212A1CB61100941F7D /* SinglePlantCalendarView.swift in Sources */,

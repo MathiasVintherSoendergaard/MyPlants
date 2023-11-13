@@ -36,15 +36,37 @@ extension Sunlight: CustomStringConvertible {
 extension Sunlight {
 	
 	// init? = failable initializer - it returns an optional, which either contains a Sunlight instance or nil
-	init?(rawValue: Int) {
-		switch rawValue {
-		case 0: self = .fullShade
-		case 1: self = .partShade
-		case 2: self = .sunPartShade
-		case 3: self = .fullSun
-		case 4: self = .notDefined
-		default: self = .notDefined
-		}
-	}
+//	init?(rawValue: Int) {
+//		switch rawValue {
+//		case 0: self = .fullShade
+//		case 1: self = .partShade
+//		case 2: self = .sunPartShade
+//		case 3: self = .fullSun
+//		case 4: self = .notDefined
+//		default: self = .notDefined
+//		}
+//	}
 	
+	init(sunLight: [String]?) {
+		
+		guard let sunLight = sunLight, !sunLight.isEmpty else {
+			self = .notDefined
+			return
+		}
+		
+		switch sunLight[0].lowercased() {
+		case "full shade":
+			self = .fullShade
+		case "part shade":
+			self = .partShade
+		case "sun-part_shade":
+			self = .sunPartShade
+		case "full sun":
+			self = .fullSun
+		default:
+			self = .notDefined
+		}
+		
+
+	}
 }

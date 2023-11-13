@@ -11,7 +11,7 @@ import Foundation
 // Codable used to decode and encode JSON objects
 // Identifiable to let the app iterate over collections of PerenualPlant
 
-struct PerenualPlant: Codable, Identifiable {
+struct PlantAPIData: Codable, Identifiable {
 
 	var id: Int? = nil
 	var commonName: String? = nil
