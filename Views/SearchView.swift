@@ -13,7 +13,6 @@ struct SearchView: View {
 	// ViewModel for SearchResults
 	@StateObject var srvm: SearchResultsViewModel = SearchResultsViewModel()
 
-	// TODO: put this into viewmodel?
 	@State private var searchText = ""
 	
 	// TODO: find out what this was about
